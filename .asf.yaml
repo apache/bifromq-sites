@@ -38,3 +38,8 @@ staging:
 
 publish:
   whoami: asf-site
+
+notifications:
+  commits: commits@bifromq.apache.org
+  issues: commits@bifromq.apache.org
+  pullrequests: commits@bifromq.apache.org

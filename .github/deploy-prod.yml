@@ -15,12 +15,10 @@
 # specific language governing permissions and limitations
 # under the License.
 
-name: Deploy
+name: Deploy To ASF Production
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   deploy:

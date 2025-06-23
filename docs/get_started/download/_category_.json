@@ -1,0 +1,8 @@
+{
+  "label": "Download",
+  "position": 1,
+  "link": {
+    "type": "doc",
+    "id": "get_started/download/intro"
+  }
+}

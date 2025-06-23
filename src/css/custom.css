@@ -118,3 +118,16 @@ h2 a {
   font-size: 2.2rem !important;
   display: inline-block;
 }
+
+/* Add a separator above all versions ≤ 3.3.x */
+.menu__list-item .dropdown__link[data-version="3.3.x"] {
+  margin-top: 0.5rem;          /* space above the divider */
+  padding-top: 0.5rem;         /* space below the divider */
+  border-top: 1px solid var(--ifm-color-border-muted);
+}
+
+/* Optional: make the “Next” item stand out more */
+.menu__list-item .dropdown__link[data-version="current"] {
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from '@docusaurus/Link'
 import Translate from '@docusaurus/Translate'
-import { 
+import {
   EnvelopeIcon,
   DocumentTextIcon,
   NewspaperIcon,
@@ -25,7 +25,7 @@ const HomeFooter: React.FC = () => {
                 Open-source, high-performance MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
               </Translate>
             </p>
-            
+
             {/* Social Links */}
             <div className="flex space-x-3">
               <a
@@ -147,34 +147,6 @@ const HomeFooter: React.FC = () => {
                 </Link>
               </div>
             </div>
-          </div>
-          
-          {/* Apache Incubator */}
-          <div className="sm:col-span-2 lg:col-span-2 flex flex-col h-full">
-            <h3 className="text-sm font-semibold text-white mb-6 flex items-center">
-              <TagIcon className="h-4 w-4 mr-2 text-orange-400" />
-              <Translate>Apache Incubator</Translate>
-            </h3>
-            <div className="space-y-4 flex-grow flex flex-col">
-              <div className="p-4 rounded-lg bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border border-blue-600/20 flex-grow">
-                <p className="text-gray-300 text-xs leading-relaxed -mb-0">
-                  <strong className="text-blue-400">Apache BifroMQ</strong> is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
-                </p>
-              </div>
-              <div className="flex justify-center mt-auto">
-                <img src="https://fury.apache.org/img/apache-incubator.svg" alt="Apache Incubator" className="w-32 h-auto rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-200" />
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Copyright */}
-        <div className="pt-8 border-t border-gray-800">
-          <div className="text-center">
-            <p className="text-xs text-gray-400">
-              © {new Date().getFullYear()} <span className="text-white">Apache BifroMQ (Incubating)</span>. 
-              <Translate> All rights reserved. </Translate>
-            </p>
           </div>
         </div>
       </div>

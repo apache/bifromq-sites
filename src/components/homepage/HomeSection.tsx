@@ -251,25 +251,6 @@ export default function HomeSection() {
   const [activeTab, setActiveTab] = useState(0);
   const observerRef = useRef(null);
 
-  // 初始化打字机效果
-  // useEffect(() => {
-  //   const options = {
-  //     strings: textLines,
-  //     typeSpeed: 80,
-  //     backSpeed: 50,
-  //     loop: true,
-  //     backDelay: 2000,
-  //     startDelay: 1000,
-  //   };
-  //   typedRef.current = new Typed('.typed-text', options);
-
-  //   return () => {
-  //     if (typedRef.current) {
-  //       typedRef.current.destroy();
-  //     }
-  //   };
-  // }, []);
-
   // 滚动动画观察器
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -319,69 +300,21 @@ export default function HomeSection() {
           {/* 粒子效果 */}
           <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-blue-400/60 rounded-full animate-ping"></div>
           <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-purple-400/60 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
-          {/* <div className="absolute top-2/3 left-1/4 w-1 h-1 bg-emerald-400/60 rounded-full animate-ping" style={{ animationDelay: '2s' }}></div> */}
         </div>
 
         {/* Hero 内容 */}
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-20">
           <div className="text-center">
-            {/* Apache 孵化器徽章 */}
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 border border-blue-200/50 dark:border-blue-800/50 mb-8 backdrop-blur-sm shadow-lg">
-              <StarIconSolid className="w-5 h-5 text-blue-500 mr-2 animate-pulse" />
-              <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                Apache Incubator Project
-              </span>
-            </div>
 
             {/* 主标题 */}
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
-              <span className="block bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
-                Apache BifroMQ
-              </span>
-              <span className="block text-2xl md:text-3xl lg:text-4xl font-normal text-blue-600 dark:text-blue-400">
-                (Incubating)
-              </span>
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl max-w-full whitespace-nowrap">
+              Apache BifroMQ <span>(Incubating)</span>
             </h1>
-
-            {/* 动态副标题 */}
-            {/* <div className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-600 dark:text-gray-300 mb-8 h-16 flex items-center justify-center">
-              <span className="mr-3">The</span>
-              <span className="typed-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"></span>
-              <span className="ml-2">MQTT Broker</span>
-            </div> */}
 
             {/* 描述 */}
             <p className="text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-12">
               <Translate>Java-based high-performance MQTT Broker messaging middleware that adopts Multi-tenancy architecture.</Translate>
             </p>
-
-            {/* 性能指标卡片 */}
-            {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 max-w-6xl mx-auto">
-              {techSpecs.map((spec, index) => (
-                <div
-                  key={index}
-                  className="group relative transform hover:scale-105 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="relative p-6 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-800/50 shadow-lg hover:shadow-2xl transition-all duration-300">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${spec.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}></div>
-                    <div className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${spec.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg mx-auto`}>
-                      <spec.solidIcon className="w-7 h-7 text-white" />
-                    </div>
-
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{spec.value}</div>
-
-                    <div className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-1">{spec.title}</div>
-
-                    <div className="text-xs text-gray-500 dark:text-gray-500">{spec.description}</div>
-
-                    <div className="text-xs text-gray-400 dark:text-gray-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {spec.detail}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div> */}
 
             {/* hero 按钮 */}
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
@@ -409,29 +342,9 @@ export default function HomeSection() {
                 <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
-
-            {/* 快速统计 */}
-            <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500 dark:text-gray-400">
-              <div className="flex items-center group hover:text-yellow-500 transition-colors">
-                <StarIconSolid className="w-4 h-4 mr-1 group-hover:animate-pulse" />
-                <span>663+ GitHub Stars</span>
-              </div>
-              <div className="flex items-center group hover:text-green-500 transition-colors">
-                <CheckCircleIconSolid className="w-4 h-4 mr-1 group-hover:animate-pulse" />
-                <span>Production Ready</span>
-              </div>
-              <div className="flex items-center group hover:text-blue-500 transition-colors">
-                <UsersIconSolid className="w-4 h-4 mr-1 group-hover:animate-pulse" />
-                <span>Apache Incubator</span>
-              </div>
-              <div className="flex items-center group hover:text-purple-500 transition-colors">
-                <BoltIconSolid className="w-4 h-4 mr-1 group-hover:animate-pulse" />
-                <span>Open Source</span>
-              </div>
-            </div>
           </div>
         </div>
-        
+
         {/* 向下指引箭头 */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20">
           <div className="group relative flex h-14 w-14 cursor-pointer items-center justify-center rounded-full border border-gray-200/60 bg-white/90 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-xl dark:border-gray-700/50 dark:bg-gray-800/90"
@@ -454,54 +367,6 @@ export default function HomeSection() {
 
       </section>
 
-      {/* 客户信任区域 - 重新设计 */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
-        {/* 背景装饰 */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-30"></div>
-        </div>
-
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
-          <div className="text-center mb-16" data-animate id="trusted-by">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              <Translate>Trusted by Industry Leaders</Translate>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              <Translate>Powering mission-critical IoT infrastructure for enterprises worldwide</Translate>
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-            {customerLogos.map((customer, index) => (
-              <div
-                key={index}
-                className="group relative p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-300/50 dark:hover:border-blue-600/50 transition-all duration-300 hover:shadow-xl transform hover:scale-105"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {/* 悬停光效 */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300"></div>
-
-                <div className="relative flex items-center justify-center">
-                  <img
-                    className="max-h-12 w-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-300 mx-auto filter grayscale group-hover:grayscale-0"
-                    src={customer.logo}
-                    alt={customer.name}
-                    width={120}
-                    height={48}
-                  />
-
-                  {/* 悬停时显示描述 */}
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-xs px-3 py-1 rounded-lg whitespace-nowrap">
-                    {customer.description}
-                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 dark:bg-gray-100 rotate-45"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 核心特性区域 - 全新交互设计 */}
       <section className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
         {/* 动态背景 */}
@@ -512,12 +377,6 @@ export default function HomeSection() {
 
         <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
           <div className="mx-auto max-w-4xl text-center mb-20" data-animate id="core-features">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border border-blue-200/50 dark:border-blue-800/50 mb-6">
-              <SparklesIconSolid className="w-4 h-4 text-blue-600 dark:text-blue-400 mr-2" />
-              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                <Translate>Enterprise-Grade Features</Translate>
-              </span>
-            </div>
 
             <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
               <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
@@ -582,152 +441,6 @@ export default function HomeSection() {
           </div>
         </div>
       </section>
-
-      {/* 性能对比区域 - 新增 */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-950 dark:to-blue-950 relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-16" data-animate id="performance">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              <Translate>Performance That Matters</Translate>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              <Translate>See how BifroMQ outperforms traditional MQTT brokers</Translate>
-            </p>
-          </div>
-
-          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-3xl border border-gray-200/50 dark:border-gray-800/50 shadow-2xl overflow-hidden">
-            <div className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">
-                    <Translate>Metric</Translate>
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                    BifroMQ
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">
-                    <Translate>Traditional</Translate>
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-green-600 dark:text-green-400 mb-2">
-                    <Translate>Improvement</Translate>
-                  </div>
-                </div>
-              </div>
-
-              {performanceMetrics.map((metric, index) => (
-                <div key={index} className="grid grid-cols-1 md:grid-cols-4 gap-6 py-4 border-t border-gray-200/50 dark:border-gray-700/50">
-                  <div className="font-medium text-gray-900 dark:text-white text-center md:text-left">
-                    {metric.metric}
-                  </div>
-                  <div className="text-blue-600 dark:text-blue-400 font-bold text-center">
-                    {metric.bifromq}
-                  </div>
-                  <div className="text-gray-500 dark:text-gray-400 text-center">
-                    {metric.competitor}
-                  </div>
-                  <div className="text-green-600 dark:text-green-400 font-semibold text-center">
-                    {metric.improvement}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 使用案例区域 - 新增 */}
-      <section className="py-24 bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-16" data-animate id="use-cases">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              <Translate>Built for Every Use Case</Translate>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              <Translate>From IoT devices to enterprise applications, BifroMQ scales to meet your needs</Translate>
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {useCases.map((useCase, index) => (
-              <div key={index} className="group relative">
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <useCase.icon className="w-6 h-6 text-white" />
-                  </div>
-
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                    {useCase.title}
-                  </h3>
-
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                    {useCase.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1">
-                    {useCase.industries.map((industry, idx) => (
-                      <span key={idx} className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full">
-                        {industry}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 附加功能区域 - 重新设计 */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-900">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-16" data-animate id="additional-features">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              <Translate>Complete Feature Set</Translate>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              <Translate>Everything you need for production-ready MQTT messaging</Translate>
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {additionalFeatures.map((feature, index) => (
-              <div key={index} className="group relative">
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-gray-50/80 to-white/80 dark:from-gray-800/80 dark:to-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  {/* 分类标签 */}
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-4">
-                    {feature.category}
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <feature.solidIcon className="w-6 h-6 text-white" />
-                    </div>
-
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                        {feature.title}
-                      </h3>
-
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA 区域 - 重新设计 */}
-      <CallToAction />
     </main>
   )
 }

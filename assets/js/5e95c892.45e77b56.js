@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkBifroMQ=self.webpackChunkBifroMQ||[]).push([[9647],{10429:(e,r,s)=>{s.r(r),s.d(r,{default:()=>i});s(36672);var u=s(13526),a=s(39859),c=s(41296),n=s(26271),t=s(42280),f=s(23420);function i(e){return(0,f.jsx)(a.e3,{className:(0,u.A)(c.G.wrapper.docsPages),children:(0,f.jsx)(t.A,{children:(0,n.v)(e.route.routes)})})}}}]);

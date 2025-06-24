@@ -1,36 +1,36 @@
 import React from 'react'
-import Link from '@docusaurus/Link'
-import Translate from '@docusaurus/Translate'
+import Link from '@docusaurus/Link';
+import Translate from '@docusaurus/Translate';
 import {
   EnvelopeIcon,
   DocumentTextIcon,
   NewspaperIcon,
   TagIcon
-} from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/outline';
 
 const HomeFooter: React.FC = () => {
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950">
+    <footer className="bg-slate-900 dark:bg-slate-950 border-t border-slate-800/50 dark:border-slate-700/50">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-1 flex flex-col">
             <div className="flex items-center mb-6">
-              <span className="text-xl font-bold text-white">
-                BifroMQ
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Apache BifroMQ
               </span>
             </div>
-            <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+            <p className="text-slate-400 dark:text-slate-300 mb-6 text-sm leading-relaxed">
               <Translate>
-                Open-source, high-performance MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
-              </Translate>
+                  Open-source, high-performance MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
+               </Translate>
             </p>
 
             {/* Social Links */}
             <div className="flex space-x-3">
               <a
                 href="mailto:hello@bifromq.io"
-                className="size-10 flex items-center justify-center rounded-lg bg-gray-800 text-gray-400 hover:text-blue-400 hover:bg-gray-700 transition-all duration-200"
+                className="size-10 flex items-center justify-center rounded-lg bg-slate-800/50 dark:bg-slate-800/80 text-slate-400 hover:text-blue-400 hover:bg-slate-700/50 dark:hover:bg-slate-700 transition-all duration-200 border border-slate-700/50 dark:border-slate-600/50"
                 aria-label="Email"
               >
                 <EnvelopeIcon className="h-4 w-4" />
@@ -39,7 +39,7 @@ const HomeFooter: React.FC = () => {
                 href="https://discord.gg/Pfs3QRadRB"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="size-10 flex items-center justify-center rounded-lg bg-gray-800 text-gray-400 hover:text-blue-400 hover:bg-gray-700 transition-all duration-200"
+                className="size-10 flex items-center justify-center rounded-lg bg-slate-800/50 dark:bg-slate-800/80 text-slate-400 hover:text-blue-400 hover:bg-slate-700/50 dark:hover:bg-slate-700 transition-all duration-200 border border-slate-700/50 dark:border-slate-600/50"
                 aria-label="Discord"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -50,7 +50,7 @@ const HomeFooter: React.FC = () => {
                 href="https://github.com/apache/bifromq"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="size-10 flex items-center justify-center rounded-lg bg-gray-800 text-gray-400 hover:text-blue-400 hover:bg-gray-700 transition-all duration-200"
+                className="size-10 flex items-center justify-center rounded-lg bg-slate-800/50 dark:bg-slate-800/80 text-slate-400 hover:text-blue-400 hover:bg-slate-700/50 dark:hover:bg-slate-700 transition-all duration-200 border border-slate-700/50 dark:border-slate-600/50"
                 aria-label="GitHub"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -63,16 +63,16 @@ const HomeFooter: React.FC = () => {
           {/* Resources */}
           <div className="flex flex-col h-full">
             <h3 className="text-sm font-semibold text-white mb-6 flex items-center">
-              <NewspaperIcon className="h-4 w-4 mr-2 text-green-400" />
+              <NewspaperIcon className="h-4 w-4 mr-2 text-blue-400" />
               <Translate>Resources</Translate>
             </h3>
-            <div className="space-y-4 flex-grow">
+            <div className="space-y-3 flex-grow">
               <div className="group">
                 <Link
                   to="/blog"
-                  className="text-sm text-gray-400 hover:text-white transition-all duration-200 flex items-center group-hover:translate-x-1"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-blue-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
-                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                   <Translate>Blog</Translate>
                 </Link>
               </div>
@@ -81,9 +81,9 @@ const HomeFooter: React.FC = () => {
                   href="https://github.com/apache/bifromq"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-400 hover:text-white transition-all duration-200 flex items-center group-hover:translate-x-1"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-blue-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
-                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                   <Translate>GitHub</Translate>
                 </a>
               </div>
@@ -92,9 +92,9 @@ const HomeFooter: React.FC = () => {
                   href="https://github.com/apache/bifromq/releases"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-400 hover:text-white transition-all duration-200 flex items-center group-hover:translate-x-1"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-blue-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
-                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                   <Translate>Releases</Translate>
                 </a>
               </div>
@@ -103,9 +103,9 @@ const HomeFooter: React.FC = () => {
                   href="https://github.com/apache/bifromq/issues"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-400 hover:text-white transition-all duration-200 flex items-center group-hover:translate-x-1"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-blue-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
-                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                   <Translate>Issues</Translate>
                 </a>
               </div>
@@ -115,37 +115,90 @@ const HomeFooter: React.FC = () => {
           {/* Apache */}
           <div className="flex flex-col h-full">
             <h3 className="text-sm font-semibold text-white mb-6 flex items-center">
-              <DocumentTextIcon className="h-4 w-4 mr-2 text-blue-400" />
+              <DocumentTextIcon className="h-4 w-4 mr-2 text-purple-400" />
               <Translate>Apache</Translate>
             </h3>
-            <div className="space-y-4 flex-grow">
+            <div className="space-y-3 flex-grow">
               <div className="group">
-                <Link
-                  to="https://incubator.apache.org/"
-                  className="text-sm text-gray-400 hover:text-white transition-all duration-200 flex items-center group-hover:translate-x-1"
+                <a
+                  href="https://incubator.apache.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-purple-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                   <Translate>Apache Incubator</Translate>
-                </Link>
+                </a>
               </div>
               <div className="group">
-                <Link
-                  to="https://www.apache.org/foundation/policies/conduct"
-                  className="text-sm text-gray-400 hover:text-white transition-all duration-200 flex items-center group-hover:translate-x-1"
+                <a
+                  href="https://www.apache.org/foundation/policies/conduct"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-purple-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                   <Translate>Code of Conduct</Translate>
-                </Link>
+                </a>
               </div>
               <div className="group">
-                <Link
-                  to="https://www.apache.org/licenses/LICENSE-2.0"
-                  className="text-sm text-gray-400 hover:text-white transition-all duration-200 flex items-center group-hover:translate-x-1"
+                <a
+                  href="https://www.apache.org/licenses/LICENSE-2.0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-purple-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                   <Translate>Apache 2.0 License</Translate>
-                </Link>
+                </a>
               </div>
+            </div>
+          </div>
+
+          {/* Community */}
+          <div className="flex flex-col h-full">
+            <h3 className="text-sm font-semibold text-white mb-6 flex items-center">
+              <TagIcon className="h-4 w-4 mr-2 text-emerald-400" />
+              <Translate>Community</Translate>
+            </h3>
+            <div className="space-y-3 flex-grow">
+              <div className="group">
+                <a
+                  href="https://opensource.baidu.com/#/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-emerald-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
+                >
+                  <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <Translate>Thanks Baidu</Translate>
+                </a>
+              </div>
+              <div className="group">
+                <a
+                  href="https://mqtt.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-emerald-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
+                >
+                  <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <Translate>MQTT.org</Translate>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Footer Bottom */}
+        <div className="border-t border-slate-800/50 dark:border-slate-700/50 pt-8 mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-sm text-slate-500 dark:text-slate-400 mb-4 md:mb-0">
+              <Translate>© 2024 Apache Software Foundation. Licensed under Apache License 2.0.</Translate>
+            </div>
+            <div className="flex items-center space-x-4 text-sm text-slate-500 dark:text-slate-400">
+              <span className="flex items-center">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                <Translate>Apache Incubating</Translate>
+              </span>
             </div>
           </div>
         </div>

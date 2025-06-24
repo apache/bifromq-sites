@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Typed from "typed.js";
-import Translate, { translate as translateFn } from "@docusaurus/Translate";
+import Translate, { translate as translateFn } from '@docusaurus/Translate';
 import CallToAction from "./CallToAction";
 import {
   UsersIcon,
@@ -280,91 +280,80 @@ export default function HomeSection() {
 
   return (
     <main className="relative overflow-hidden">
-      {/* Hero Section - 全新设计 */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950">
-        {/* 动态背景 */}
+      {/* Hero Section - 优雅统一设计 */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950/50">
+        {/* 精简背景装饰 */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* 网格背景 */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#374151_1px,transparent_1px),linear-gradient(to_bottom,#374151_1px,transparent_1px)] bg-[size:60px_60px] opacity-20"></div>
+          {/* 微妙网格 */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:80px_80px] opacity-30 dark:opacity-20"></div>
 
-          {/* 浮动几何图形 */}
-          <div className="absolute top-20 left-20 w-32 h-32 border-2 border-blue-200/30 dark:border-blue-800/30 rounded-3xl rotate-12 animate-float opacity-40"></div>
-          <div className="absolute top-40 right-32 w-24 h-24 border border-purple-200/30 dark:border-purple-800/30 rounded-full animate-float-delayed opacity-30"></div>
-          <div className="absolute bottom-32 left-40 w-28 h-28 border border-emerald-200/30 dark:border-emerald-800/30 rounded-2xl rotate-45 animate-float opacity-35"></div>
-          <div className="absolute bottom-20 right-20 w-20 h-20 border-2 border-orange-200/30 dark:border-orange-800/30 rounded-xl animate-float-delayed opacity-40"></div>
+          {/* 优雅几何装饰 */}
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/5 dark:to-purple-400/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 dark:from-emerald-400/5 dark:to-cyan-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-          {/* 渐变光晕 */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-
-          {/* 粒子效果 */}
-          <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-blue-400/60 rounded-full animate-ping"></div>
-          <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-purple-400/60 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+          {/* 浮动装饰元素 */}
+          <div className="absolute top-20 right-20 w-24 h-24 border border-slate-200/40 dark:border-slate-700/40 rounded-2xl rotate-12 animate-float opacity-60 dark:opacity-40"></div>
+          <div className="absolute bottom-32 left-32 w-16 h-16 border border-slate-200/40 dark:border-slate-700/40 rounded-full animate-float-delayed opacity-50 dark:opacity-30"></div>
         </div>
 
         {/* Hero 内容 */}
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-20">
           <div className="text-center">
+            {/* 状态徽章 */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50/80 dark:bg-blue-950/50 border border-blue-200/50 dark:border-blue-800/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-8 backdrop-blur-sm">
+              <SparklesIcon className="w-4 h-4 mr-2" />
+              <Translate>Apache Incubating Project</Translate>
+            </div>
 
             {/* 主标题 */}
-            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl max-w-full whitespace-nowrap">
-              Apache BifroMQ <span>(Incubating)</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+              <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
+                Apache BifroMQ Incubating
+              </span>
             </h1>
 
-            {/* 描述 */}
-            <p className="text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-12">
+            {/* 副标题 */}
+            <p className="text-xl md:text-2xl leading-relaxed text-slate-600 dark:text-slate-300 max-w-4xl mx-auto mb-12 font-light">
               <Translate>Java-based high-performance MQTT Broker messaging middleware that adopts Multi-tenancy architecture.</Translate>
             </p>
 
-            {/* hero 按钮 */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
+            {/* CTA 按钮组 */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <a
                 href="./docs/get_started/intro/"
-                className="group relative inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                className="group relative inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform min-w-[200px] justify-center"
               >
-                {/* 按钮光效 */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                <PlayIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform relative z-10" />
-                <span className="relative z-10"><Translate>Get Started</Translate></span>
-                <SparklesIcon className="w-4 h-4 ml-2 group-hover:rotate-12 transition-transform relative z-10" />
+                <PlayIcon className="w-5 h-5 mr-2 transition-transform" />
+                <Translate>Get Started</Translate>
+                <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
 
               <a
                 href="https://github.com/apache/bifromq"
                 target="_blank"
-                className="group inline-flex items-center px-8 py-4 text-lg font-semibold text-gray-700 dark:text-gray-300 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-2xl border border-gray-300/50 dark:border-gray-600/50 shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center px-8 py-4 text-lg font-semibold text-slate-700 dark:text-slate-200 bg-white/80 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 rounded-xl border border-slate-200/50 dark:border-slate-600/50 shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm min-w-[200px] justify-center"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform">
                   <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
                 </svg>
                 <Translate>View on GitHub</Translate>
-                <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* 向下指引箭头 */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20">
-          <div className="group relative flex h-14 w-14 cursor-pointer items-center justify-center rounded-full border border-gray-200/60 bg-white/90 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-xl dark:border-gray-700/50 dark:bg-gray-800/90"
+        {/* 向下滚动指示器 */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+          <div className="group relative flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white/90 dark:bg-slate-800/90 border border-slate-200/50 dark:border-slate-700/50 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-xl"
             onClick={() => {
               const nextSection = document.querySelector('section:nth-of-type(2)');
               nextSection?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            <div className="absolute -top-[4.25rem] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-gray-900 px-3 py-1.5 text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:bg-gray-100 dark:text-gray-900">
-              <Translate>Scroll to explore</Translate>
-              <div className="absolute top-full left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-gray-900 dark:bg-gray-100"></div>
-            </div>
-
-            <div className="absolute h-full w-full animate-ping rounded-full border-2 border-sky-400/50"></div>
-            <div className="absolute h-full w-full animate-pulse rounded-full border border-sky-400/50"></div>
-
-            <ChevronDownIcon className="mt-2 relative h-7 w-7 animate-bounce text-sky-600 transition-colors group-hover:text-sky-500 dark:text-sky-400 dark:group-hover:text-sky-300 translate-y-0.5" />
+            <ChevronDownIcon className="h-5 w-5 animate-bounce text-slate-600 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
           </div>
         </div>
-
       </section>
 
       {/* 核心特性区域 - 全新交互设计 */}

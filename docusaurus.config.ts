@@ -101,6 +101,11 @@ const config = {
           position: "right",
         },
         {
+          to: "/community",
+          label: "Community",
+          position: "right",
+        },
+        {
           to: "/docs/get_started/download/intro/",
           label: "Download",
           position: "right",

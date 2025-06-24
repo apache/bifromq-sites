@@ -17,7 +17,7 @@ The printed configuration information in the logs consists of four main parts:
 JVM parameters refer to the parameters passed to the JVM when starting BifroMQ using the `-D` parameter. An example of the printed output is as follows:
 
 ```text
-15:21:46.890 [main] INFO c.b.b.starter.StandaloneStarter - JVM arguments:
+15:21:46.890 [main] INFO o.a.b.starter.StandaloneStarter - JVM arguments:
 -Xms1045m
 -Xmx4096m
 -Xlog:gc:file=/usr/share/bifromq-standalone/bin/../logs/gc-%t.log:time,tid,tags:filecount=5,filesize=50m
@@ -36,15 +36,15 @@ It is important to note that the printed values here represent the initial value
 necessarily be the actual runtime values. An example of the printed output is as follows:
 
 ```text
-15:21:46.890 [main] INFO c.b.b.starter.StandaloneStarter - Settings, which can be modified at runtime, allowing for dynamic adjustment of BifroMQ's service behavior per tenant. See https://bifromq.io/docs/plugin/setting_provider/
-15:21:46.890 [main] INFO c.b.b.starter.StandaloneStarter - Following is the initial value of each setting:
-15:21:46.913 [main] INFO c.b.b.starter.StandaloneStarter - Setting: DebugModeEnabled=false
-15:21:46.913 [main] INFO c.b.b.starter.StandaloneStarter - Setting: MaxTopicLevelLength=40
-15:21:46.913 [main] INFO c.b.b.starter.StandaloneStarter - Setting: MaxTopicLevels=16
-15:21:46.913 [main] INFO c.b.b.starter.StandaloneStarter - Setting: MaxTopicLength=255
-15:21:46.913 [main] INFO c.b.b.starter.StandaloneStarter - Setting: MaxSharedGroupMembers=200
-15:21:46.913 [main] INFO c.b.b.starter.StandaloneStarter - Setting: MaxTopicFiltersPerInbox=100
-15:21:46.913 [main] INFO c.b.b.starter.StandaloneStarter - Setting: MsgPubPerSec=200
+15:21:46.890 [main] INFO o.a.b.starter.StandaloneStarter - Settings, which can be modified at runtime, allowing for dynamic adjustment of BifroMQ's service behavior per tenant. See https://bifromq.io/docs/plugin/setting_provider/
+15:21:46.890 [main] INFO o.a.b.starter.StandaloneStarter - Following is the initial value of each setting:
+15:21:46.913 [main] INFO o.a.b.starter.StandaloneStarter - Setting: DebugModeEnabled=false
+15:21:46.913 [main] INFO o.a.b.starter.StandaloneStarter - Setting: MaxTopicLevelLength=40
+15:21:46.913 [main] INFO o.a.b.starter.StandaloneStarter - Setting: MaxTopicLevels=16
+15:21:46.913 [main] INFO o.a.b.starter.StandaloneStarter - Setting: MaxTopicLength=255
+15:21:46.913 [main] INFO o.a.b.starter.StandaloneStarter - Setting: MaxSharedGroupMembers=200
+15:21:46.913 [main] INFO o.a.b.starter.StandaloneStarter - Setting: MaxTopicFiltersPerInbox=100
+15:21:46.913 [main] INFO o.a.b.starter.StandaloneStarter - Setting: MsgPubPerSec=200
 ...
 ```
 
@@ -53,14 +53,12 @@ necessarily be the actual runtime values. An example of the printed output is as
 An example of the printed output is as follows:
 
 ```text
-17:21:34.067 [main] INFO  c.b.b.starter.StandaloneStarter - BifroMQ system properties:
-17:21:34.070 [main] INFO  c.b.b.starter.StandaloneStarter - BifroMQSysProp: mqtt_utf8_sanity_check=false
-17:21:34.070 [main] INFO  c.b.b.starter.StandaloneStarter - BifroMQSysProp: max_client_id_length=65535
-17:21:34.070 [main] INFO  c.b.b.starter.StandaloneStarter - BifroMQSysProp: session_register_num=1000
-17:21:34.070 [main] INFO  c.b.b.starter.StandaloneStarter - BifroMQSysProp: data_plane_tolerable_latency_ms=100
-17:21:34.070 [main] INFO  c.b.b.starter.StandaloneStarter - BifroMQSysProp: data_plane_burst_latency_ms=1000
-17:21:34.070 [main] INFO  c.b.b.starter.StandaloneStarter - BifroMQSysProp: control_plane_tolerant_latency_ms=200
-17:21:34.070 [main] INFO  c.b.b.starter.StandaloneStarter - BifroMQSysProp: control_plane_burst_latency_ms=5000
+17:21:34.067 [main] INFO  o.a.b.starter.StandaloneStarter - BifroMQ system properties:
+17:21:34.070 [main] INFO  o.a.b.starter.StandaloneStarter - BifroMQSysProp: mqtt_utf8_sanity_check=false
+17:21:34.070 [main] INFO  o.a.b.starter.StandaloneStarter - BifroMQSysProp: max_client_id_length=65535
+17:21:34.070 [main] INFO  o.a.b.starter.StandaloneStarter - BifroMQSysProp: session_register_num=1000
+17:21:34.070 [main] INFO  o.a.b.starter.StandaloneStarter - BifroMQSysProp: data_plane_burst_latency_ms=1000
+17:21:34.070 [main] INFO  o.a.b.starter.StandaloneStarter - BifroMQSysProp: control_plane_burst_latency_ms=5000
 ...
 ```
 
@@ -69,9 +67,8 @@ An example of the printed output is as follows:
 The configuration file section will include the consolidated complete content of the configuration file, with an example of the output as follows:
 
 ```text
-17:21:34.098 [main] INFO  c.b.b.starter.StandaloneStarter - Consolidated Config:
+17:21:34.098 [main] INFO  o.a.b.starter.StandaloneStarter - Consolidated Config:
 ---
-bootstrap: true
 clusterConfig:
   env: "Test"
   host: "127.0.0.1"

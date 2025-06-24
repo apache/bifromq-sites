@@ -1,0 +1,8 @@
+{
+  "label": "Benchmark",
+  "position": 8,
+  "link": {
+    "type": "doc",
+    "id": "benchmark/overview"
+  }
+}

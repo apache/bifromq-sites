@@ -38,11 +38,10 @@ const config = {
           editUrl: ({ locale, versionDocsDirPath, docPath }) => {
             return `https://github.com/apache/${siteRepoName}/tree/master/website/${versionDocsDirPath}/${docPath}`;
           },
-          lastVersion: "3.3.x",
+          lastVersion: "current",
           versions: {
             current: {
               label: "Next (Incubating)",
-              banner: "unreleased",
               badge: true,
             },
           },

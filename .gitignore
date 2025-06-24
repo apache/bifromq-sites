@@ -8,4 +8,5 @@ package-lock.json
 .pnp.loader.mjs
 yarn.lock
 .yarn
+pnpm-lock.yaml
 build/

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbifromq=self.webpackChunkbifromq||[]).push([[18134],{18134:(e,r,s)=>{s.d(r,{createInfoServices:()=>c.v});var c=s(5236);s(34939)}}]);

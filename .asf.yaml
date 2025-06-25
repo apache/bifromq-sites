@@ -24,6 +24,9 @@ github:
     wiki: false
   labels:
     - website
+    - apache
+    - bifromq
+    - docusaurus
   enabled_merge_buttons:
     squash: true
     merge: false
@@ -31,10 +34,6 @@ github:
   protected_branches:
     main: {}
     asf-site: {}
-
-staging:
-  profile: ~
-  whoami: asf-staging
 
 publish:
   whoami: asf-site

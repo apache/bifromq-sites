@@ -134,117 +134,6 @@ const techSpecs = [
   },
 ]
 
-// 附加功能
-const additionalFeatures = [
-  {
-    icon: CloudArrowUpIcon,
-    solidIcon: CloudArrowUpIconSolid,
-    title: <Translate>Full MQTT Support</Translate>,
-    description: <Translate>Complete MQTT 3.1, 3.1.1, and 5.0 implementation with all advanced features</Translate>,
-    category: "Protocol"
-  },
-  {
-    icon: LockClosedIcon,
-    solidIcon: LockClosedIconSolid,
-    title: <Translate>Advanced Security</Translate>,
-    description: <Translate>TLS 1.3, OAuth 2.0, JWT authentication, and fine-grained authorization</Translate>,
-    category: "Security"
-  },
-  {
-    icon: ArrowPathIcon,
-    solidIcon: ArrowPathIconSolid,
-    title: <Translate>Auto-Scaling</Translate>,
-    description: <Translate>Dynamic resource allocation with intelligent load balancing and failover</Translate>,
-    category: "Infrastructure"
-  },
-  {
-    icon: ChartBarIcon,
-    solidIcon: ChartBarIconSolid,
-    title: <Translate>Real-time Analytics</Translate>,
-    description: <Translate>Built-in monitoring with Prometheus metrics and custom dashboards</Translate>,
-    category: "Monitoring"
-  },
-  {
-    icon: BeakerIcon,
-    solidIcon: BeakerIconSolid,
-    title: <Translate>Plugin Architecture</Translate>,
-    description: <Translate>Extensible with custom authentication, event handlers, and integrations</Translate>,
-    category: "Extensibility"
-  },
-  {
-    icon: CommandLineIcon,
-    solidIcon: CommandLineIconSolid,
-    title: <Translate>Developer Experience</Translate>,
-    description: <Translate>Rich APIs, SDKs for multiple languages, and comprehensive documentation</Translate>,
-    category: "Developer Tools"
-  },
-]
-
-// 使用案例
-const useCases = [
-  {
-    icon: DevicePhoneMobileIcon,
-    title: <Translate>IoT Device Management</Translate>,
-    description: <Translate>Connect millions of IoT devices with real-time communication</Translate>,
-    industries: ["Manufacturing", "Smart Cities", "Agriculture"]
-  },
-  {
-    icon: ComputerDesktopIcon,
-    title: <Translate>Real-time Applications</Translate>,
-    description: <Translate>Build responsive applications with instant message delivery</Translate>,
-    industries: ["Gaming", "Chat Apps", "Live Streaming"]
-  },
-  {
-    icon: BuildingOfficeIcon,
-    title: <Translate>Enterprise Integration</Translate>,
-    description: <Translate>Integrate with existing enterprise systems and microservices</Translate>,
-    industries: ["Finance", "Healthcare", "Retail", "Veclhile"]
-  },
-  {
-    icon: WifiIcon,
-    title: <Translate>Edge Computing</Translate>,
-    description: <Translate>Deploy at the edge for low-latency, high-reliability messaging</Translate>,
-    industries: ["Automotive", "Industrial", "Telecommunications"]
-  }
-]
-
-// 客户案例
-const customerLogos = [
-  { name: "Baidu", logo: "./logocloud/baidu.png", description: "Powers Baidu IoT Core" },
-  { name: "Apollo", logo: "./logocloud/apollo.png", description: "Autonomous vehicle platform" },
-  { name: "Hisense", logo: "./logocloud/hisense.png", description: "Smart home ecosystem" },
-  { name: "Skyworth", logo: "./logocloud/skyworth.png", description: "Connected TV platform" },
-  { name: "China Unicom", logo: "./logocloud/chinaunicom.png", description: "Telecom infrastructure" }
-]
-
-// 性能对比数据
-const performanceMetrics = [
-  {
-    metric: <Translate>Concurrent Connections</Translate>,
-    bifromq: "1,000,000+",
-    competitor: "100,000",
-    improvement: "10x"
-  },
-  {
-    metric: <Translate>Message Latency</Translate>,
-    bifromq: "<1ms",
-    competitor: "5-10ms",
-    improvement: "10x faster"
-  },
-  {
-    metric: <Translate>Memory Usage</Translate>,
-    bifromq: "2GB",
-    competitor: "8GB",
-    improvement: "75% less"
-  },
-  {
-    metric: <Translate>Setup Time</Translate>,
-    bifromq: "5 minutes",
-    competitor: "2+ hours",
-    improvement: "24x faster"
-  }
-]
-
 export default function HomeSection() {
   const typedRef = useRef(null);
   const [isVisible, setIsVisible] = useState({});
@@ -308,7 +197,7 @@ export default function HomeSection() {
             {/* 主标题 */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
               <span className="bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-100 dark:to-purple-100 bg-clip-text text-transparent">
-                Apache BifroMQ Incubating
+                Apache BifroMQ (Incubating)
               </span>
             </h1>
 
@@ -376,7 +265,7 @@ export default function HomeSection() {
             <p className="text-xl leading-relaxed text-gray-600 dark:text-gray-300">
               <Translate>BifroMQ is a high-performance, distributed MQTT broker implementation that seamlessly integrates native multi-tenancy support.</Translate>
               {' '}
-              <Translate>It is designed to support building large-scale IoT device connections and messaging systems, Currently, it serves as the foundational technology for Baidu IoT Core, a public cloud serverless service.</Translate>
+              <Translate>It is designed to support building large-scale IoT device connections and messaging systems</Translate>
             </p>
           </div>
 

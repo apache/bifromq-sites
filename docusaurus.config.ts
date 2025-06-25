@@ -95,11 +95,11 @@ const config = {
           position: "right",
           label: "Docs",
         },
-        {
-          to: "/blog",
-          label: "Blog",
-          position: "right",
-        },
+        // {
+        //   to: "/blog",
+        //   label: "Blog",
+        //   position: "right",
+        // },
         {
           to: "/community",
           label: "Community",

@@ -22,14 +22,14 @@ const HomeFooter: React.FC = () => {
             </div>
             <p className="text-slate-400 dark:text-slate-300 mb-6 text-sm leading-relaxed">
               <Translate>
-                  Open-source, high-performance MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
-               </Translate>
+                Open-source, high-performance MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
+              </Translate>
             </p>
 
             {/* Social Links */}
             <div className="flex space-x-3">
               <a
-                href="mailto:hello@bifromq.io"
+                href="mailto:dev@bifromq.apache.org"
                 className="size-10 flex items-center justify-center rounded-lg bg-slate-800/50 dark:bg-slate-800/80 text-slate-400 hover:text-blue-400 hover:bg-slate-700/50 dark:hover:bg-slate-700 transition-all duration-200 border border-slate-700/50 dark:border-slate-600/50"
                 aria-label="Email"
               >
@@ -67,7 +67,7 @@ const HomeFooter: React.FC = () => {
               <Translate>Resources</Translate>
             </h3>
             <div className="space-y-3 flex-grow">
-              <div className="group">
+              {/* <div className="group">
                 <Link
                   to="/blog"
                   className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-blue-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
@@ -75,7 +75,7 @@ const HomeFooter: React.FC = () => {
                   <span className="w-1 h-1 bg-blue-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                   <Translate>Blog</Translate>
                 </Link>
-              </div>
+              </div> */}
               <div className="group">
                 <a
                   href="https://github.com/apache/bifromq"
@@ -89,7 +89,7 @@ const HomeFooter: React.FC = () => {
               </div>
               <div className="group">
                 <a
-                  href="https://github.com/apache/bifromq/releases"
+                  href="/docs/get_started/download/intro/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-blue-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
@@ -164,30 +164,41 @@ const HomeFooter: React.FC = () => {
             <div className="space-y-3 flex-grow">
               <div className="group">
                 <a
-                  href="https://opensource.baidu.com/#/"
+                  href="https://opensource.baidu.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-emerald-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
                   <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-                  <Translate>Thanks Baidu</Translate>
+                  <Translate>Thanks OpenSource@Baidu</Translate>
                 </a>
               </div>
               <div className="group">
                 <a
-                  href="https://mqtt.org/"
+                  href="https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-emerald-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
                 >
                   <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
-                  <Translate>MQTT.org</Translate>
+                  <Translate>MQTT v3.1.1</Translate>
+                </a>
+              </div>
+              <div className="group">
+                <a
+                  href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-400 dark:text-slate-300 hover:text-white dark:hover:text-emerald-300 transition-all duration-200 flex items-center group-hover:translate-x-1"
+                >
+                  <span className="w-1 h-1 bg-emerald-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  <Translate>MQTT v5.0</Translate>
                 </a>
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Footer Bottom */}
         <div className="border-t border-slate-800/50 dark:border-slate-700/50 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">

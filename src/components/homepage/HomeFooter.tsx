@@ -155,11 +155,11 @@ const HomeFooter: React.FC = () => {
             </div>
           </div>
 
-          {/* Community */}
+          {/* Others */}
           <div className="flex flex-col h-full">
             <h3 className="text-sm font-semibold text-white mb-6 flex items-center">
               <TagIcon className="h-4 w-4 mr-2 text-emerald-400" />
-              <Translate>Community</Translate>
+              <Translate>Others</Translate>
             </h3>
             <div className="space-y-3 flex-grow">
               <div className="group">

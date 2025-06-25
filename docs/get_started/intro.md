@@ -45,6 +45,4 @@ To subscribe or manage your subscription for any of these lists, visit the Apach
 
 #### **Discord**
 
-We also use Discord for real-time chat and community discussion. Join our server to ask questions, share ideas, and stay up-to-date with the latest project progress. Please adhere to the Apache Code of Conduct while participating.
-
-<a href="https://discord.gg/Pfs3QRadRB"><img src="https://img.shields.io/discord/1115542029531885599?logo=discord&logoColor=white" alt="BifroMQ Discord server" /></a>
+We also use [Discord](https://discord.gg/Pfs3QRadRB) for real-time chat and community discussion. Join our server to ask questions, share ideas, and stay up-to-date with the latest project progress. Please adhere to the Apache Code of Conduct while participating.

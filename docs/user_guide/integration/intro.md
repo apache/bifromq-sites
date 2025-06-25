@@ -21,13 +21,68 @@ Data integration with BifroMQ involves a bidirectional flow of messages between 
 
 A common architectural pattern involves embedding downstream system clients directly within the MQTT Broker. This method utilizes specific communication mechanisms and mapping logic to achieve protocol conversion, treating the MQTT protocol implementation and integration with heterogeneous systems as a unified whole, providing out-of-the-box integration capabilities.
 
-![Common Approach](./images/commonapproach.jpg)
+```mermaid
+flowchart LR
+
+%% 整体框架
+    subgraph MQTT_Broker_System["MQTT Broker System"]
+
+        mqttserver[MQTT Server]
+
+        subgraph Data Integration
+            kafkaproducer[Kafka Producer]
+            mongoclient[Mongo Client]
+            otherclients[Other Clients]
+        end
+
+        mqttserver -- Ad-hoc --> kafkaproducer
+        mqttserver -- Ad-hoc --> mongoclient
+        mqttserver -- Ad-hoc --> otherclients
+    end
+
+%% 外部连接
+    mqttclient[MQTT Client] -->|Pub/Sub| mqttserver
+
+%% 目标系统
+    kafkaproducer --> kafka[kafka]
+    mongoclient --> mongodb[mongoDB]
+    otherclients --> cloud[Cloud Service]
+```
 
 ### Non-Coupled Pattern
 
 Contrary to the common practice, BifroMQ recommends a non-coupled approach for data integration: Integration logic directly utilizes the MQTT protocol as a client to subscribe to messages from BifroMQ. This architectural pattern allows the integration module to be reused across different MQTT Brokers, hence the BifroMQ project itself does not include out-of-the-box data integration functionalities.
 
-![BifroMQ Approach](./images/bifromqapproach.jpg)
+```mermaid
+flowchart LR
+
+%% 左侧 MQTT Clients
+    mqttclients[MQTT Clients]
+
+%% 中间 BifroMQ
+    bifromq[BifroMQ]
+
+%% 右上 Kafka Integration
+    subgraph Kafka Integration
+        kafka_mqtt[MQTT Clients]
+        kafka_producer[Kafka Producer]
+        kafka[kafka]
+        kafka_mqtt --> kafka_producer --> kafka
+    end
+
+%% 右下 Mongo Integration
+    subgraph Mongo Integration
+        mongo_mqtt[MQTT Clients]
+        mongo_client[Mongo Client]
+        mongodb[mongoDB]
+        mongo_mqtt --> mongo_client --> mongodb
+    end
+
+%% 主干连接
+    mqttclients -- Pub/Sub --> bifromq
+    bifromq -- Shared Sub --> kafka_mqtt
+    bifromq -- Shared Sub --> mongo_mqtt
+```
 
 ## Directions of Message Flow Integration
 

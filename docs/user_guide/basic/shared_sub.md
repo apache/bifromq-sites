@@ -5,7 +5,33 @@ title: "Shared Subscriptions"
 
 MQTT Shared Subscriptions are a feature of the MQTT protocol that enables multiple subscribers to receive messages from the same topic in a fair manner.
 
-<img src={require('./images/shared-subscription.png').default} alt="Pub/Sub pattern" width="600" />
+```mermaid
+graph LR
+
+  Publisher(Publisher)
+  BifroMQ(BifroMQ)
+
+  Subscriber0(Subscriber 0)
+  Subscriber1(Subscriber 1)
+
+  subgraph Shared Group
+    SharedSubscriber0(Shared Subscriber 0)
+    SharedSubscriber1(Shared Subscriber 1)
+  end
+
+  Publisher -->|Publish 20°C<br>x/y/z| BifroMQ
+  BifroMQ -->|Publish 20°C| Subscriber0
+  BifroMQ -->|Publish 20°C| Subscriber1
+
+  BifroMQ --> SharedSubscriber0
+  BifroMQ --> SharedSubscriber1
+
+  Subscriber0 -.->|Subscribe<br>x/y/z| BifroMQ
+  Subscriber1 -.->|Subscribe<br>x/y/z| BifroMQ
+
+  SharedSubscriber0 -.->|Subscribe<br>$share/group1/x/y/z| BifroMQ
+  SharedSubscriber1 -.->|Subscribe<br>$share/group1/x/y/z| BifroMQ
+```
 
 To initiate a shared subscription, you should subscribe to a topic using the `$share/{groupName}/{topicFilter}` format. `{groupName}` refers to the name of the group sharing the subscription, as demonstrated with `group1` in the diagram.
 When subscribers choose to subscribe using the same topicFilter and groupName, they become part of the same shared group. Whenever a publisher sends a message, BifroMQ determines which subscriber in the group receives the message based on the defined sharing strategy.

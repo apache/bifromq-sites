@@ -28,6 +28,23 @@ const config = {
     locales: ["en"],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: [
+    [
+      '@docusaurus/theme-mermaid',
+      {
+        mermaid: {
+          theme: {
+            light: 'default',
+            dark: 'dark'
+          }
+        },
+      },
+    ]
+  ],
+
   presets: [
     [
       "classic",
@@ -36,7 +53,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: ({ locale, versionDocsDirPath, docPath }) => {
-            return `https://github.com/apache/${siteRepoName}/tree/master/website/${versionDocsDirPath}/${docPath}`;
+            return `https://github.com/apache/${siteRepoName}/tree/master/${versionDocsDirPath}/${docPath}`;
           },
           lastVersion: "current",
           versions: {
@@ -50,7 +67,7 @@ const config = {
           showReadingTime: true,
           blogSidebarCount: 10,
           editUrl: ({ locale }) => {
-            return `https://github.com/apache/${siteRepoName}/tree/master/website/blog`;
+            return `https://github.com/apache/${siteRepoName}/tree/master/blog`;
           },
         },
         theme: {

@@ -203,7 +203,7 @@ const HomeFooter: React.FC = () => {
         <div className="border-t border-slate-800/50 dark:border-slate-700/50 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-slate-500 dark:text-slate-400 mb-4 md:mb-0">
-              <Translate>© 2024 Apache Software Foundation. Licensed under Apache License 2.0.</Translate>
+              <Translate>{`© ${new Date().getFullYear()} Apache Software Foundation. Licensed under Apache License 2.0.`}</Translate>
             </div>
             <div className="flex items-center space-x-4 text-sm text-slate-500 dark:text-slate-400">
               <span className="flex items-center">

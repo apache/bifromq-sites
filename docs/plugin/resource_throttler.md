@@ -87,7 +87,7 @@ Implementing multi-tenant services with BifroMQ involves several key considerati
 
 ## Example Implementation
 
-BifroMQ includes an example implementation of the Resource Throttler, which can be enabled by specifying `resourceThrottlerFQN` as `com.baidu.demo.plugin.DemoResourceThrottler` in
+BifroMQ includes an example implementation of the Resource Throttler, which can be enabled by specifying `resourceThrottlerFQN` as `org.apache.bifromq.demo.plugin.DemoResourceThrottler` in
 the [configuration file](../admin_guide/configuration/intro.md). The example uses a JVM startup argument (`-Dplugin.resourcethrottler.url`) to specify a callback URL for a webhook.
 
 When BifroMQ calls the hasResource method, the plugin initiates a GET request that includes tenant_id and resource_type headers, corresponding to the two parameters of the hasResource method call. The request is asynchronous, and

@@ -289,7 +289,7 @@ bypassing client authentication and permission checks. This mode is strictly for
 
 ## Implementation Example
 
-BifroMQ includes a demonstration implementation of a WebHook-based AuthProvider that can be enabled by specifying `authProviderFQN` as `com.baidu.demo.plugin.DemoAuthProvider` in
+BifroMQ includes a demonstration implementation of a WebHook-based AuthProvider that can be enabled by specifying `authProviderFQN` as `org.apache.bifromq.demo.plugin.DemoAuthProvider` in
 the [configuration file](../admin_guide/configuration/config_file_manual.md). The example implementation uses the JVM startup parameter (`-Dplugin.authprovider.url`) to specify a webhook callback URL.
 
 When BifroMQ triggers the auth method, the plugin initializes an HTTP POST request. Within this request, we transform the protobuf message `MQTT3AuthData` into JSON format to serve as its body. The content of the response body is then interpreted and converted into the appropriate `MQTT3AuthResult` value type.

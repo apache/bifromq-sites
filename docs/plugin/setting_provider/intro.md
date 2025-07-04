@@ -70,7 +70,7 @@ plugin implementers observe the performance indicators of the plugin interface m
 
 ## Implementation Example
 
-BifroMQ includes a demonstration implementation of a WebHook-based SettingProvider that can be enabled by specifying `settingProviderFQN` as `com.baidu.demo.plugin.DemoSettingProvider` in
+BifroMQ includes a demonstration implementation of a WebHook-based SettingProvider that can be enabled by specifying `settingProviderFQN` as `org.apache.bifromq.demo.plugin.DemoSettingProvider` in
 the [configuration file](../../admin_guide/configuration/intro.md). The example implementation uses the JVM startup parameter (`-Dplugin.settingprovider.url`) to specify a webhook callback URL.
 
 When BifroMQ calls the `provide` method, the plugin initiates an HTTP GET request containing the `tenant_id` and `setting_name` headers, corresponding to the two parameters of the `provide` method. The string contained in the response body

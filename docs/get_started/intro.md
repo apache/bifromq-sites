@@ -37,11 +37,10 @@ We use GitHub [Issues](https://github.com/apache/bifromq/issues) for tracking re
 
 We use Apache mailing lists for asynchronous discussion and announcements. Please choose the appropriate list for your needs:
 
-- **dev@bifromq.apache.org** – General development discussions, design questions, and community support.
-- **private@bifromq.apache.org** – Private or security-sensitive discussions and confidential topics.
-- **commits@bifromq.apache.org** – Automated notifications of commits and repository activity.
+* **`commits@bifromq.apache.org`** – Receives automated commit logs and code changes.
+* **`dev@bifromq.apache.org`** – Used for general development discussions, proposals, questions, and community communication.
 
-To subscribe or manage your subscription for any of these lists, visit the Apache Mailing List page, for example: [dev@bifromq.apache.org](https://lists.apache.org/list.html?dev@bifromq.apache.org).
+Follow these [steps](../../../community/#how-to-subscribe) to subscribe or unsubscribe.
 
 #### **Discord**
 

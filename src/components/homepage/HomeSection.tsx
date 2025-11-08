@@ -203,7 +203,7 @@ export default function HomeSection() {
 
             {/* 副标题 */}
             <p className="text-xl md:text-2xl leading-relaxed text-slate-600 dark:text-slate-300 max-w-4xl mx-auto mb-12 font-light">
-              <Translate>Java-based high-performance MQTT Broker messaging middleware that adopts Multi-tenancy architecture.</Translate>
+              <Translate>Java-based high-performance Apache MQTT Broker messaging middleware that adopts Multi-tenancy architecture.</Translate>
             </p>
 
             {/* CTA 按钮组 */}
@@ -263,7 +263,7 @@ export default function HomeSection() {
             </h2>
 
             <p className="text-xl leading-relaxed text-gray-600 dark:text-gray-300">
-              <Translate>BifroMQ is a high-performance, distributed MQTT broker implementation that seamlessly integrates native multi-tenancy support.</Translate>
+              <Translate>BifroMQ is a high-performance, distributed Apache MQTT broker implementation that seamlessly integrates native multi-tenancy support.</Translate>
               {' '}
               <Translate>It is designed to support building large-scale IoT device connections and messaging systems</Translate>
             </p>

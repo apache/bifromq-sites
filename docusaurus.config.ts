@@ -12,9 +12,9 @@ const siteRepoName = "bifromq-sites";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Apache BifroMQ (Incubating) - Open source MQTT Broker",
+  title: "An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating)",
   tagline:
-    "High-performance, multi-tenant MQTT broker for enterprise IoT infrastructure - Apache Incubator Project",
+    "Discover Apache BifroMQ (Incubating), a high-performance, distributed Apache MQTT Broker under incubation. Built for enterprise IoT, this open-source MQTT broker offers native multi-tenancy.",
   favicon: "img/favicon.ico",
   url: `https://${projectName.toLowerCase()}.apache.org/`,
   baseUrl: "/",

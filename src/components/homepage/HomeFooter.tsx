@@ -22,7 +22,7 @@ const HomeFooter: React.FC = () => {
             </div>
             <p className="text-slate-400 dark:text-slate-300 mb-6 text-sm leading-relaxed">
               <Translate>
-                Open-source, high-performance MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
+                High-performance Apache MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
               </Translate>
             </p>
 

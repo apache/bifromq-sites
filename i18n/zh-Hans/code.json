@@ -315,7 +315,7 @@
   "What is BifroMQ?": {
     "message": "BifroMQ 是什么？"
   },
-  "BifroMQ is a high-performance, distributed MQTT broker implementation that seamlessly integrates native multi-tenancy support.": {
+  "BifroMQ is a high-performance, distributed Apache MQTT broker implementation that seamlessly integrates native multi-tenancy support.": {
     "message": "BifroMQ 是一个高性能的分布式 MQTT Broker 消息中间件实现，无缝集成了原生的多租户支持。"
   },
   "It is designed to support building large-scale IoT device connections and messaging systems, Currently, it serves as the foundational technology for Baidu IoT Core, a public cloud serverless service.": {

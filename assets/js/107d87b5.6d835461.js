@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkbifromq=self.webpackChunkbifromq||[]).push([[40441],{79373:t=>{t.exports=JSON.parse('{"tag":{"label":"MQTT","permalink":"/blog/tags/mqtt","allTagsPath":"/blog/tags","count":5,"unlisted":false},"listMetadata":{"permalink":"/blog/tags/mqtt","page":1,"postsPerPage":10,"totalPages":1,"totalCount":5,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

@@ -18,10 +18,13 @@
 name: Deploy To ASF Production
 
 on:
-  push:
-    branches: [master]
-  pull_request:
   workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Whether to publish built site to asf-site (true = deploy, false = only build)"
+        required: true
+        default: true
+        type: boolean
 
 jobs:
   deploy:
@@ -34,11 +37,15 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      - run: pnpm install
-      - run: pnpm run build
-      - run: cp .asf.yaml build/.asf.yaml
-      - uses: peaceiris/actions-gh-pages@v3
-        if: github.event_name != 'pull_request'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build site
+        run: pnpm run build
+      - name: Copy .asf.yaml
+        run: cp .asf.yaml build/.asf.yaml
+      - name: Publish to asf-site
+        if: ${{ inputs.deploy }}
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build

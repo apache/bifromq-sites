@@ -42,6 +42,14 @@ BifroMQ supports two rolling upgrade methods:
 1. **In-Place Upgrade**
 2. **Replace Upgrade**
 
+### Prerequisite
+
+Apache BifroMQ **4.0.0-incubating introduces breaking changes** and is **not backward compatible** with earlier versions. In particular, several **plugin interfaces have been updated**.
+If you are using any **custom plugins**, you must:
+
+1. **Update your plugin code** to use the latest interfaces, and
+2. **Rebuild** your plugins against the new version of BifroMQ before upgrading.
+
 ### In-Place Upgrade
 
 This method is suitable when the new version maintains both data compatibility and inter-cluster RPC protocol compatibility with the existing version.

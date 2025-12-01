@@ -6,7 +6,7 @@ title: "Windows"
 ## Prerequisites
 
 - JDK 17+
-- Latest version from BifroMQ [Releases](../get_started/download/intro.md)
+- Latest version from BifroMQ [Releases](/download)
 
 ## Shell Commands
 

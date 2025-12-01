@@ -5,6 +5,7 @@ const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 const tailwindPlugin = require("./plugins/tailwind-plugin.cjs");
+const { releaseVersion } = require("./releaseInfo");
 
 const projectName = "BifroMQ";
 const mainRepoName = "bifromq";
@@ -58,7 +59,7 @@ const config = {
           lastVersion: "current",
           versions: {
             current: {
-              label: "Next (Incubating)",
+              label: `${releaseVersion}`,
               badge: true,
             },
           },
@@ -123,7 +124,7 @@ const config = {
           position: "right",
         },
         {
-          to: "/docs/get_started/download/intro/",
+          to: "/download",
           label: "Download",
           position: "right",
         },

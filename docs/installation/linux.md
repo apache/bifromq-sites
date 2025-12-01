@@ -6,7 +6,7 @@ title: "Linux"
 ## Prerequisites
 
 - JDK 17+
-- Latest version BifroMQ [Releases](../get_started/download/intro.md)
+- Latest version BifroMQ [Releases](/download)
 
 ## Shell Commands
 

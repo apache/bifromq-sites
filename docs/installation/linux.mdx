@@ -1,0 +1,17 @@
+---
+sidebar_position: 2
+title: "Linux"
+---
+import React from 'react';
+import CodeBlock from '@theme/CodeBlock';
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
+
+## Prerequisites
+
+- JDK 17+
+- Latest version BifroMQ [Releases](/download)
+
+## Shell Commands
+
+<CodeBlock language="bash">{`tar -zxvf apache-bifromq-${useDocsVersion()?.label}.tar.gz --strip-components 1  -C /usr/share/bifromq/
+cd /usr/share/bifromq && ./bin/standalone.sh start`}</CodeBlock>

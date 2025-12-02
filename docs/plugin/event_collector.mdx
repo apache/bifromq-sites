@@ -3,16 +3,16 @@ sidebar_position: 3
 title: "Event Collector"
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import {useDocsVersion} from '@docusaurus/plugin-content-docs/client';
+
 The Event Collector plugin is designed to capture a variety of events that occur during the running of BifroMQ. The interface for this plugin is defined in the following Maven module:
 
-```xml
-
-<dependency>
+<CodeBlock language="xml">{`<dependency>
     <groupId>org.apache.bifromq</groupId>
     <artifactId>bifromq-plugin-event-collector</artifactId>
-    <version>X.Y.Z</version> <!--replace X.Y.Z with the latest version number-->
-</dependency>
-```
+    <version>${useDocsVersion().label}</version>
+</dependency>`}</CodeBlock>
 
 Upon startup, BifroMQ scans the plugins directory and loads all available EventCollector implementations. It is recommended that each EventCollector focuses only on a simple specific task by utilizing the EventType feature to filter out
 events that are not relevant to their intended purpose.

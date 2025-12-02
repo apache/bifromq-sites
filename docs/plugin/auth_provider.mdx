@@ -3,16 +3,16 @@ sidebar_position: 1
 title: "Auth Provider"
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import {useDocsVersion} from '@docusaurus/plugin-content-docs/client';
+
 The Auth Provider plugin enhances BifroMQ by integrating authentication and authorization functionalities for MQTT clients and Pub/Sub operations. The plugin's interface is detailed in the following Maven module:
 
-```xml
-
-<dependency>
+<CodeBlock language="xml">{`<dependency>
     <groupId>org.apache.bifromq</groupId>
     <artifactId>bifromq-plugin-auth-provider</artifactId>
-    <version>X.Y.Z</version> <!--replace X.Y.Z with the latest version number-->
-</dependency>
-```
+    <version>${useDocsVersion().label}</version>
+</dependency>`}</CodeBlock>
 
 BifroMQ operates with only one instance of the Auth Provider at any given time. The specific class to be loaded can be configured in [configuration file](../admin_guide/configuration/config_file_manual.md) by specifying its Fully
 Qualified Name (FQN):

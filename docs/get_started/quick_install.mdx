@@ -3,13 +3,17 @@ sidebar_position: 1
 title: "Quick Install & Verify"
 ---
 
+import React from 'react';
+import CodeBlock from '@theme/CodeBlock';
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
+
 # Quick Install
 
 For a rapid setup, Docker is recommended:
 
-```bash
-docker run -d --name bifromq -p 1883:1883 apache/bifromq:4.0.0-incubating
-```
+<CodeBlock language="bash">
+  {`docker run -d --name bifromq -p 1883:1883 apache/bifromq:${useDocsVersion().label}`}
+</CodeBlock>
 
 For further installation alternatives and comprehensive details, refer to [Installation](../installation/intro.md).
 

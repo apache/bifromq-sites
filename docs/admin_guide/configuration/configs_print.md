@@ -30,7 +30,7 @@ JVM parameters refer to the parameters passed to the JVM when starting BifroMQ u
 
 ### Setting Initial Values
 
-For information about Settings and their initial values, refer to: [Setting Provider Plugin](../../plugin/setting_provider/intro.md).
+For information about Settings and their initial values, refer to: [Setting Provider Plugin](../../plugin/setting_provider/intro.mdx).
 
 It is important to note that the printed values here represent the initial values of Setting when BifroMQ starts. These values can be modified at runtime using your custom Setting Provider Plugin, so the values printed here may not
 necessarily be the actual runtime values. An example of the printed output is as follows:

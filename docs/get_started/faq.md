@@ -37,10 +37,10 @@ BifroMQ is designed as a core middleware component to be embedded within broader
 
 - **[API](../user_guide/api/intro.md)**: Broker-side control logic, such as forcing disconnection.
 - **[Metrics](../admin_guide/observability/metrics/intro.md)**: Runtime metrics that can be consumed by existing monitoring systems.
-- **[AuthProvider Plugin](../plugin/auth_provider.md)**: Enable customized authentication and authorizaiton
-- **[ClientBalancer Plugin](../plugin/client_balancer.md)**: Implements an active client‐balancing strategy, dynamically distributing incoming client connections across broker instances to ensure even load distribution.
-- **[EventCollector Plugin](../plugin/event_collector.md)**: Emits operational events for custom Event Sourcing logic (e.g., connection counts, online/offline).
-- **[ResourceThrottler Plugin](../plugin/resource_throttler.md)**: Controls tenant-level resource usage.
-- **[SettingProvider Plugin](../plugin/setting_provider/intro.md)**: Adjusts tenant-level runtime settings.
+- **[AuthProvider Plugin](../plugin/auth_provider)**: Enable customized authentication and authorizaiton
+- **[ClientBalancer Plugin](../plugin/client_balancer)**: Implements an active client‐balancing strategy, dynamically distributing incoming client connections across broker instances to ensure even load distribution.
+- **[EventCollector Plugin](../plugin/event_collector)**: Emits operational events for custom Event Sourcing logic (e.g., connection counts, online/offline).
+- **[ResourceThrottler Plugin](../plugin/resource_throttler)**: Controls tenant-level resource usage.
+- **[SettingProvider Plugin](../plugin/setting_provider/intro)**: Adjusts tenant-level runtime settings.
 
 As with rule-engine support, we welcome community-driven side projects to build Web UIs, CLI tools, or other management interfaces leveraging these integration points.

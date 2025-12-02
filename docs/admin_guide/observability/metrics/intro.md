@@ -12,7 +12,7 @@ BifroMQ offers out-of-the-box support for Prometheus through its bundled [DemoPl
 
 ## Tenant-Level Metrics for Multi-Tenancy
 
-BifroMQ introduces a set of tenant-level [metrics](tenantmetrics.md). These metrics enable the real-time collection and aggregation of data reflecting the resource usage and activity of individual tenants. When used in combination with the [Resource Throttler](../../../plugin/resource_throttler.md) plugin, tenant-level metrics facilitate effective load isolation strategies.
+BifroMQ introduces a set of tenant-level [metrics](tenantmetrics.md). These metrics enable the real-time collection and aggregation of data reflecting the resource usage and activity of individual tenants. When used in combination with the [Resource Throttler](../../../plugin/resource_throttler) plugin, tenant-level metrics facilitate effective load isolation strategies.
 
 ## Advanced Diagnostics and Tuning
 

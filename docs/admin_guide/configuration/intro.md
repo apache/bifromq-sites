@@ -4,7 +4,7 @@ sidebar_position: 0
 title: "Configuration Overview"
 ---
 
-Based on different usage scenarios, BifroMQ divides configurations into system-level and tenant-level. System-level configurations are set at the system's startup and cannot be changed afterward. In contrast, tenant-level configurations can be dynamically adjusted during runtime as needed, and their initial values can also be customized at the system's startup. The capability for tenant-level settings requires the implementation of a custom [setting provider](../../plugin/setting_provider/intro.md) plugin, which is not covered in this chapter.
+Based on different usage scenarios, BifroMQ divides configurations into system-level and tenant-level. System-level configurations are set at the system's startup and cannot be changed afterward. In contrast, tenant-level configurations can be dynamically adjusted during runtime as needed, and their initial values can also be customized at the system's startup. The capability for tenant-level settings requires the implementation of a custom [setting provider](../../plugin/setting_provider/intro) plugin, which is not covered in this chapter.
 
 System-level configurations are categorized based on criteria such as their common use, whether they are in an experimental phase, or whether they have not been finalized. They can be provided either through a [configuration file](config_file_manual.md) (located in the conf directory's standalone.yml) or via JVM system [properties](bifromq_sys_props.md) (in the format of -D`conf`=`value`).
 

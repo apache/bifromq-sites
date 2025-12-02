@@ -6,11 +6,11 @@ title: "Plugin Overview"
 
 The plugin mechanism is a primary way for BifroMQ to deeply integrate with business systems. Currently, BifroMQ exposes five types of plugin extension interfaces to cater to different usage scenarios:
 
-- **[Auth Provider](auth_provider.md)**: Integrates authentication and topic Pub/Sub authorization logic.
-- **[Client Balancer](client_balancer.md)**: Inject your customized client balancing strategy in cooporative way.
-- **[Event Collector](event_collector.md)**: Collects runtime events to implement various event-driven business logic.
-- **[Resource Throttler](resource_throttler.md)**: Dynamically controls resource usage at the tenant level.
-- **[Setting Provider](setting_provider/intro.md)**: Dynamically adjusts tenant-specific MQTT protocol settings.
+- **[Auth Provider](auth_provider)**: Integrates authentication and topic Pub/Sub authorization logic.
+- **[Client Balancer](client_balancer)**: Inject your customized client balancing strategy in cooporative way.
+- **[Event Collector](event_collector)**: Collects runtime events to implement various event-driven business logic.
+- **[Resource Throttler](resource_throttler)**: Dynamically controls resource usage at the tenant level.
+- **[Setting Provider](setting_provider/intro)**: Dynamically adjusts tenant-specific MQTT protocol settings.
 
 ## Plugin Development
 

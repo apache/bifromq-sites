@@ -17,10 +17,10 @@ functionalities into a wide range of business systems, particularly those geared
    tenant namespace. MQTT connections within the same tenant namespace can publish and subscribe to messages amongst each other, while connections across different tenant namespaces remain isolated, enhancing security and data privacy.
 
 3. **Tenant Lifecycle Management by Integrators**: Unlike some systems that manage tenant lifecycles internally, BifroMQ delegates the definition and management of tenants to the integrating business. This is achieved by implementing
-   an [Auth Provider Plugin](../plugin/auth_provider.md), where the business specifies the **_tenantId_** for each connection during the authentication process. This model supports a wide range of business scenarios,
+   an [Auth Provider Plugin](../plugin/auth_provider), where the business specifies the **_tenantId_** for each connection during the authentication process. This model supports a wide range of business scenarios,
    including the use of a single, "global" tenant namespace for businesses not requiring multi-tenancy features.
 
 4. **Resource and Load Isolation per Tenant**: Beyond logical isolation of MQTT sessions and message publication/subscription, BifroMQ uses tenant spaces as boundaries for resource and load isolation. This capability is facilitated
-   by [Tenant Metrics](../admin_guide/observability/metrics/tenantmetrics.md) and the [Resource Throttler Plugin](../plugin/resource_throttler.md), ensuring efficient resource utilization and system stability.
+   by [Tenant Metrics](../admin_guide/observability/metrics/tenantmetrics.md) and the [Resource Throttler Plugin](../plugin/resource_throttler), ensuring efficient resource utilization and system stability.
 
 5. **Optimized Tenant Capability with Minimal Resource Overhead**: BifroMQ is specifically designed for multi-tenancy, yet the multi-tenant capability incurs a certain level of resource overhead. However, this overhead does not need to be a concern in the vast majority of multi-tenant business scenarios. It is important to note, though, that scaling the BifroMQ cluster horizontally cannot achieve an infinite increase in the number of tenants served simultaneously within the cluster. Therefore, when designing multi-tenant business, one should avoid mapping BifroMQ tenants to overly granular entities, such as "one tenant per connection".

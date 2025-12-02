@@ -19,4 +19,4 @@ Although event objects form a crucial part of the Event Collector Plugin interfa
 
 ## Plugin Development Best Practices
 
-For those interested in extending BifroMQ's capabilities through plugin development, including event collection, further guidance and best practices can be found in the relevant [sections](../../plugin/plugin_practice.md).
+For those interested in extending BifroMQ's capabilities through plugin development, including event collection, further guidance and best practices can be found in the relevant [sections](../../plugin/plugin_practice.mdx).

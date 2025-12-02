@@ -3,17 +3,18 @@ sidebar_position: 2
 title: "Client Balancer"
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import {useDocsVersion} from '@docusaurus/plugin-content-docs/client';
+
 The Client Balancer plugin enables BifroMQ to inject redirection strategies at runtime, providing active control over client connections to manage load distribution.
 
 To integrate the Client Balancer plugin into your BifroMQ deployment, include the following Maven dependency:
 
-```xml
-<dependency>
+<CodeBlock language="xml">{`<dependency>
     <groupId>org.apache.bifromq</groupId>
     <artifactId>bifromq-plugin-client-balancer</artifactId>
-    <version>X.Y.Z</version> <!-- Replace X.Y.Z with the latest version number -->
-</dependency>
-```
+    <version>${useDocsVersion().label}</version>
+</dependency>`}</CodeBlock>
 
 ## Configuration
 

@@ -4,19 +4,19 @@ sidebar_position: 0
 title: "Setting Provider"
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import {useDocsVersion} from '@docusaurus/plugin-content-docs/client';
+
 BifroMQ defines a category of [Tenant-level Settings](1_tenantsetting.md) that can be modified at runtime, allowing for dynamic adjustment of BifroMQ's service behavior per tenant. The purpose of the Setting Provider Plugin is to supply
 custom values for these settings at runtime.
 
 The Plugin's interface is defined in the following Maven module:
 
-```xml
-
-<dependency>
+<CodeBlock language="xml">{`<dependency>
     <groupId>org.apache.bifromq</groupId>
     <artifactId>bifromq-plugin-setting-provider</artifactId>
-    <version>X.Y.Z</version> <!--replace X.Y.Z with latest version number-->
-</dependency>
-```
+    <version>${useDocsVersion().label}</version>
+</dependency>`}</CodeBlock>
 
 BifroMQ allows only a single instance of the Setting Provider to run at a time. You can configure the specific implementation class to be loaded through a configuration file by specifying its fully qualified name (FQN) using the following
 key:

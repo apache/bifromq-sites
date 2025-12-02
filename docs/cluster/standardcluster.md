@@ -39,13 +39,11 @@ For detailed configuration information, refer to the BifroMQ Configuration [Docu
 
 ### Start Node
 
-Run following command to start standalone node:
+Run the following command to start standalone node:
 
 ```shell
 ./bin/standalone.sh start
 ```
-
-It's suggested to start the 'bootstrap' node first.
 
 ### Cluster Status Check
 

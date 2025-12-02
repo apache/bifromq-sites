@@ -8,7 +8,7 @@ title: "Quick Install & Verify"
 For a rapid setup, Docker is recommended:
 
 ```bash
-docker run -d --name bifromq -p 1883:1883 bifromq/bifromq:latest
+docker run -d --name bifromq -p 1883:1883 apache/bifromq:4.0.0-incubating
 ```
 
 For further installation alternatives and comprehensive details, refer to [Installation](../installation/intro.md).
@@ -23,7 +23,6 @@ Below are the steps to quickly verify the basic MQTT functionality of BifroMQ us
    ![new connection screenshot](./images/newconn.jpg)
 
 3. Fill in the required fields:
-
    - **Name**: Any descriptive name of your choice.
    - **ClientID**: Can be set manually or generated randomly. Must consist of "a–z", "0–9", "\_", "-", ≤128 bytes, UTF8 encoded, and unique.
    - **Host**: The connection address, including protocol prefix:

@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "StandardCluster"
 ---
 
-This section illustrates the deployment process for a 3-node cluster. Similar to [deployment on Linux](../installation/linux.md), you need to extract the downloaded tar file first.
+This section illustrates the deployment process for a 3-node cluster. Similar to [deployment on Linux](../installation/linux.mdx), you need to extract the downloaded tar file first.
 
 ### Configurations
 

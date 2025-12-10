@@ -1,0 +1,177 @@
+---
+slug: introducing-apache-bifromq
+title: "Introducing Apache BifroMQ (Incubating)"
+authors: [HaoYu]
+tags: [MQTT, Multi-Tenant, Serverless, Decentralized Cluster]
+---
+
+import MQTTAtTheFrontline from './images/2025-12-10-introducing-apache-bifromq/mqtt-at-the-frontline.png';
+import TwoTierClustering from './images/2025-12-10-introducing-apache-bifromq/two-tier-clustering.png';
+import WorkloadIndependentArchitecture from './images/2025-12-10-introducing-apache-bifromq/workload-independent-architecture.png';
+import WorkloadMigration from './images/2025-12-10-introducing-apache-bifromq/workload-migration.png';
+
+# Introducing Apache BifroMQ (Incubating): A High-Performance, Multi-Tenant MQTT Broker
+
+When teams move from a few thousand devices to millions of always-on connections, MQTT usually becomes a key piece of infrastructure. It offers a simple publish/subscribe model, works well on constrained networks, and has wide client support.
+
+But at cloud scale, the broker itself turns into frontline infrastructure: it is the entry point for business traffic, it must handle massive numbers of long-lived connections, and it has to remain reliable under bursty and unpredictable workloads.
+
+Apache BifroMQ (Incubating) was built in this environment. In this post, we give a high-level overview of what BifroMQ is, why another MQTT broker is needed, and how its architecture is shaped by real large-scale IoT deployments.
+
+<!--truncate-->
+
+## What is Apache BifroMQ (Incubating)?
+
+Apache BifroMQ (Incubating) is a high-performance, distributed, Java-based MQTT broker, designed from the ground up for cloud systems rather than single-node or small-cluster deployments.
+
+At a glance:
+
+* **Standards-compliant MQTT**  
+  Full support for MQTT 3.1, 3.1.1, and 5.0.
+
+* **Native multi-tenancy**  
+  Resource and workload isolation for multiple tenants sharing the same physical cluster.
+
+* **Elastic scalability**  
+  Horizontally scalable for both concurrent connections and message throughput.
+
+* **Built-in distributed state store**  
+  A storage layer optimized for MQTT-specific workloads such as persistent sessions, inflight messages, and retained data.
+
+BifroMQ currently resides in the Apache Incubator. As an incubating project, it follows the Apache way: open governance, community-driven decision-making, and formal release processes.
+
+## Why another MQTT broker?
+
+While existing brokers serve a wide range of scenarios, BifroMQ is built around a particular architectural viewpoint: the MQTT broker itself can and should be engineered as a dedicated, distributed system with clear boundaries and responsibilities.
+
+### MQTT at the frontline
+
+<img src={MQTTAtTheFrontline} style={{width: '100%'}} />
+
+In large deployments, the MQTT broker is not simply a protocol endpoint. It sits at the frontline between the internet or intranet and downstream systems:
+
+* It must sustain massive numbers of long-lived client connections.
+* It must provide low-latency, bidirectional communication.
+* It must tolerate sudden bursts of traffic, such as when a large fleet reconnects after an outage or a firmware rollout.
+
+In this role, the broker behaves more like a core piece of cloud infrastructure than a traditional message queue.
+
+### Limitations of common approaches
+
+In practice, platform teams often try three patterns:
+
+1. **MQTT adapters over something else**  
+   Implement MQTT as an adapter on top of another protocol or messaging system.  
+   *Pros*: reuses existing infrastructure.  
+   *Cons*: protocol translation friction, limited control over connection-level behavior, and an impedance mismatch between MQTT workloads and the underlying system.
+
+2. **All-in-one IoT platforms**  
+   Use a monolithic platform where MQTT is tightly embedded.  
+   *Pros*: integrated feature set.  
+   *Cons*: strong coupling makes it harder to evolve the MQTT layer independently and often increases operational burden.
+
+3. **Non-clustered or single-tenant brokers**  
+   Run multiple broker instances for different products or tenants.  
+   *Pros*: simple to start.  
+   *Cons*: lack of multi-tenant support, weak or absent clustering, and difficulty in managing shared capacity at scale.
+
+These approaches often fall short when multiple tenants need to share the same infrastructure with clear isolation, fleets grow into tens of millions of devices, or operational teams aim for serverless-like elasticity on the data plane while the control plane (identity, billing, policy) remains decoupled.
+
+BifroMQ takes a different angle: it is **MQTT-only**, **designed for integration**, and **operations-oriented**.
+
+## The broker-first approach
+
+BifroMQ is built as a broker-first system:
+
+* **MQTT-only, purpose-built**  
+  The system focuses on MQTT workloads instead of being a generic message bus. This allows optimizations that are difficult in multi-protocol systems.
+
+* **Multi-tenancy as a core design**  
+  Tenants share physical resources but have isolated workloads, making it easier to host many customers or internal business units on the same cluster.
+
+* **Designed for integration**  
+  Control-plane concerns (authentication, authorization, tenant management, billing) are integrated through plugins and APIs, rather than hard-coded into the broker. The data plane remains focused on MQTT.
+
+* **Operations-aware**  
+  Self-healing mechanisms, customizable load-scheduling strategies, and decentralized control help keep the system available under failure and load spikes.
+
+The goal is to make BifroMQ a strong building block for IoT platforms and internal device backbones, rather than a monolithic platform itself.
+
+## Architecture highlights
+
+BifroMQ's architecture reflects its focus on scale, multi-tenancy, and operations.
+
+### Decentralized two-tier clustering
+
+<img src={TwoTierClustering} style={{width: '40%'}} />
+
+At a high level, BifroMQ distinguishes between two logical layers:
+
+1. **Host cluster (underlay)**  
+   Represents the physical cluster composed of BifroMQ processes. It uses gossip-based failure detection to track node health and CRDT-based anti-entropy for membership and metadata convergence. The underlay provides a logically addressable substrate on which services run.
+
+2. **Agent clusters (overlay)**  
+   Represent logical service clusters that run within each BifroMQ process (for example, MQTT service, distribution service, inbox service, retain service). They communicate using a mix of peer-to-peer and broadcast patterns and also employ CRDT-based metadata synchronization.
+
+This separation decouples engineering logic from the runtime environment. Deployment becomes flexible: you can run different services together or apart, depending on workload. There is no single point of failure for control; the system favors decentralized coordination and self-healing.
+
+### Workload-independent architecture
+<img src={WorkloadIndependentArchitecture} style={{width: '50%'}} />
+Several internal services correspond to different aspects of MQTT behavior:
+
+* **MQTT Service**  
+  Handles client connections, protocol parsing, and basic session management.
+
+* **Distribution Service**  
+  Manages routing of published messages to subscribers across nodes and tenants.
+
+* **Inbox Service**  
+  Deals with queued messages and persistent sessions.
+
+* **Retain Service**  
+  Handles retained messages and their lifecycle.
+
+A key design goal is workload independence: each service can scale and evolve based on the specific resource profile it needs (CPU, memory, storage, network). 
+
+This enables deployment patterns such as on-demand workload scale-out, hybrid workload deployments, and independent workload clusters with dedicated resources and lifecycle.
+<img src={WorkloadMigration} style={{width: '75%'}} />
+
+### Extensibility: plugins, SPIs, and APIs
+
+In real deployments, the MQTT broker must be integrated into a broader ecosystem:
+
+* Device identity and credential management
+* Authorization and policy engines
+* Billing, quota, and tenant administration
+* External control planes and automation tools
+
+BifroMQ addresses this with a set of extension mechanisms:
+
+* **Plugins** provide integration points for authentication, authorization, client balancing, and other behaviors that vary between environments.
+* **SPIs** are the primary mechanism for deep customization and secondary development, allowing advanced users to plug in their own implementations for key behaviors without modifying the broker core.
+* **HTTP APIs and control endpoints** allow external systems such as a cloud control panel or internal platform to manage tenants, configurations, and operational actions through well-defined interfaces.
+
+The intent is to keep the MQTT data plane stable and focused, while still making it straightforward to adapt BifroMQ to different organizational and business requirements.
+
+### Roadmap and what is next
+
+The project roadmap can be viewed in two dimensions:
+
+1. **Core project**  
+   Runtime efficiency and performance tuning, integration and extensibility improvements, and operational resilience including self-healing and adaptive scheduling.
+
+2. **Satellite projects**  
+   Website, documentation, and blog content; tooling such as GUI or CLI for operations; load simulation and benchmarking tools; and plugins for specific industry scenarios.
+
+As an Apache Incubator project, BifroMQ's roadmap is expected to evolve with community input. Early adopters, operators, and contributors can have a significant impact on priorities.
+
+## Getting involved
+
+If BifroMQ matches challenges you face in your own IoT or device connectivity platform, there are several ways to get involved:
+
+* Try out the latest Apache Incubator release in a test environment.
+* Explore the architecture and design documents to see how it fits your stack.
+* Join the mailing lists to ask questions, share experience, or propose improvements.
+* Contribute bug reports, documentation, tests, or code.
+
+Apache BifroMQ (Incubating) aims to be a practical, operations-friendly MQTT broker for large-scale, multi-tenant workloads. We look forward to feedback and collaboration from the wider community as the project grows.

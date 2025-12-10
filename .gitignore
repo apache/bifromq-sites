@@ -11,3 +11,4 @@ yarn.lock
 .yarn
 pnpm-lock.yaml
 build/
+AGENTS.md

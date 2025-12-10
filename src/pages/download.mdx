@@ -76,26 +76,26 @@ Current release: **{releaseVersion}**(<a href={releaseNoteUrl}>Release Note</a>)
 
 If verification fails, discard the artifact and contact `dev@bifromq.apache.org`.
 
-## Docker image (convenience)
+## Docker image 
 
 Run quickly with the published image (source release remains authoritative):
 
-<CodeBlock language="bash">{`docker run -d --name bifromq -p 1883:1883 bifromq/bifromq:latest`}</CodeBlock>
+<CodeBlock language="bash">{`docker run -d --name bifromq -p 1883:1883 apache/bifromq:${releaseVersion}`}</CodeBlock>
 
 Set memory limits:
 
-<CodeBlock language="bash">{`docker run -d -m 10G -e MEM_LIMIT='10737418240' --name bifromq -p 1883:1883 bifromq/bifromq:latest`}</CodeBlock>
+<CodeBlock language="bash">{`docker run -d -m 2G -e MEM_LIMIT='2147483648' --name bifromq -p 1883:1883 apache/bifromq:${releaseVersion}`}</CodeBlock>
 
 Pass custom JVM options with `JVM_HEAP_OPTS` as needed.
 
-## Plugin packages (Maven Central)
+## Plugin Interface Modules (Maven Central)
 
-Java plugins are published under `org.apache.bifromq`. Match the plugin version to your BifroMQ deployment:
+Java plugins interface modules are published under `org.apache.bifromq`. Match the plugin version to your BifroMQ deployment:
 
 <CodeBlock language="xml">{`<dependency>
-  <groupId>org.apache.bifromq</groupId>
-  <artifactId>bifromq-plugin-[NAME]</artifactId>
-  <version>${releaseVersion}</version>
+    <groupId>org.apache.bifromq</groupId>
+    <artifactId>bifromq-plugin-[NAME]</artifactId>
+    <version>${releaseVersion}</version>
 </dependency>`}</CodeBlock>
 
 [Browse on Maven Central](https://search.maven.org/search?q=g:org.apache.bifromq%20AND%20a:bifromq-plugin-*)

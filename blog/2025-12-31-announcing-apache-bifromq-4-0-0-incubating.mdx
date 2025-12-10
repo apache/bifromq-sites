@@ -1,0 +1,47 @@
+---
+slug: announcing-apache-bifromq-4-0-0-incubating
+title: "Announcing Apache BifroMQ 4.0.0-incubating"
+authors: [HaoYu]
+tags: [BifroMQ, Apache, Incubator, Release, MQTT]
+---
+
+# Announcing Apache BifroMQ 4.0.0-incubating: The First Release in the Apache Incubator
+
+We are pleased to announce the availability of Apache BifroMQ 4.0.0-incubating, the project's first release in the Apache Incubator.
+
+This release marks an important milestone: it represents the transition of BifroMQ's pre-Apache development history and production experience into an Apache-governed project, with community-driven development, transparent processes, and formal release procedures.
+
+This blog post provides a high-level overview of the release. For full details, please refer to the official release notes and latest online documents.
+
+<!--truncate-->
+
+## What this release represents
+
+Before entering the Apache Incubator, BifroMQ evolved as an internal system and later as an open-source project driven by a small group of maintainers. Joining the Apache Incubator changes the project in several important ways:
+
+- **Community over individuals or organizations:** Development, design decisions, and releases are discussed and decided on public mailing lists under the Apache way.
+- **Formalized release process:** Artifacts are produced, voted on, and published according to Apache's policies, with clear provenance and verification procedures.
+- **Clear licensing and branding:** The project adopts Apache License 2.0 and aligns with Apache's branding and trademark guidelines.
+
+Version 4.0.0-incubating is the first release that fully reflects this transition. It continues the technical lineage of earlier versions but should be considered a major upgrade from a user's perspective.
+
+## Highlights in 4.0.0-incubating
+
+This release focuses on consolidating the architecture, improving operational capabilities, and preparing the project for broader adoption. Key highlights include:
+
+- **Independent workload cluster deployment mode:** MQTT frontends, distribution services, session storage, and other components can run as separate workload clusters so operators can scale and allocate resources independently based on workload characteristics.
+- **Extensible client balancing:** A new client balancer plugin interface enables custom strategies for distributing client connections across nodes or clusters, which is particularly useful in multi-region and multi-tenant environments.
+- **Additional extension points for deep customization:** More SPIs and hook points have been introduced across the stack to support deep customization and secondary development within BifroMQ.
+- **Operational improvements:** Enhancements to metrics, logging, and administrative APIs support observability, troubleshooting, and automation.
+
+## Compatibility and upgrade notes
+
+Due to substantial internal refactoring and adjustments required to meet Apache Incubator requirements, 4.0.0-incubating is not backward-compatible with previous non-Apache releases of BifroMQ. If you are running a pre-Incubator version of BifroMQ, treat this as a major upgrade:
+
+- Test 4.0.0-incubating in a separate environment first.
+- Review the release notes for behavior changes that affect your deployment.
+- Plan any configuration or operational adjustments before switching production traffic.
+
+## Acknowledgements
+
+We would like to thank everyone who contributed code, reviews, testing, and feedback, as well as the Apache Incubator mentors and community members who helped guide the project through the initial steps of incubation.

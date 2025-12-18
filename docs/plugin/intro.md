@@ -6,11 +6,11 @@ title: "Plugin Overview"
 
 The plugin mechanism is a primary way for BifroMQ to deeply integrate with business systems. Currently, BifroMQ exposes five types of plugin extension interfaces to cater to different usage scenarios:
 
-- **[Auth Provider](auth_provider)**: Integrates authentication and topic Pub/Sub authorization logic.
-- **[Client Balancer](client_balancer)**: Inject your customized client balancing strategy in cooporative way.
-- **[Event Collector](event_collector)**: Collects runtime events to implement various event-driven business logic.
-- **[Resource Throttler](resource_throttler)**: Dynamically controls resource usage at the tenant level.
-- **[Setting Provider](setting_provider/intro)**: Dynamically adjusts tenant-specific MQTT protocol settings.
+- **[Auth Provider](auth_provider.mdx)**: Integrates authentication and topic Pub/Sub authorization logic.
+- **[Client Balancer](client_balancer.mdx)**: Inject your customized client balancing strategy in cooporative way.
+- **[Event Collector](event_collector.mdx)**: Collects runtime events to implement various event-driven business logic.
+- **[Resource Throttler](resource_throttler.mdx)**: Dynamically controls resource usage at the tenant level.
+- **[Setting Provider](setting_provider/intro.mdx)**: Dynamically adjusts tenant-specific MQTT protocol settings.
 
 ## Plugin Development
 
@@ -50,7 +50,7 @@ To ensure optimal compatibility and avoid potential issues, it is advised to dep
 
 Example:
 
-- If BifroMQ's version is 3.x.y, then the version of the plugin interface definition modules used should also be 3.x.y.
+- If BifroMQ's version is 4.x.y, then the version of the plugin interface definition modules used should also be 4.x.y.
 
 ## Performance Considerations
 
@@ -58,5 +58,15 @@ BifroMQ calls plugin interface methods on worker threads. Ensure plugin interfac
 
 ## Configuring Parameters in Demo Plugin
 
-BifroMQ supports configuring demo plugin parameters, which are the Prometheus metrics scraping path and Prometheus
-server port, via environment variables or system properties.
+BifroMQ supports configuring the demo plugin's Prometheus exporter via environment variables or JVM system properties:
+
+- **Metrics path**: `PLUGIN_PROMETHEUS_CONTEXT` (env) or `-DPLUGIN_PROMETHEUS_CONTEXT=<path>` (JVM). Default `/metrics`. A leading `/` is added automatically if omitted.
+- **Exporter port**: `PLUGIN_PROMETHEUS_PORT` (env) or `-DPLUGIN_PROMETHEUS_PORT=<port>` (JVM). Default `9090`. Non-numeric values fall back to `9090`.
+
+Example:
+
+```bash
+export PLUGIN_PROMETHEUS_PORT=9200
+export PLUGIN_PROMETHEUS_CONTEXT=/demo-metrics
+# or pass as JVM args: -DPLUGIN_PROMETHEUS_PORT=9200 -DPLUGIN_PROMETHEUS_CONTEXT=/demo-metrics
+```

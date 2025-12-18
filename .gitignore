@@ -12,3 +12,5 @@ yarn.lock
 pnpm-lock.yaml
 build/
 AGENTS.md
+src/openapi/generatedOperations.ts
+src/openapi/generatedOperations.json

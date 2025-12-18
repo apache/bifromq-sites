@@ -25,14 +25,4 @@ operational processes, automatically forming clusters to support stateless RPC s
 
 ## Deployment Models
 
-BifroMQ introduces two distinct deployment models to cater to various operational requirements and workload scenarios:
-
-### Standard Cluster
-
-[StandardCluster](./standardcluster.md) integrates all functional modules within a single OS process, streamlining configuration and deployment akin to a 'SharedNothing' architecture. While this model simplifies scaling, it
-offers limited "fine-tuning" capabilities for resource allocation across different modules.
-
-### Independent Workload Cluster
-
-The IndependentWorkloadCluster model allows for the deployment of each module as an independent OS process. This provides greater flexibility, precise resource management, and the ability to adapt more dynamically to business demands, facilitating a smooth transition from StandardCluster to a more granular deployment approach.
-![IndependentWorkloadCluster](images/IndependentWorkload.png)
+BifroMQ supports flexible deployment models, ranging from all-in-one processes(a.k.a `Standalone` cluster) to so-called `Independent Workload` clusters. See the [clustering guide](./clustering.mdx) for practical steps to configure, start, scale, and monitor a cluster.

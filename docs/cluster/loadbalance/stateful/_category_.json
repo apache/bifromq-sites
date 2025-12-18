@@ -1,0 +1,8 @@
+{
+  "label": "Stateful Server",
+  "position": 4,
+  "link": {
+    "type": "doc",
+    "id": "cluster/loadbalance/stateful/intro"
+  }
+}

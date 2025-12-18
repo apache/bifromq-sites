@@ -24,7 +24,7 @@ A common architectural pattern involves embedding downstream system clients dire
 ```mermaid
 flowchart LR
 
-%% 整体框架
+%% Overview
     subgraph MQTT_Broker_System["MQTT Broker System"]
 
         mqttserver[MQTT Server]
@@ -40,10 +40,10 @@ flowchart LR
         mqttserver -- Ad-hoc --> otherclients
     end
 
-%% 外部连接
+%% External
     mqttclient[MQTT Client] -->|Pub/Sub| mqttserver
 
-%% 目标系统
+%% Downstream
     kafkaproducer --> kafka[kafka]
     mongoclient --> mongodb[mongoDB]
     otherclients --> cloud[Cloud Service]
@@ -56,13 +56,13 @@ Contrary to the common practice, BifroMQ recommends a non-coupled approach for d
 ```mermaid
 flowchart LR
 
-%% 左侧 MQTT Clients
+%% MQTT Clients
     mqttclients[MQTT Clients]
 
-%% 中间 BifroMQ
+%% BifroMQ
     bifromq[BifroMQ]
 
-%% 右上 Kafka Integration
+%% Kafka Integration
     subgraph Kafka Integration
         kafka_mqtt[MQTT Clients]
         kafka_producer[Kafka Producer]
@@ -70,7 +70,7 @@ flowchart LR
         kafka_mqtt --> kafka_producer --> kafka
     end
 
-%% 右下 Mongo Integration
+%% Mongo Integration
     subgraph Mongo Integration
         mongo_mqtt[MQTT Clients]
         mongo_client[Mongo Client]
@@ -78,7 +78,7 @@ flowchart LR
         mongo_mqtt --> mongo_client --> mongodb
     end
 
-%% 主干连接
+%% Hub
     mqttclients -- Pub/Sub --> bifromq
     bifromq -- Shared Sub --> kafka_mqtt
     bifromq -- Shared Sub --> mongo_mqtt
@@ -88,11 +88,11 @@ flowchart LR
 
 There are two primary directions for message flow integration with BifroMQ:
 
-### 1. From BifroMQ to External Systems
+### From BifroMQ to External Systems
 
 BifroMQ recommends using the [shared subscription](../basic/shared_sub.md) feature to balance the message load sent to downstream systems, utilizing MQTT's QoS capabilities for semantic message forwarding. This approach requires maintaining a set of MQTT client connections that subscribe to BifroMQ. Notably, BifroMQ supports shared subscriptions across MQTT versions 3.1, 3.1.1, and 5.0.
 
-### 2. From External Systems to BifroMQ
+### From External Systems to BifroMQ
 
 External systems can publish messages to BifroMQ using direct MQTT client connections or the [HTTP Restful API](../api/intro.md), providing a straightforward method for message injection into the BifroMQ deployment.
 
@@ -100,11 +100,11 @@ External systems can publish messages to BifroMQ using direct MQTT client connec
 
 When integrating data with BifroMQ, consider the following:
 
-1. **Bandwidth Limitations**: BifroMQ defaults to a bandwidth limit of 512kb/s per MQTT connection, adjustable via Tenant Settings. Calculating the number of connections needed based on actual business demands when receiving messages forwarded through shared subscriptions is crucial.
+- **Bandwidth Limitations**: BifroMQ defaults to a bandwidth limit of 512kb/s per MQTT connection, adjustable via Tenant Settings. Calculating the number of connections needed based on actual business demands when receiving messages forwarded through shared subscriptions is crucial.
 
-2. **Flow Control**: Using MQTT as the forwarding protocol inherently provides flow control. Downstream systems must have sufficient resources to receive forwarded messages to avoid backpressure-induced message loss.
+- **Flow Control**: Using MQTT as the forwarding protocol inherently provides flow control. Downstream systems must have sufficient resources to receive forwarded messages to avoid backpressure-induced message loss.
 
-3. **Monitoring**: Thanks to the use of the MQTT protocol, the monitoring metrics provided by BifroMQ can be directly reused during the message forwarding phase, simplifying the integration monitoring process.
+- **Monitoring**: Thanks to the use of the MQTT protocol, the monitoring metrics provided by BifroMQ can be directly reused during the message forwarding phase, simplifying the integration monitoring process.
 
 ## Reference for Starters
 

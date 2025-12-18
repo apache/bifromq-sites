@@ -34,7 +34,7 @@ public boolean hasResource(String tenantId, TenantResourceType type);
 ```
 
 This method is called synchronously on BifroMQ's worker thread and must be implemented efficiently to avoid impacting BifroMQ performance. A return value of false triggers a limiting action, and a ResourceThrottling event is generated and
-reported to the [Event Collector](event_collector).
+reported to the [Event Collector](event_collector.mdx).
 
 Here are the resource types defined in `TenantResourceType`:
 

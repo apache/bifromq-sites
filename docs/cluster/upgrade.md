@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: "Upgrade"
 ---
 
@@ -23,11 +23,9 @@ BifroMQ version compatibility is categorized into two main aspects: **data compa
 ### Compatibility Rules
 
 1. **Patch Version Upgrades (x.y.z)**:
-
    - When only the patch version (z) changes, **both data compatibility and inter-cluster RPC protocol compatibility** are guaranteed.
 
 2. **Minor Version Upgrades (x.y)**:
-
    - When the minor version (y) changes, **inter-cluster RPC protocol compatibility** is guaranteed.
    - **Data compatibility** may change, but any such changes will be explicitly documented.
 
@@ -57,15 +55,12 @@ This method is suitable when the new version maintains both data compatibility a
 #### Steps for In-Place Upgrade
 
 1. **Stop the Current Version**:
-
    - Gracefully shut down the BifroMQ service.
 
 2. **Preserve the Data Directory**:
-
    - Ensure the `data` directory is retained.
 
 3. **Update Files and Configurations**:
-
    - Replace the necessary binaries and update the configuration files as required by the new version.
 
 4. **Start the New Version**:
@@ -78,11 +73,9 @@ Use this method when the new version does not maintain data compatibility or whe
 #### Steps for Replace Upgrade
 
 1. **Add New Version Nodes**:
-
    - Gradually introduce nodes running the new version into the cluster.
 
 2. **Remove Old Version Nodes**:
-
    - Sequentially remove nodes running the old version from the cluster until all nodes are upgraded to the new version.
 
 3. **Automatic Data Migration**:
@@ -91,7 +84,6 @@ Use this method when the new version does not maintain data compatibility or whe
 #### Important Considerations for Replace Upgrade
 
 - **Voter Configuration**:
-
   - Ensure that the following BifroSysProp properties for `dist-worker`, `inbox-store`, and `retain-store` have more than one Voter configured, otherwise data migration will not happen:
     - `dist_worker_range_voter_count`
     - `inbox_store_range_voter_count`

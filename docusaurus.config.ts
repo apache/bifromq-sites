@@ -6,6 +6,7 @@ const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 const tailwindPlugin = require("./plugins/tailwind-plugin.cjs");
 const { releaseVersion } = require("./releaseInfo");
+const remarkOpenApiToc = require("./plugins/remark-openapi-toc").default;
 
 const projectName = "BifroMQ";
 const mainRepoName = "bifromq";
@@ -21,7 +22,6 @@ const config = {
   baseUrl: "/",
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
 
   trailingSlash: true,
   i18n: {
@@ -31,6 +31,9 @@ const config = {
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
   },
   themes: [
     [
@@ -43,7 +46,8 @@ const config = {
           }
         },
       },
-    ]
+    ],
+    'docusaurus-theme-openapi-docs',
   ],
 
   presets: [
@@ -56,6 +60,9 @@ const config = {
           editUrl: ({ locale, versionDocsDirPath, docPath }) => {
             return `https://github.com/apache/${siteRepoName}/tree/master/${versionDocsDirPath}/${docPath}`;
           },
+          beforeDefaultRemarkPlugins: [
+            remarkOpenApiToc,
+          ],
           lastVersion: "current",
           versions: {
             current: {
@@ -78,7 +85,26 @@ const config = {
     ],
   ],
 
-  plugins: [tailwindPlugin, require.resolve("docusaurus-plugin-image-zoom")],
+  plugins: [
+    tailwindPlugin,
+    require.resolve("docusaurus-plugin-image-zoom"),
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'openapi',
+        docsPluginId: 'classic',
+        config: {
+          bifromq: {
+            specPath: 'docs/user_guide/api/BifroMQ-API.yaml',
+            outputDir: 'docs/user_guide/api/openapi',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+            },
+          },
+        },
+      },
+    ],
+  ],
 
   themeConfig:
   {

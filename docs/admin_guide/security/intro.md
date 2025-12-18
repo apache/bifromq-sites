@@ -19,7 +19,7 @@ Node communication in BifroMQ occurs through two primary methods: P2P communicat
 
 ### Auth Provider Plugin
 
-Client security in BifroMQ encompasses both authentication (verifying client identity) and authorization (granting privileges to various actions). BifroMQ employs the [auth provider plugin](../../plugin/auth_provider) as a unified approach to client security management.
+Client security in BifroMQ encompasses both authentication (verifying client identity) and authorization (granting privileges to various actions). BifroMQ employs the [auth provider plugin](../../plugin/auth_provider.mdx) as a unified approach to client security management.
 
 ### Secure Communication Channels
 

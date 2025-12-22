@@ -1,0 +1,8 @@
+{
+  "label": "SPI",
+  "position": 7,
+  "link": {
+    "type": "doc",
+    "id": "spi/intro"
+  }
+}

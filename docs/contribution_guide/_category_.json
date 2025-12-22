@@ -1,6 +1,6 @@
 {
-  "label": "Contribution",
-  "position": 9,
+  "label": "Contribution Guide",
+  "position": 10,
   "link": {
     "type": "doc",
     "id": "contribution_guide/intro"

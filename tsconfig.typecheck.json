@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src",
+    "plugins",
+    "scripts",
+    "docusaurus.config.ts",
+    "sidebars.ts",
+    "releaseInfo.ts"
+  ],
+  "exclude": ["build", "node_modules"]
+}

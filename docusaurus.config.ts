@@ -1,32 +1,28 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+import {releaseVersion} from './releaseInfo';
 
-const { themes } = require("prism-react-renderer");
-const lightCodeTheme = themes.github;
-const darkCodeTheme = themes.dracula;
-const tailwindPlugin = require("./plugins/tailwind-plugin.cjs");
-const { releaseVersion } = require("./releaseInfo");
-const remarkOpenApiToc = require("./plugins/remark-openapi-toc").default;
+const lightCodeTheme = prismThemes.github;
+const darkCodeTheme = prismThemes.dracula;
 
-const projectName = "BifroMQ";
-const mainRepoName = "bifromq";
-const siteRepoName = "bifromq-sites";
+const projectName = 'BifroMQ';
+const mainRepoName = 'bifromq';
+const siteRepoName = 'bifromq-sites';
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
-  title: "An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating)",
+const config: Config = {
+  title: 'An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating)',
   tagline:
-    "Discover Apache BifroMQ (Incubating), a high-performance, distributed Apache MQTT Broker under incubation. Built for enterprise IoT, this open-source MQTT broker offers native multi-tenancy.",
-  favicon: "img/favicon.ico",
+    'Java-based high-performance Apache MQTT Broker messaging middleware that adopts Multi-tenancy architecture.',
+  favicon: 'img/favicon.ico',
   url: `https://${projectName.toLowerCase()}.apache.org/`,
-  baseUrl: "/",
+  baseUrl: '/',
 
   onBrokenLinks: 'throw',
-
   trailingSlash: true,
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
   markdown: {
@@ -42,28 +38,23 @@ const config = {
         mermaid: {
           theme: {
             light: 'default',
-            dark: 'dark'
-          }
+            dark: 'dark',
+          },
         },
       },
     ],
-    'docusaurus-theme-openapi-docs',
+    'docusaurus-theme-redoc',
   ],
 
   presets: [
     [
-      "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      'classic',
+      {
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: ({ locale, versionDocsDirPath, docPath }) => {
-            return `https://github.com/apache/${siteRepoName}/tree/master/${versionDocsDirPath}/${docPath}`;
-          },
-          beforeDefaultRemarkPlugins: [
-            remarkOpenApiToc,
-          ],
-          lastVersion: "current",
+          sidebarPath: './sidebars.ts',
+          editUrl: ({versionDocsDirPath, docPath}) =>
+            `https://github.com/apache/${siteRepoName}/tree/master/${versionDocsDirPath}/${docPath}`,
+          lastVersion: 'current',
           versions: {
             current: {
               label: `${releaseVersion}`,
@@ -74,95 +65,81 @@ const config = {
         blog: {
           showReadingTime: true,
           blogSidebarCount: 10,
-          editUrl: ({ locale }) => {
-            return `https://github.com/apache/${siteRepoName}/tree/master/blog`;
-          },
+          editUrl: () =>
+            `https://github.com/apache/${siteRepoName}/tree/master/blog`,
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: './src/css/custom.css',
         },
-      }),
+      } satisfies Preset.Options,
     ],
   ],
 
   plugins: [
-    tailwindPlugin,
-    require.resolve("docusaurus-plugin-image-zoom"),
+    'docusaurus-plugin-image-zoom',
     [
-      'docusaurus-plugin-openapi-docs',
+      'docusaurus-plugin-redoc',
       {
-        id: 'openapi',
-        docsPluginId: 'classic',
-        config: {
-          bifromq: {
-            specPath: 'docs/user_guide/api/BifroMQ-API.yaml',
-            outputDir: 'docs/user_guide/api/openapi',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
-          },
-        },
+        id: 'bifromq',
+        spec: 'docs/user_guide/api/BifroMQ-API.yaml',
       },
     ],
   ],
 
-  themeConfig:
-  {
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  themeConfig: {
     colorMode: {
-      defaultMode: "light",
+      defaultMode: 'light',
       respectPrefersColorScheme: true,
     },
     zoom: {
-      selector: ".markdown :not(em) > img",
+      selector: '.markdown :not(em) > img',
       background: {
-        light: "rgb(255, 255, 255)",
-        dark: "rgb(50, 50, 50)",
+        light: 'rgb(255, 255, 255)',
+        dark: 'rgb(50, 50, 50)',
       },
       config: {
         // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
       },
     },
     navbar: {
-      title: "Apache BifroMQ (Incubating)",
+      title: 'Apache BifroMQ (Incubating)',
       hideOnScroll: false,
       logo: {
-        alt: "BifroMQ Logo",
-        src: "img/logo.svg",
-        srcDark: "img/logo_dark.svg",
-        className: "bifromq-navbar-logo-class",
+        alt: 'BifroMQ Logo',
+        src: 'img/logo.svg',
+        srcDark: 'img/logo_dark.svg',
+        className: 'bifromq-navbar-logo-class',
       },
       items: [
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "right",
-          label: "Docs",
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'right',
+          label: 'Docs',
         },
         {
-          to: "/blog",
-          label: "Blog",
-          position: "right",
+          to: '/blog',
+          label: 'Blog',
+          position: 'right',
         },
         {
-          to: "/community",
-          label: "Community",
-          position: "right",
+          to: '/community',
+          label: 'Community',
+          position: 'right',
         },
         {
-          to: "/download",
-          label: "Download",
-          position: "right",
+          to: '/download',
+          label: 'Download',
+          position: 'right',
         },
         {
-          to: "/docs/get_started/faq",
-          label: "FAQ",
-          position: "right",
+          to: '/docs/get_started/faq',
+          label: 'FAQ',
+          position: 'right',
         },
         {
           type: 'docsVersionDropdown',
           position: 'right',
-          // Optional: disable active class highlighting for current version
           dropdownActiveClassDisabled: true,
         },
         {
@@ -172,44 +149,44 @@ const config = {
           items: [
             {
               label: 'Foundation',
-              to: 'https://www.apache.org/'
+              to: 'https://www.apache.org/',
             },
             {
               label: 'License',
-              to: 'https://www.apache.org/licenses/'
+              to: 'https://www.apache.org/licenses/',
             },
             {
               label: 'Events',
-              to: 'https://www.apache.org/events/current-event.html'
+              to: 'https://www.apache.org/events/current-event.html',
             },
             {
               label: 'Privacy',
-              to: 'https://privacy.apache.org/policies/privacy-policy-public.html'
+              to: 'https://privacy.apache.org/policies/privacy-policy-public.html',
             },
             {
               label: 'Security',
-              to: 'https://www.apache.org/security/'
+              to: 'https://www.apache.org/security/',
             },
             {
               label: 'Sponsorship',
-              to: 'https://www.apache.org/foundation/sponsorship.html'
+              to: 'https://www.apache.org/foundation/sponsorship.html',
             },
             {
               label: 'Thanks',
-              to: 'https://www.apache.org/foundation/thanks.html'
+              to: 'https://www.apache.org/foundation/thanks.html',
             },
             {
               label: 'Code of Conduct',
-              to: 'https://www.apache.org/foundation/policies/conduct.html'
-            }
-          ]
+              to: 'https://www.apache.org/foundation/policies/conduct.html',
+            },
+          ],
         },
         {
           href: `https://github.com/apache/${mainRepoName}`,
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
-        }
+        },
       ],
     },
     footer: {
@@ -217,9 +194,9 @@ const config = {
       links: [],
       logo: {
         width: 200,
-        src: "/img/apache-incubator.svg",
-        href: "https://incubator.apache.org/",
-        alt: "Apache Incubator logo"
+        src: '/img/apache-incubator.svg',
+        href: 'https://incubator.apache.org/',
+        alt: 'Apache Incubator logo',
       },
       copyright: `<div>
       <p>
@@ -235,7 +212,7 @@ const config = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
-  }
+  } satisfies Preset.ThemeConfig,
 };
 
-module.exports = config;
+export default config;

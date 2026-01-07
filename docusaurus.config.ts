@@ -191,7 +191,86 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      links: [],
+      links: [
+        {
+          title: 'Apache BifroMQ',
+          items: [
+            {
+              html: `<span class="footer__link-item">High-performance Apache MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.</span>`,
+            },
+          ],
+        },
+        {
+          title: 'Contact / Community',
+          items: [
+            {
+              label: 'Email: dev@bifromq.apache.org',
+              href: 'mailto:dev@bifromq.apache.org',
+            },
+            {
+              label: 'Discord: https://discord.gg/Pfs3QRadRB',
+              href: 'https://discord.gg/Pfs3QRadRB',
+            },
+            {
+              label: 'GitHub: https://github.com/apache/bifromq',
+              href: 'https://github.com/apache/bifromq',
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'GitHub: https://github.com/apache/bifromq',
+              href: 'https://github.com/apache/bifromq',
+            },
+            {
+              label: 'Releases: /docs/get_started/download/intro/',
+              to: '/docs/get_started/download/intro/',
+            },
+            {
+              label: 'Issues: https://github.com/apache/bifromq/issues',
+              href: 'https://github.com/apache/bifromq/issues',
+            },
+          ],
+        },
+        {
+          title: 'Apache',
+          items: [
+            {
+              label: 'Apache Incubator: https://incubator.apache.org/',
+              href: 'https://incubator.apache.org/',
+            },
+            {
+              label: 'Code of Conduct: https://www.apache.org/foundation/policies/conduct',
+              href: 'https://www.apache.org/foundation/policies/conduct',
+            },
+            {
+              label: 'Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0',
+              href: 'https://www.apache.org/licenses/LICENSE-2.0',
+            },
+          ],
+        },
+        {
+          title: 'Others',
+          items: [
+            {
+              label: 'Thanks OpenSource@Baidu: https://opensource.baidu.com/',
+              href: 'https://opensource.baidu.com/',
+            },
+            {
+              label:
+                'MQTT v3.1.1: https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html',
+              href: 'https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html',
+            },
+            {
+              label:
+                'MQTT v5.0: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html',
+              href: 'https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html',
+            },
+          ],
+        },
+      ],
       logo: {
         width: 200,
         src: '/img/apache-incubator.svg',
@@ -200,10 +279,13 @@ const config: Config = {
       },
       copyright: `<div>
       <p>
+        © 2026 Apache Software Foundation. Licensed under Apache License 2.0. <br/>
+        Apache Incubating
+      </p>
+      <p>
         Apache ${projectName} is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
       </p>
       <p>
-        Copyright © ${new Date().getFullYear()} The Apache Software Foundation, Licensed under the Apache License, Version 2.0. <br/>
         Apache, the names of Apache projects, and the feather logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries.
       </p>
       </div>`,

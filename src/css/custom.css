@@ -63,7 +63,7 @@
   --ifm-navbar-background-color: var(--color-bg);
   --ifm-footer-background-color: var(--color-bg);
   --ifm-navbar-link-hover-color: var(--color-text-primary);
-  --ifm-navbar-item-padding-horizontal: 1.5rem;
+  --ifm-navbar-item-padding-horizontal: 0.75rem;
 }
 
 /* Dark Mode - Technical Obsidian */
@@ -92,6 +92,7 @@ html[data-theme='dark'] {
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -101,6 +102,7 @@ body {
   line-height: 1.6;
   /* Increased for better flow */
   letter-spacing: -0.01em;
+  overflow-x: hidden;
 }
 
 .container {
@@ -111,22 +113,29 @@ body {
 
 /* Specific docs layout adjustments to prevent massive gaps */
 .theme-doc-container {
-  padding: 0 40px !important;
+  padding: 0 1.5rem !important;
+  /* Slightly tighter to reduce left gap */
 }
 
 .theme-doc-sidebar-container {
-  padding-top: 2rem;
+  padding-top: 1rem;
+}
+
+.theme-doc-main-container {
+  padding-top: 0.5rem;
+  /* Reduced default, but no !important to allow utility classes */
 }
 
 .theme-doc-markdown {
-  max-width: 900px !important;
-  margin: 0;
-  /* Aligned to left of content column, not centered in the whole viewport */
+  max-width: 1050px !important;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .row {
-  --ifm-spacing-horizontal: 1.5rem;
-  /* Tightened from var(--space-md) which was 4rem */
+  --ifm-spacing-horizontal: 1rem;
+  /* Tighter gap between sidebar and content */
 }
 
 /* ======================================================
@@ -140,6 +149,7 @@ body {
   padding: 0 40px !important;
   /* Fixed padding for both sides */
   position: relative;
+  margin-bottom: 0 !important;
 }
 
 /* The Bifrost Line - A nod to the name origins */
@@ -175,25 +185,17 @@ body {
 }
 
 .navbar__brand {
-  margin-right: 4rem;
+  margin-right: 1.5rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar__title {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  display: none !important;
 }
 
 .navbar__logo {
   height: 18px !important;
-  /* Even smaller to ensure it looks balanced */
+  /* Increased to 32px for better prominence */
   width: auto !important;
   max-height: 18px !important;
   margin-right: 0;
@@ -202,7 +204,7 @@ body {
 
 /* Force override any inherited styles that might blow up the logo */
 .navbar__brand img {
-  height: 18px !important;
+  height: 22px !important;
   width: auto !important;
 }
 
@@ -266,6 +268,21 @@ html[data-theme='dark'] .header-github-link::before {
   font-weight: 700;
 }
 
+/* Reduced size for sidebar arrows */
+.menu__caret {
+  padding: 0 0 0 0 !important;
+  margin-right: 0.75rem;
+}
+
+.menu__caret::before {
+  background-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  background-size: 18px 18px !important;
+  mask-size: 18px 18px !important;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+}
+
 /* ======================================================
    MARKDOWN - INDUSTRIAL CLARITY
    ====================================================== */
@@ -290,23 +307,25 @@ html[data-theme='dark'] .header-github-link::before {
 }
 
 .markdown h1 {
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  margin-bottom: 4rem;
-  line-height: 1;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  margin-top: 0;
+  /* Remove potential top margin */
+  margin-bottom: 2rem;
+  line-height: 1.1;
 }
 
 .markdown h2 {
-  font-size: 2.25rem;
-  margin-top: 6rem;
-  padding-bottom: 1.5rem;
+  font-size: 1.75rem;
+  margin-top: 3.5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-border);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .markdown h3 {
-  font-size: 1.5rem;
-  margin-top: 4rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.35rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .markdown p,
@@ -479,9 +498,24 @@ html[data-theme='dark'] .footer__logo img {
 /* ======================================================
    UTILITIES & OVERRIDES
    ====================================================== */
+/* Utilities for breadcrumbs and version badge spacing */
+.breadcrumbs {
+  margin-top: 0 !important;
+  margin-bottom: 0.4rem !important;
+  padding-left: 0 !important;
+}
+
+.theme-doc-version-badge {
+  margin-top: 0 !important;
+  margin-bottom: 1.25rem !important;
+  font-size: 0.725rem !important;
+  padding: 0.15rem 0.4rem !important;
+}
+
 .container {
   max-width: var(--content-max) !important;
-  padding: 0 5vw !important;
+  padding-left: 2vw !important;
+  padding-right: 4vw !important;
 }
 
 /* Handled by targeted classes above */

@@ -30,7 +30,7 @@ export default function Home(): ReactNode {
     <Layout
       title="Apache BifroMQ | High-Performance Multi-tenant MQTT Broker"
       description="The definitive high-performance, multi-tenant MQTT broker for massive scale IoT. Industrial-grade reliability meets architectural precision.">
-      <main className={styles.main}>
+      <div className={styles.main}>
 
         {/* --- HERO SECTION --- */}
         <section className={styles.hero}>
@@ -184,7 +184,7 @@ export default function Home(): ReactNode {
           </Link>
         </section>
 
-      </main>
+      </div>
     </Layout>
   );
 }

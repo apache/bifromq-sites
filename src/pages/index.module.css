@@ -6,7 +6,6 @@
 .main {
   width: 100%;
   background: var(--color-bg);
-  overflow-x: hidden;
 }
 
 /* --- ANIMATIONS --- */

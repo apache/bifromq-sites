@@ -117,12 +117,12 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'BifroMQ', // Minimalist title
+      title: 'BifroMQ', // Empty title to use logo only
       hideOnScroll: false,
       logo: {
         alt: 'Apache BifroMQ',
-        src: 'img/logo.svg',
-        srcDark: 'img/logo_dark.svg',
+        src: '/img/logo.svg',
+        srcDark: '/img/logo_dark.svg',
         className: 'bifromq-navbar-logo-class', // Keep class for custom override if needed
         style: { height: '32px', width: 'auto' }, // Inline hint, handled by CSS mostly
       },

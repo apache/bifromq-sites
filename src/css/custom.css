@@ -66,20 +66,26 @@
   --ifm-navbar-item-padding-horizontal: 0.75rem;
 }
 
-/* Dark Mode - Technical Obsidian */
+/* Dark Mode - Sophisticated Slate Obsidian */
 html[data-theme='dark'] {
-  --color-bg: #000000;
-  --color-wash: #0A0A0A;
-  --color-surface: #000000;
-  --color-border: #1A1A1A;
-  --color-border-strong: #FFFFFF;
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #A0A0A0;
-  --color-text-tertiary: #505050;
+  --color-bg: #0C0D0F;
+  /* Deep Obsidian Slate */
+  --color-wash: #14161A;
+  /* Slightly lighter for depth */
+  --color-surface: #1A1D23;
+  /* Surface for cards/modals */
+  --color-border: #242830;
+  /* Subtle slate border */
+  --color-border-strong: #3D4452;
+  --color-text-primary: #F0F2F5;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
   --color-accent: var(--bifrost-blue);
 
   --ifm-background-color: var(--color-bg);
   --ifm-background-surface-color: var(--color-surface);
+  --ifm-navbar-background-color: var(--color-bg);
+  --ifm-footer-background-color: var(--color-bg);
 }
 
 /* ======================================================
@@ -377,7 +383,7 @@ button,
 .footer {
   background: var(--color-bg) !important;
   border-top: 1px solid var(--color-border);
-  padding: 80px 40px !important;
+  padding: var(--space-lg) 40px !important;
   color: var(--color-text-primary);
   position: relative;
 }
@@ -398,34 +404,35 @@ button,
       var(--bifrost-yellow),
       var(--bifrost-orange),
       var(--bifrost-red));
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 .footer__links {
   max-width: var(--content-max);
   margin: 0 auto;
-  margin-bottom: 60px;
+  margin-bottom: var(--space-md);
   display: grid;
-  grid-template-columns: 2fr repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 60px;
 }
 
 .footer__title {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--color-text-primary);
   margin-bottom: 24px;
 }
 
 .footer__link-item {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--color-text-secondary);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  line-height: 2;
+  line-height: 2.2;
   text-decoration: none !important;
+  display: inline-block;
 }
 
 .footer__link-item:hover {
@@ -433,50 +440,68 @@ button,
   transform: translateX(4px);
 }
 
+/* Smaller and coordinated external link icons */
+.footer__link-item svg {
+  width: 12px !important;
+  height: 12px !important;
+  margin-left: 4px;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+
 .footer__bottom {
   max-width: var(--content-max);
   margin: 0 auto;
-  padding-top: 40px;
-  border-top: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Center everything in the bottom section */
   text-align: center;
+  padding-top: 0;
 }
 
 .footer__logo {
-  margin-bottom: 32px;
-  display: block;
+  margin-top: 40px;
+  /* Space after links */
+  margin-bottom: 0px;
+  /* Minimal space before copyright div (which has internal padding) */
+  display: flex;
+  justify-content: center;
+  order: 2;
+  /* Move below links */
 }
 
-/* Specific handling for the Incubator Logo SVG to ensure visibility in all themes */
-.footer__logo img {
-  height: 48px !important;
+/* Clear visibility for Incubator Logo */
+.footer__logo img,
+.footer__incubator-logo {
+  height: 56px !important;
   width: auto !important;
-  filter: grayscale(1) opacity(0.8);
+  filter: grayscale(1) brightness(0) opacity(0.5);
+  /* Strong black in light mode */
   transition: all 0.4s ease;
 }
 
-html[data-theme='dark'] .footer__logo img {
-  filter: invert(1) grayscale(1) brightness(1.5) opacity(0.8);
+html[data-theme='dark'] .footer__logo img,
+html[data-theme='dark'] .footer__incubator-logo {
+  filter: invert(1) brightness(2) opacity(0.6);
+  /* Bright white in dark mode */
 }
 
-.footer__logo:hover img {
-  filter: grayscale(0) opacity(1);
+.footer__logo:hover img,
+.footer__logo:hover .footer__incubator-logo {
+  filter: none !important;
+  opacity: 1 !important;
 }
 
 .footer__copyright {
-  font-size: 0.8rem;
-  color: var(--color-text-tertiary);
-  max-width: 900px;
-  line-height: 1.8;
-  font-weight: 400;
+  width: 100%;
+  order: 3;
+  /* Copyright area is at the very bottom */
 }
 
 .footer__copyright a {
   color: var(--bifrost-blue);
   text-decoration: none;
-  font-weight: 600;
 }
 
 .footer__copyright a:hover {

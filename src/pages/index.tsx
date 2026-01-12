@@ -34,35 +34,31 @@ export default function Home(): ReactNode {
 
         {/* --- HERO SECTION --- */}
         <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <div className={styles.heroText}>
-              <div className={styles.heroBadge}>
-                <div className={styles.heroBadgeDot} />
-                <span>Now an Apache Incubator Project</span>
-              </div>
-              <h1 className={styles.heroTitle}>
-                The Bridge to <span>Massive Scale IoT.</span>
-              </h1>
-              <p className={styles.heroDesc}>
-                Apache BifroMQ (Incubating) is a Java-based, high-performance MQTT broker
-                messaging middleware that adopts a native multi-tenant architecture.
-                Built for the next generation of industrial connectivity.
-              </p>
-              <div className={styles.heroCta}>
-                <Link to="/docs/get_started/intro" className={styles.heroCtaPrimary}>
-                  Get Started
-                </Link>
-                <Link to="https://github.com/apache/bifromq" className={styles.heroCtaSecondary}>
-                  View on GitHub
-                </Link>
+          <div className={styles.heroVisual}>
+            <div className={styles.bifrostRing}>
+              <div style={{ fontSize: '200px', fontWeight: 900, letterSpacing: '-0.1em', opacity: 0.1 }}>
+                BIFRO<span style={{ color: 'var(--bifrost-blue)' }}>MQ</span>
               </div>
             </div>
-            <div className={styles.heroVisual}>
-              <div className={styles.bifrostRing}>
-                <div style={{ fontSize: '120px', fontWeight: 900, letterSpacing: '-0.1em' }}>
-                  BIFRO<span style={{ color: 'var(--bifrost-blue)' }}>MQ</span>
-                </div>
-              </div>
+          </div>
+          <div className={styles.heroContent}>
+            <div className={styles.heroBadge}>
+              <div className={styles.heroBadgeDot} />
+              <span>Apache Incubating Project</span>
+            </div>
+            <h1 className={styles.heroTitle}>
+              Apache BifroMQ<span>(Incubating)</span>
+            </h1>
+            <p className={styles.heroDesc}>
+              Java-based high-performance Apache MQTT Broker messaging middleware that adopts Multi-tenancy architecture.
+            </p>
+            <div className={styles.heroCta}>
+              <Link to="/docs/get_started/intro" className={styles.heroCtaPrimary}>
+                Get Started
+              </Link>
+              <Link to="https://github.com/apache/bifromq" className={styles.heroCtaSecondary}>
+                View on GitHub
+              </Link>
             </div>
           </div>
         </section>
@@ -74,58 +70,50 @@ export default function Home(): ReactNode {
           </div>
         </section>
 
-        {/* --- STATS SECTION --- */}
+        {/* --- WHAT IS BIFROMQ --- */}
         <section className={`${styles.sectionContainer} ${styles.reveal}`}>
-          <div className={styles.statsGrid}>
-            <div className={styles.statCell}>
-              <span className={styles.statVal}>10M+</span>
-              <span className={styles.statLab}>Connections per Cluster</span>
-            </div>
-            <div className={styles.statCell}>
-              <span className={styles.statVal}>&lt;1ms</span>
-              <span className={styles.statLab}>Latency Precision</span>
-            </div>
-            <div className={styles.statCell}>
-              <span className={styles.statVal}>v5.0</span>
-              <span className={styles.statLab}>Full Protocol Support</span>
-            </div>
+          <div className={styles.introContent}>
+            <span className={styles.sectionLabel}>Overview</span>
+            <h2 className={styles.sectionTitle}>What is BifroMQ?</h2>
+            <p className={styles.introDesc}>
+              BifroMQ is a high-performance, distributed Apache MQTT broker implementation that seamlessly integrates native multi-tenancy support. It is designed to support building large-scale IoT device connections and messaging systems.
+            </p>
           </div>
         </section>
+
+        <div className={styles.bifrostDivider} />
 
         {/* --- FEATURES SECTION --- */}
         <section className={`${styles.sectionContainer} ${styles.reveal}`}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Capabilities</span>
-            <h2 className={styles.sectionTitle}>Engineered for the Connected Future</h2>
-          </div>
-
           <div className={styles.bifrostGrid}>
             <FeatureCard
-              icon="🏢"
-              title="Multi-tenancy"
-              desc="True SaaS architecture with hard resource isolation and independent governance for millions of tenants."
-              color="var(--bifrost-indigo)"
+              tag="Full compliance"
+              title="100% MQTT Support"
+              desc="Fully supports MQTT 3.1, 3.1.1 and 5.0 features over TCP, TLS, WS, WSS. Complete protocol implementation with all advanced features."
+              icon="MQTT 3.1-5.0"
             />
             <FeatureCard
-              icon="⚡"
-              title="Elastic Scaling"
-              desc="Horizontally scalable compute and storage layers, enabling seamless growth without downtime."
-              color="var(--bifrost-blue)"
+              tag="Self-contained"
+              title="Built-in Storage Engine"
+              desc="Optimized for critical load targeting, no third-party middleware dependencies. Deploy anywhere with confidence."
+              icon="Zero deps"
             />
             <FeatureCard
-              icon="🧩"
-              title="Extensible Core"
-              desc="Rich plugin system for auth, governance, and custom enterprise integrations."
-              color="var(--bifrost-teal)"
+              tag="Resource isolation"
+              title="Native Multi-Tenancy"
+              desc="Built-in support for multi-tenancy resource sharing and workload isolation. Perfect for SaaS platforms and enterprise environments."
+              icon="Multi-tenant"
             />
             <FeatureCard
-              icon="📊"
-              title="Full Telemetry"
-              desc="Deep visibility into cluster health and tenant behavior with native monitoring support."
-              color="var(--bifrost-violet)"
+              tag="Highly extensible"
+              title="Extensible Mechanisms"
+              desc="Supports extensions, including Authentication/Authorization, Event, and System/Tenant Monitoring. Rich plugin architecture."
+              icon="Plugin-ready"
             />
           </div>
         </section>
+
+        <div className={styles.bifrostDivider} />
 
         {/* --- QUICK START SECTION --- */}
         <section className={`${styles.sectionContainer} ${styles.reveal}`}>
@@ -144,35 +132,7 @@ export default function Home(): ReactNode {
           </div>
         </section>
 
-        {/* --- USE CASES SECTION --- */}
-        <section className={`${styles.sectionContainer} ${styles.reveal}`}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Solutions</span>
-            <h2 className={styles.sectionTitle}>Bridging the Industrial Gap</h2>
-          </div>
-          <div className={styles.bifrostGrid}>
-            <UseCaseCard
-              tag="Automotive"
-              title="Connected Vehicles"
-              desc="Managing millions of high-frequency telemetry streams with strict latency budgets."
-            />
-            <UseCaseCard
-              tag="Manufacturing"
-              title="Smart Factories"
-              desc="Reliable message bus for thousands of industrial sensors and actuators."
-            />
-            <UseCaseCard
-              tag="Energy"
-              title="Smart Grids"
-              desc="Securely aggregating distributed energy data across vast geographies."
-            />
-            <UseCaseCard
-              tag="Logistics"
-              title="Asset Tracking"
-              desc="Maintaining connectivity for mobile assets moving across global networks."
-            />
-          </div>
-        </section>
+        <div className={styles.bifrostDivider} />
 
         {/* --- FINAL CTA SECTION --- */}
         <section className={`${styles.finalCta} ${styles.reveal}`}>
@@ -189,23 +149,24 @@ export default function Home(): ReactNode {
   );
 }
 
-function FeatureCard({ icon, title, desc, color }: { icon: string, title: string, desc: string, color: string }) {
+function FeatureCard({ tag, title, desc, icon }: { tag: string, title: string, desc: string, icon: string }) {
   return (
     <div className={styles.bifrostCard}>
-      <div className={styles.bifrostCardBorder} style={{ background: color }} />
+      <div className={styles.bifrostCardBorder} />
+      <span className={styles.sectionLabel} style={{ fontSize: '10px', color: 'var(--color-text-tertiary)', marginBottom: '8px', letterSpacing: '0.1em' }}>{tag}</span>
+      <h3 className={styles.cardTitle} style={{ fontSize: '1.25rem', marginBottom: '16px' }}>{title}</h3>
       <div className={styles.cardIcon}>{icon}</div>
-      <h3 className={styles.cardTitle}>{title}</h3>
-      <p className={styles.cardDesc}>{desc}</p>
+      <p className={styles.cardDesc} style={{ fontSize: '0.95rem' }}>{desc}</p>
     </div>
   );
 }
 
 function UseCaseCard({ tag, title, desc }: { tag: string, title: string, desc: string }) {
   return (
-    <div className={styles.bifrostCard} style={{ background: 'var(--color-wash)' }}>
-      <span className={styles.sectionLabel} style={{ fontSize: '11px', color: 'var(--color-text-tertiary)' }}>{tag}</span>
-      <h3 className={styles.cardTitle} style={{ fontSize: '1.5rem' }}>{title}</h3>
-      <p className={styles.cardDesc} style={{ fontSize: '1rem' }}>{desc}</p>
+    <div className={styles.bifrostCard} style={{ background: 'var(--color-wash)', border: 'none' }}>
+      <span className={styles.sectionLabel} style={{ fontSize: '10px', color: 'var(--color-text-tertiary)', marginBottom: '12px' }}>{tag}</span>
+      <h3 className={styles.cardTitle} style={{ fontSize: '1.25rem', marginBottom: '12px' }}>{title}</h3>
+      <p className={styles.cardDesc} style={{ fontSize: '0.9rem' }}>{desc}</p>
     </div>
   );
 }

@@ -1,8 +1,0 @@
-{
-  "label": "Basic MQTT Features",
-  "position": 1,
-  "link": {
-    "type": "doc",
-    "id": "user_guide/basic/intro"
-  }
-}

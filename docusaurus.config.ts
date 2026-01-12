@@ -1,7 +1,7 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import {releaseVersion} from './releaseInfo';
+import { releaseVersion } from './releaseInfo';
 
 const lightCodeTheme = prismThemes.github;
 const darkCodeTheme = prismThemes.dracula;
@@ -20,10 +20,7 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
   trailingSlash: true,
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+
 
   markdown: {
     mermaid: true,
@@ -31,6 +28,24 @@ const config: Config = {
       onBrokenMarkdownLinks: 'throw',
     },
   },
+
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      },
+    },
+  ],
   themes: [
     [
       '@docusaurus/theme-mermaid',
@@ -52,7 +67,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: ({versionDocsDirPath, docPath}) =>
+          editUrl: ({ versionDocsDirPath, docPath }) =>
             `https://github.com/apache/${siteRepoName}/tree/master/${versionDocsDirPath}/${docPath}`,
           lastVersion: 'current',
           versions: {
@@ -102,20 +117,21 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'Apache BifroMQ (Incubating)',
+      title: 'BifroMQ', // Minimalist title
       hideOnScroll: false,
       logo: {
-        alt: 'BifroMQ Logo',
+        alt: 'Apache BifroMQ',
         src: 'img/logo.svg',
         srcDark: 'img/logo_dark.svg',
-        className: 'bifromq-navbar-logo-class',
+        className: 'bifromq-navbar-logo-class', // Keep class for custom override if needed
+        style: { height: '32px', width: 'auto' }, // Inline hint, handled by CSS mostly
       },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'right',
-          label: 'Docs',
+          label: 'Documentation',
         },
         {
           to: '/blog',
@@ -129,7 +145,7 @@ const config: Config = {
         },
         {
           to: '/download',
-          label: 'Download',
+          label: 'Downloads',
           position: 'right',
         },
         {
@@ -144,11 +160,11 @@ const config: Config = {
         },
         {
           type: 'dropdown',
-          label: 'ASF',
+          label: 'Foundation',
           position: 'right',
           items: [
             {
-              label: 'Foundation',
+              label: 'Apache Software Foundation',
               to: 'https://www.apache.org/',
             },
             {
@@ -158,10 +174,6 @@ const config: Config = {
             {
               label: 'Events',
               to: 'https://www.apache.org/events/current-event.html',
-            },
-            {
-              label: 'Privacy',
-              to: 'https://privacy.apache.org/policies/privacy-policy-public.html',
             },
             {
               label: 'Security',
@@ -179,6 +191,10 @@ const config: Config = {
               label: 'Code of Conduct',
               to: 'https://www.apache.org/foundation/policies/conduct.html',
             },
+            {
+              label: 'Privacy Policy',
+              to: 'https://privacy.apache.org/policies/privacy-policy-public.html',
+            },
           ],
         },
         {
@@ -190,105 +206,74 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
           title: 'Apache BifroMQ',
           items: [
             {
-              html: `<span class="footer__link-item">High-performance Apache MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.</span>`,
+              html: `
+                <div style="margin-bottom: 2rem;">
+                  <div style="font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; margin-bottom: 0.5rem;">BifroMQ</div>
+                  <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-secondary); max-width: 300px;">
+                    Next-generation high-performance, multi-tenant MQTT broker for industrial-scale IoT.
+                  </p>
+                </div>
+              `,
             },
+            { label: 'Introduction', to: '/docs/get_started/intro' },
+            { label: 'Downloads', to: '/download' },
+            { label: 'Changelog', href: 'https://github.com/apache/bifromq/releases' },
           ],
         },
         {
-          title: 'Contact / Community',
+          title: 'Development',
           items: [
-            {
-              label: 'Email: dev@bifromq.apache.org',
-              href: 'mailto:dev@bifromq.apache.org',
-            },
-            {
-              label: 'Discord: https://discord.gg/Pfs3QRadRB',
-              href: 'https://discord.gg/Pfs3QRadRB',
-            },
-            {
-              label: 'GitHub: https://github.com/apache/bifromq',
-              href: 'https://github.com/apache/bifromq',
-            },
+            { label: 'GitHub', href: 'https://github.com/apache/bifromq' },
+            { label: 'Issues', href: 'https://github.com/apache/bifromq/issues' },
+            { label: 'API Docs', to: '/docs/user_guide/api/openapi' },
           ],
         },
         {
-          title: 'Resources',
+          title: 'Community',
           items: [
-            {
-              label: 'GitHub: https://github.com/apache/bifromq',
-              href: 'https://github.com/apache/bifromq',
-            },
-            {
-              label: 'Releases: /docs/get_started/download/intro/',
-              to: '/docs/get_started/download/intro/',
-            },
-            {
-              label: 'Issues: https://github.com/apache/bifromq/issues',
-              href: 'https://github.com/apache/bifromq/issues',
-            },
+            { label: 'Discord', href: 'https://discord.gg/Pfs3QRadRB' },
+            { label: 'Mailing List', href: 'mailto:dev@bifromq.apache.org' },
+            { label: 'Blog', to: '/blog' },
+            { label: 'Contribution', to: '/community' },
           ],
         },
         {
           title: 'Apache',
           items: [
-            {
-              label: 'Apache Incubator: https://incubator.apache.org/',
-              href: 'https://incubator.apache.org/',
-            },
-            {
-              label: 'Code of Conduct: https://www.apache.org/foundation/policies/conduct',
-              href: 'https://www.apache.org/foundation/policies/conduct',
-            },
-            {
-              label: 'Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0',
-              href: 'https://www.apache.org/licenses/LICENSE-2.0',
-            },
-          ],
-        },
-        {
-          title: 'Others',
-          items: [
-            {
-              label: 'Thanks OpenSource@Baidu: https://opensource.baidu.com/',
-              href: 'https://opensource.baidu.com/',
-            },
-            {
-              label:
-                'MQTT v3.1.1: https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html',
-              href: 'https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html',
-            },
-            {
-              label:
-                'MQTT v5.0: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html',
-              href: 'https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html',
-            },
+            { label: 'Foundation', href: 'https://www.apache.org/' },
+            { label: 'License', href: 'https://www.apache.org/licenses/LICENSE-2.0' },
+            { label: 'Sponsorship', href: 'https://www.apache.org/foundation/sponsorship.html' },
+            { label: 'Security', href: 'https://www.apache.org/security/' },
           ],
         },
       ],
       logo: {
-        width: 200,
+        width: 180,
         src: '/img/apache-incubator.svg',
         href: 'https://incubator.apache.org/',
-        alt: 'Apache Incubator logo',
+        alt: 'Apache Incubator',
       },
-      copyright: `<div>
-      <p>
-        © 2026 Apache Software Foundation. Licensed under Apache License 2.0. <br/>
-        Apache Incubating
-      </p>
-      <p>
-        Apache ${projectName} is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
-      </p>
-      <p>
-        Apache, the names of Apache projects, and the feather logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries.
-      </p>
-      </div>`,
+      copyright: `
+        <div style="font-size: 0.85rem; line-height: 1.8; color: var(--color-text-tertiary); margin-top: 2rem;">
+          <p>
+            Copyright © ${new Date().getFullYear()} The Apache Software Foundation. 
+            Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" style="color: var(--bifrost-blue); text-decoration: none;">Apache License, Version 2.0</a>.
+          </p>
+          <p>
+            Apache BifroMQ, BifroMQ, Apache, the Apache feather logo, and the Apache BifroMQ project logo are either 
+            registered trademarks or trademarks of The Apache Software Foundation.
+          </p>
+          <p style="margin-top: 1.5rem; font-style: italic; font-size: 0.8rem;">
+             Apache BifroMQ is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator.
+          </p>
+        </div>
+      `,
     },
     prism: {
       theme: lightCodeTheme,

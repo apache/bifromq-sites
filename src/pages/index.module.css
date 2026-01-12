@@ -1,33 +1,496 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* ======================================================
+   LANDING PAGE - BIFROST VISION
+   Aesthetic: Super-wide, Airy, Premium, Energetic
+   ====================================================== */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.main {
+  width: 100%;
+  background: var(--color-bg);
+  overflow-x: hidden;
 }
 
-.heroEyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+  to {
+    opacity: 1;
   }
 }
 
-.buttons {
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bifrostPulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealActive {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  padding: var(--space-xl) 5vw;
+  position: relative;
+  background: var(--color-bg);
+}
+
+.heroContent {
+  max-width: var(--content-max);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.heroText {
+  z-index: 10;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--color-wash);
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  animation: fadeIn 1s ease-out;
+}
+
+.heroBadgeDot {
+  width: 8px;
+  height: 8px;
+  background: var(--bifrost-orange);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--bifrost-orange);
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+}
+
+.heroTitle span {
+  display: block;
+  font-weight: 900;
+}
+
+.heroDesc {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 700px;
+  margin-bottom: var(--space-lg);
+  font-weight: 400;
+  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+}
+
+.heroCta {
+  display: flex;
+  gap: 24px;
+  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s backwards;
+}
+
+.heroCtaPrimary {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+  padding: 20px 48px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-text-primary);
+}
+
+.heroCtaPrimary:hover {
+  background: var(--bifrost-blue);
+  border-color: var(--bifrost-blue);
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+.heroCtaSecondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  padding: 20px 48px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.heroCtaSecondary:hover {
+  border-color: var(--color-text-primary);
+  transform: translateY(-4px);
+}
+
+.heroVisual {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 2s ease-out 0.8s backwards;
+}
+
+.bifrostRing {
+  width: 500px;
+  height: 500px;
+  border: 40px solid var(--color-wash);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bifrostRing::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 2px dashed var(--color-border);
+  animation: spin 60s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- TRUST SECTION --- */
+.trust {
+  padding: var(--space-md) 5vw;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.trustInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.apacheBrand {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* --- FEATURE WRAPPER --- */
+.sectionContainer {
+  padding: var(--space-2xl) 5vw;
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  margin-bottom: var(--space-xl);
+  max-width: 900px;
+}
+
+.sectionLabel {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--bifrost-blue);
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  /* Reduced from 4.5rem max to 3rem max */
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+}
+
+/* --- GRID SYSTEM --- */
+.bifrostGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.bifrostCard {
+  background: var(--color-bg);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.bifrostCard:hover {
+  transform: translateY(-12px);
+  border-color: var(--color-text-primary);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+}
+
+.cardIcon {
+  width: 60px;
+  height: 60px;
+  background: var(--color-wash);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 32px;
+  transition: all 0.3s ease;
+}
+
+.bifrostCard:hover .cardIcon {
+  background: var(--color-text-primary);
+  color: #fff;
+}
+
+.cardTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+
+.cardDesc {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.bifrostCardBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.bifrostCard:hover .bifrostCardBorder {
+  opacity: 1;
+}
+
+/* --- TERMINAL --- */
+.quickstart {
+  background: #000;
+  border-radius: var(--radius-lg);
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3);
+}
+
+.terminalOutput {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #fff;
+}
+
+.prompt {
+  color: var(--bifrost-green);
+  margin-right: 16px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 24px;
+  background: var(--bifrost-orange);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* --- STATS --- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.statCell {
+  background: var(--color-bg);
+  padding: 60px;
+  text-align: center;
+}
+
+.statVal {
+  display: block;
+  font-size: 4rem;
+  /* Reduced from 6rem */
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+.statLab {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* --- CTA --- */
+.finalCta {
+  padding: var(--space-2xl) 5vw;
+  background: var(--color-wash);
+  text-align: center;
+  position: relative;
+}
+
+.finalCtaTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  /* Reduced from 8rem max to 4rem max */
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-primary);
+}
+
+.finalCtaPrimary {
+  display: inline-block;
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+  padding: 32px 80px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+.finalCtaPrimary:hover {
+  transform: scale(1.05);
+  background: var(--bifrost-blue);
+  color: #fff;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+  .heroContent {
+    grid-template-columns: 1fr;
+  }
+
+  .heroVisual {
+    display: none;
+  }
+
+  .bifrostGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .bifrostGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+
+  .statVal {
+    font-size: 4rem;
+  }
+
+  .quickstart {
+    padding: 30px;
+  }
+
+  .terminalOutput {
+    font-size: 1rem;
+  }
 }

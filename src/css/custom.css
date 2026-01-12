@@ -1,30 +1,523 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ======================================================
+   DESIGN SYSTEM 2026 - PRECISION HARMONY
+   Aesthetic: Refined Engineering, Balanced Innovation
+   Focus: Structural Integrity, Clear Hierarchy, Sophisticated Negative Space
+   ====================================================== */
 
-/* You can override the default Infima variables here. */
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Bifrost Palette - Distinct Solid Colors */
+  --bifrost-red: #FF3B30;
+  --bifrost-orange: #FF9500;
+  --bifrost-yellow: #FFCC00;
+  --bifrost-green: #34C759;
+  --bifrost-teal: #5AC8FA;
+  --bifrost-blue: #007AFF;
+  --bifrost-indigo: #5856D6;
+  --bifrost-violet: #AF52DE;
+
+  /* Colors - Ultra Premium Light Palette */
+  --color-bg: #FFFFFF;
+  --color-wash: #FBFBFA;
+  --color-surface: #FFFFFF;
+  --color-border: #EFEFEF;
+  --color-border-strong: #111111;
+  --color-text-primary: #111111;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #999999;
+  --color-accent: var(--bifrost-blue);
+  --color-signal: var(--bifrost-orange);
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Inter', sans-serif;
+
+  /* Spacing - Extreme Breathing Room */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 1rem;
+  --space-sm: 2rem;
+  --space-md: 4rem;
+  --space-lg: 8rem;
+  --space-xl: 12rem;
+  --space-2xl: 16rem;
+
+  /* Layout */
+  --container-max: 100%;
+  --content-max: 1800px;
+  /* Wider content for full-width feel */
+  --radius-none: 0px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+
+  /* Docusaurus Overrides */
+  --ifm-color-primary: var(--color-accent);
+  --ifm-font-family-base: var(--font-sans);
+  --ifm-font-family-monospace: var(--font-mono);
+  --ifm-navbar-height: 80px;
+  --ifm-container-width: 100%;
+  --ifm-navbar-background-color: var(--color-bg);
+  --ifm-footer-background-color: var(--color-bg);
+  --ifm-navbar-link-hover-color: var(--color-text-primary);
+  --ifm-navbar-item-padding-horizontal: 1.5rem;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* Dark Mode - Technical Obsidian */
+html[data-theme='dark'] {
+  --color-bg: #000000;
+  --color-wash: #0A0A0A;
+  --color-surface: #000000;
+  --color-border: #1A1A1A;
+  --color-border-strong: #FFFFFF;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A0A0A0;
+  --color-text-tertiary: #505050;
+  --color-accent: var(--bifrost-blue);
+
+  --ifm-background-color: var(--color-bg);
+  --ifm-background-surface-color: var(--color-surface);
+}
+
+/* ======================================================
+   GLOBAL RESETS
+   ====================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  line-height: 1.6;
+  /* Increased for better flow */
+  letter-spacing: -0.01em;
+}
+
+.container {
+  max-width: var(--content-max) !important;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Specific docs layout adjustments to prevent massive gaps */
+.theme-doc-container {
+  padding: 0 40px !important;
+}
+
+.theme-doc-sidebar-container {
+  padding-top: 2rem;
+}
+
+.theme-doc-markdown {
+  max-width: 900px !important;
+  margin: 0;
+  /* Aligned to left of content column, not centered in the whole viewport */
+}
+
+.row {
+  --ifm-spacing-horizontal: 1.5rem;
+  /* Tightened from var(--space-md) which was 4rem */
+}
+
+/* ======================================================
+   NAVBAR - BIFROST PRECISION
+   ====================================================== */
+.navbar {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: none;
+  height: var(--ifm-navbar-height);
+  padding: 0 40px !important;
+  /* Fixed padding for both sides */
+  position: relative;
+}
+
+/* The Bifrost Line - A nod to the name origins */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right,
+      var(--bifrost-red) 12.5%,
+      var(--bifrost-orange) 12.5%,
+      var(--bifrost-orange) 25%,
+      var(--bifrost-yellow) 25%,
+      var(--bifrost-yellow) 37.5%,
+      var(--bifrost-green) 37.5%,
+      var(--bifrost-green) 50%,
+      var(--bifrost-teal) 50%,
+      var(--bifrost-teal) 62.5%,
+      var(--bifrost-blue) 62.5%,
+      var(--bifrost-blue) 75%,
+      var(--bifrost-indigo) 75%,
+      var(--bifrost-indigo) 87.5%,
+      var(--bifrost-violet) 87.5%);
+  z-index: 10;
+}
+
+.navbar__inner {
+  max-width: 100% !important;
+  margin: 0 !important;
+  width: 100%;
+}
+
+.navbar__brand {
+  margin-right: 4rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.navbar__logo {
+  height: 18px !important;
+  /* Even smaller to ensure it looks balanced */
+  width: auto !important;
+  max-height: 18px !important;
+  margin-right: 0;
+  display: block;
+}
+
+/* Force override any inherited styles that might blow up the logo */
+.navbar__brand img {
+  height: 18px !important;
+  width: auto !important;
+}
+
+.navbar__item {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.navbar__item:hover {
+  color: var(--color-text-primary);
+}
+
+.navbar__link--active {
+  color: var(--color-text-primary) !important;
+  font-weight: 700;
+  position: relative;
+}
+
+.header-github-link::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+html[data-theme='dark'] .header-github-link::before {
+  filter: invert(1);
+}
+
+/* ======================================================
+   DOCS SIDEBAR - FLOW & PRECISION
+   ====================================================== */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--color-border) !important;
+}
+
+.menu__link {
+  font-size: 13px;
+  padding: 12px 20px;
+  border-radius: var(--radius-none);
+  color: var(--color-text-secondary);
+  transition: all 0.1s ease;
+  font-weight: 500;
+}
+
+.menu__link:hover {
+  background: var(--color-wash);
+  color: var(--color-text-primary);
+}
+
+.menu__link--active {
+  color: var(--color-text-primary) !important;
+  background: var(--color-wash) !important;
+  font-weight: 700;
+}
+
+/* ======================================================
+   MARKDOWN - INDUSTRIAL CLARITY
+   ====================================================== */
+.markdown {
+  font-size: 17px;
+  /* Sightly larger for readability */
+  line-height: 1.8;
+  /* Expansive line height for focus */
+  color: var(--color-text-secondary);
+  letter-spacing: -0.01em;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.markdown h1 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  margin-bottom: 4rem;
+  line-height: 1;
+}
+
+.markdown h2 {
+  font-size: 2.25rem;
+  margin-top: 6rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.markdown p,
+.markdown li {
+  margin-bottom: 1.5rem;
+}
+
+.markdown code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--color-wash);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-signal);
+}
+
+a {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+button,
+.button {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 4px;
+}
+
+.markdown pre {
+  background: var(--color-wash) !important;
+  border: 1px solid var(--color-border);
+  padding: 2.5rem;
+  border-radius: var(--radius-none);
+  margin: 3rem 0;
+}
+
+.markdown img {
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  background: var(--color-wash);
+}
+
+/* ======================================================
+   FOOTER - BIFROST INTEGRATION
+   ====================================================== */
+.footer {
+  background: var(--color-bg) !important;
+  border-top: 1px solid var(--color-border);
+  padding: 80px 40px !important;
+  color: var(--color-text-primary);
+  position: relative;
+}
+
+/* Subtle rainbow bridge accent at the top of footer */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right,
+      var(--bifrost-indigo),
+      var(--bifrost-blue),
+      var(--bifrost-teal),
+      var(--bifrost-green),
+      var(--bifrost-yellow),
+      var(--bifrost-orange),
+      var(--bifrost-red));
+  opacity: 0.2;
+}
+
+.footer__links {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer__title {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-primary);
+  margin-bottom: 24px;
+}
+
+.footer__link-item {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 2;
+  text-decoration: none !important;
+}
+
+.footer__link-item:hover {
+  color: var(--bifrost-blue);
+  transform: translateX(4px);
+}
+
+.footer__bottom {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-top: 40px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer__logo {
+  margin-bottom: 32px;
+  display: block;
+}
+
+/* Specific handling for the Incubator Logo SVG to ensure visibility in all themes */
+.footer__logo img {
+  height: 48px !important;
+  width: auto !important;
+  filter: grayscale(1) opacity(0.8);
+  transition: all 0.4s ease;
+}
+
+html[data-theme='dark'] .footer__logo img {
+  filter: invert(1) grayscale(1) brightness(1.5) opacity(0.8);
+}
+
+.footer__logo:hover img {
+  filter: grayscale(0) opacity(1);
+}
+
+.footer__copyright {
+  font-size: 0.8rem;
+  color: var(--color-text-tertiary);
+  max-width: 900px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.footer__copyright a {
+  color: var(--bifrost-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer__copyright a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 996px) {
+  .footer__links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .footer__links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================================================
+   UTILITIES & OVERRIDES
+   ====================================================== */
+.container {
+  max-width: var(--content-max) !important;
+  padding: 0 5vw !important;
+}
+
+/* Handled by targeted classes above */
+
+.theme-blog-post-page .container {
+  max-width: 1000px !important;
+  /* Keep blog posts readable but well-padded */
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+/* Buttons Styling */
+.button--primary {
+  background-color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  color: var(--color-bg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+}
+
+.button--primary:hover {
+  background-color: var(--bifrost-blue);
+  border-color: var(--bifrost-blue);
 }

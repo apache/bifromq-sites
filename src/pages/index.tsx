@@ -1,6 +1,7 @@
 import React, { type ReactNode, useEffect } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
+import { releaseVersion } from '../../releaseInfo';
 import styles from './index.module.css';
 
 /**
@@ -122,9 +123,16 @@ export default function Home(): ReactNode {
             <h2 className={styles.sectionTitle}>Launch in Seconds</h2>
           </div>
           <div className={styles.quickstart}>
+            <div className={styles.terminalHeader}>
+              <div className={styles.terminalDots}>
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className={styles.terminalTitle}>bash — 80×24</div>
+            </div>
             <div className={styles.terminalOutput}>
-              <div><span className={styles.prompt}>$</span> docker pull apache/bifromq:latest</div>
-              <div><span className={styles.prompt}>$</span> docker run -d --name bifromq -p 1883:1883 apache/bifromq:latest</div>
+              <div><span className={styles.prompt}>$</span> docker run -d --name bifromq -p 1883:1883 apache/bifromq:{releaseVersion}</div>
               <div style={{ opacity: 0.6, marginTop: '20px' }}># BifroMQ node starting up...</div>
               <div style={{ opacity: 0.6 }}># Cluster established. Ready for massive connectivity.</div>
               <div><span className={styles.prompt}>$</span> <span className={styles.cursor} /></div>

@@ -1,8 +1,0 @@
-{
-  "label": "Metrics",
-  "position": 2,
-  "link": {
-    "type": "doc",
-    "id": "admin_guide/observability/metrics/intro"
-  }
-}

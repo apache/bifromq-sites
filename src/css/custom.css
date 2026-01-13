@@ -27,8 +27,8 @@
   --color-text-primary: #111111;
   --color-text-secondary: #666666;
   --color-text-tertiary: #999999;
-  --color-accent: var(--bifrost-blue);
   --color-accent-rgb: 0, 122, 255;
+  --color-accent: rgb(var(--color-accent-rgb));
   --color-signal: var(--bifrost-orange);
 
   /* Typography */
@@ -67,21 +67,21 @@
   --ifm-navbar-item-padding-horizontal: 0.75rem;
 }
 
-/* Dark Mode - Sophisticated Slate Obsidian */
+/* Dark Mode - Sophisticated Graphite Aurora */
 html[data-theme='dark'] {
-  --color-bg: #0C0D0F;
-  /* Deep Obsidian Slate */
-  --color-wash: #14161A;
-  /* Slightly lighter for depth */
-  --color-surface: #1A1D23;
-  /* Surface for cards/modals */
-  --color-border: #242830;
-  /* Subtle slate border */
-  --color-border-strong: #3D4452;
-  --color-text-primary: #F0F2F5;
-  --color-text-secondary: #94A3B8;
-  --color-text-tertiary: #64748B;
-  --color-accent: var(--bifrost-blue);
+  --color-bg: #11141A;
+  /* Graphite base with soft depth */
+  --color-wash: #171B23;
+  /* Subtle lift for panels */
+  --color-surface: #1F2531;
+  /* Elevated surfaces */
+  --color-border: #2C3442;
+  /* Cool slate divider */
+  --color-border-strong: #3E495D;
+  --color-text-primary: #F4F7FB;
+  --color-text-secondary: #B3BDCC;
+  --color-text-tertiary: #8894A8;
+  --color-accent-rgb: 106, 163, 255;
 
   --ifm-background-color: var(--color-bg);
   --ifm-background-surface-color: var(--color-surface);
@@ -155,8 +155,26 @@ body {
   height: var(--ifm-navbar-height);
   padding: 0 40px !important;
   /* Fixed padding for both sides */
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   margin-bottom: 0 !important;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+}
+
+html[data-theme='dark'] .navbar {
+  background: rgba(17, 20, 26, 0.88);
+}
+
+.main-wrapper {
+  padding-top: var(--ifm-navbar-height);
 }
 
 /* The Bifrost Line - A nod to the name origins */
@@ -313,6 +331,13 @@ html[data-theme='dark'] .header-github-link::before {
   line-height: 1.2;
 }
 
+html[data-theme='dark'] .markdown h1,
+html[data-theme='dark'] .markdown h2,
+html[data-theme='dark'] .markdown h3,
+html[data-theme='dark'] .markdown h4 {
+  color: #E6EDF6;
+}
+
 .markdown h1 {
   font-size: clamp(1.85rem, 3.1vw, 2.6rem);
   margin-top: 0;
@@ -353,6 +378,40 @@ html[data-theme='dark'] .header-github-link::before {
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
   color: var(--color-accent);
+}
+
+.bifrost-rainbow {
+  color: inherit;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+}
+
+.bifrost-rainbow::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.2rem;
+  border-radius: 20px;
+  opacity: 0.6;
+  background: linear-gradient(90deg,
+      var(--bifrost-red) 12.5%,
+      var(--bifrost-orange) 12.5%,
+      var(--bifrost-orange) 25%,
+      var(--bifrost-yellow) 25%,
+      var(--bifrost-yellow) 37.5%,
+      var(--bifrost-green) 37.5%,
+      var(--bifrost-green) 50%,
+      var(--bifrost-teal) 50%,
+      var(--bifrost-teal) 62.5%,
+      var(--color-accent) 62.5%,
+      var(--color-accent) 75%,
+      var(--bifrost-indigo) 75%,
+      var(--bifrost-indigo) 87.5%,
+      var(--bifrost-violet) 87.5%);
 }
 
 .markdown pre code {
@@ -496,8 +555,8 @@ button,
 
 html[data-theme='dark'] .footer__logo img,
 html[data-theme='dark'] .footer__incubator-logo {
-  filter: invert(1) brightness(2) opacity(0.6);
-  /* Bright white in dark mode */
+  filter: none;
+  /* Keep original colors in dark mode */
 }
 
 .footer__logo:hover img,

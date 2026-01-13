@@ -414,9 +414,9 @@
 }
 
 html[data-theme='dark'] .bifrostCard {
-  background: rgba(26, 29, 35, 0.4);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(31, 37, 49, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .bifrostCard:hover {
@@ -426,7 +426,7 @@ html[data-theme='dark'] .bifrostCard {
 }
 
 html[data-theme='dark'] .bifrostCard:hover {
-  background: rgba(26, 29, 35, 0.6);
+  background: rgba(31, 37, 49, 0.78);
   border-color: var(--color-accent);
 }
 

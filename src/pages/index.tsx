@@ -38,7 +38,7 @@ export default function Home(): ReactNode {
           <div className={styles.heroVisual}>
             <div className={styles.bifrostRing}>
               <div style={{ fontSize: '200px', fontWeight: 900, letterSpacing: '-0.1em', opacity: 0.1 }}>
-                BIFRO<span style={{ color: 'var(--bifrost-blue)' }}>MQ</span>
+                BIFRO<span style={{ color: 'var(--color-accent)' }}>MQ</span>
               </div>
             </div>
           </div>

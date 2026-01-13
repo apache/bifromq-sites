@@ -58,7 +58,21 @@ const config: Config = {
         },
       },
     ],
-    'docusaurus-theme-redoc',
+    [
+      'docusaurus-theme-redoc',
+      {
+        theme: {
+          typography: {
+            fontSize: '14px',
+            lineHeight: '1.6',
+            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+            code: {
+              fontFamily: "'JetBrains Mono', monospace",
+            },
+          },
+        },
+      },
+    ],
   ],
 
   presets: [

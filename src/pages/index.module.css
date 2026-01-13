@@ -63,7 +63,7 @@
   background: linear-gradient(to right,
       transparent,
       var(--color-border) 20%,
-      var(--bifrost-blue) 45%,
+      var(--color-accent) 45%,
       var(--bifrost-indigo) 55%,
       var(--color-border) 80%,
       transparent);
@@ -109,7 +109,7 @@
   width: 150%;
   height: 400px;
   background: radial-gradient(ellipse at center,
-      rgba(0, 122, 255, 0.15) 0%,
+      rgba(var(--color-accent-rgb), 0.15) 0%,
       rgba(88, 86, 214, 0.1) 30%,
       transparent 70%);
   filter: blur(80px);
@@ -154,16 +154,16 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(to right, var(--bifrost-blue), var(--bifrost-indigo), var(--bifrost-violet));
+  background: linear-gradient(to right, var(--color-accent), var(--bifrost-indigo), var(--bifrost-violet));
   opacity: 0.6;
 }
 
 .heroBadgeDot {
   width: 6px;
   height: 6px;
-  background: var(--bifrost-blue);
+  background: var(--color-accent);
   border-radius: 0;
-  box-shadow: 0 0 10px var(--bifrost-blue);
+  box-shadow: 0 0 10px var(--color-accent);
 }
 
 .heroTitle {
@@ -369,7 +369,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.4em;
-  color: var(--bifrost-blue);
+  color: var(--color-accent);
   margin-bottom: 16px;
 }
 
@@ -427,7 +427,7 @@ html[data-theme='dark'] .bifrostCard {
 
 html[data-theme='dark'] .bifrostCard:hover {
   background: rgba(26, 29, 35, 0.6);
-  border-color: var(--bifrost-blue);
+  border-color: var(--color-accent);
 }
 
 .cardIcon {
@@ -452,7 +452,7 @@ html[data-theme='dark'] .bifrostCard:hover {
 html[data-theme='dark'] .cardIcon {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.1);
-  color: var(--bifrost-blue);
+  color: var(--color-accent);
 }
 
 .bifrostCard:hover .cardIcon {
@@ -461,9 +461,9 @@ html[data-theme='dark'] .cardIcon {
 }
 
 html[data-theme='dark'] .bifrostCard:hover .cardIcon {
-  background: var(--bifrost-blue);
+  background: var(--color-accent);
   color: white;
-  border-color: var(--bifrost-blue);
+  border-color: var(--color-accent);
 }
 
 .cardTitle {
@@ -486,7 +486,7 @@ html[data-theme='dark'] .bifrostCard:hover .cardIcon {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--bifrost-blue);
+  background: var(--color-accent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -556,7 +556,7 @@ html[data-theme='dark'] .bifrostCard:hover .cardIcon {
 }
 
 .prompt {
-  color: var(--bifrost-blue);
+  color: var(--color-accent);
   margin-right: 16px;
 }
 
@@ -564,7 +564,7 @@ html[data-theme='dark'] .bifrostCard:hover .cardIcon {
   display: inline-block;
   width: 10px;
   height: 24px;
-  background: var(--bifrost-blue);
+  background: var(--color-accent);
   vertical-align: middle;
   animation: blink 1s step-end infinite;
 }

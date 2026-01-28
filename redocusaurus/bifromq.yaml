@@ -1,0 +1,883 @@
+openapi: 3.0.1
+info:
+  title: BifroMQ RESTful API
+  version: 4.0.0-incubating
+paths:
+  /store/balancer/disable:
+    put:
+      summary: Disable store balancer
+      operationId: handle
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: store_name
+          in: header
+          description: the store name
+          required: true
+          schema:
+            type: string
+        - name: balancer_factory_class
+          in: header
+          description: >-
+            the full qualified name of balancer factory class configured for the
+            store
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Success
+  /store/balancer/enable:
+    put:
+      summary: Enable store balancer
+      operationId: handle_1
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: store_name
+          in: header
+          description: the store name
+          required: true
+          schema:
+            type: string
+        - name: balancer_factory_class
+          in: header
+          description: >-
+            the full qualified name of balancer factory class configured for the
+            store
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Success
+  /retain:
+    post:
+      summary: Retain a message to given topic
+      operationId: handle_17
+      parameters:
+        - name: req_id
+          in: header
+          description: optional, caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the tenant id
+          required: true
+          schema:
+            type: string
+        - name: topic
+          in: header
+          description: the message topic
+          required: true
+          schema:
+            type: string
+        - name: qos
+          in: header
+          description: QoS of the message to be retained
+          required: true
+          schema:
+            type: integer
+            format: int32
+            enum:
+              - 0
+              - 1
+              - 2
+        - name: expiry_seconds
+          in: header
+          description: the message expiry seconds
+          schema:
+            type: integer
+            format: int32
+        - name: client_type
+          in: header
+          description: the caller client type
+          required: true
+          schema:
+            type: string
+        - name: client_meta_*
+          in: header
+          description: >-
+            the metadata header about caller client, must be started with
+            client_meta_
+          schema:
+            type: string
+      requestBody:
+        description: Message payload will be treated as binary
+        content:
+          application/octet-stream: {}
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Invalid QoS or expiry seconds
+          content:
+            '*/*':
+              schema:
+                type: string
+        '403':
+          description: Unaccepted Topic
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      summary: Expire all retain messages using given expiry time
+      operationId: handle_2
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the tenant id
+          required: true
+          schema:
+            type: string
+        - name: expiry_seconds
+          in: header
+          description: the overridden retain message expiry time in seconds
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /session:
+    get:
+      summary: Get the session information of the given user and client id
+      operationId: handle_9
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the id of tenant
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: header
+          description: the id of user who established the session
+          required: true
+          schema:
+            type: string
+        - name: client_id
+          in: header
+          description: the client id of the mqtt session
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '404':
+          description: No session found for the given user and client id
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      summary: Expire inactive persistent session using given expiry time
+      operationId: handle_3
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the tenant id
+          required: true
+          schema:
+            type: string
+        - name: expiry_seconds
+          in: header
+          description: the overridden session expiry time in seconds
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /store/balancer:
+    get:
+      summary: Get the store balancer state
+      operationId: handle_4
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: store_name
+          in: header
+          description: the store name
+          required: true
+          schema:
+            type: string
+        - name: balancer_factory_class
+          in: header
+          description: >-
+            the full qualified name of balancer factory class configured for the
+            store
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '404':
+          description: Balancer not found for the store
+          content:
+            '*/*':
+              schema:
+                type: string
+  /cluster:
+    get:
+      summary: Get cluster membership known from current node
+      operationId: handle_5
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+  /store/balancer/rules:
+    get:
+      summary: Get the expected load rules of a store balancer
+      operationId: handle_6
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: store_name
+          in: header
+          description: the service name
+          required: true
+          schema:
+            type: string
+        - name: balancer_factory_class
+          in: header
+          description: >-
+            the full qualified name of balancer factory class configured for the
+            store
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '404':
+          description: Not load rules ever set for the store balancer
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      summary: Set the expected load rules of a store balancer
+      operationId: handle_18
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: store_name
+          in: header
+          description: the store name
+          required: true
+          schema:
+            type: string
+        - name: balancer_factory_class
+          in: header
+          description: >-
+            the full qualified name of balancer factory class configured for the
+            store
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Success
+  /service/landscape:
+    get:
+      summary: Get the service landscape information
+      operationId: handle_7
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: service_name
+          in: header
+          description: the service name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '404':
+          description: Service not found
+          content:
+            '*/*':
+              schema:
+                type: string
+  /session/inbox:
+    get:
+      summary: Get the inbox state of a mqtt session
+      operationId: handle_8
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the id of tenant
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: header
+          description: the id of user who established the session
+          required: true
+          schema:
+            type: string
+        - name: client_id
+          in: header
+          description: the client id of the mqtt session
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '404':
+          description: No session found for the given user and client id
+          content:
+            '*/*':
+              schema:
+                type: string
+        '409':
+          description: Try later
+          content:
+            '*/*':
+              schema:
+                type: string
+        '429':
+          description: Too many requests
+          content:
+            '*/*':
+              schema:
+                type: string
+  /store/landscape:
+    get:
+      summary: Get the store landscape information
+      operationId: handle_10
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: store_name
+          in: header
+          description: the store name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '404':
+          description: Store not found
+          content:
+            '*/*':
+              schema:
+                type: string
+  /store/ranges:
+    get:
+      summary: Get the ranges information in a store node
+      operationId: handle_11
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: store_name
+          in: header
+          description: the store name
+          required: true
+          schema:
+            type: string
+        - name: store_id
+          in: header
+          description: the store id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '404':
+          description: Store or store server not found
+          content:
+            '*/*':
+              schema:
+                type: string
+  /service/traffic:
+    get:
+      summary: Get the traffic rules of a service
+      operationId: handle_12
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: service_name
+          in: header
+          description: the service name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '404':
+          description: Service not found
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      summary: Set the traffic rules of a service
+      operationId: handle_20
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: service_name
+          in: header
+          description: the service name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+  /kill:
+    delete:
+      summary: Disconnect a MQTT client connection
+      operationId: handle_13
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the tenant id
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: header
+          description: the user id of the MQTT client connection to be disconnected
+          schema:
+            type: string
+        - name: client_id
+          in: header
+          description: the client id of the mqtt session
+          schema:
+            type: string
+        - name: server_redirect
+          in: header
+          description: indicate if the client should redirect to another server
+          schema:
+            type: string
+            enum:
+              - 'no'
+              - move
+              - temp_use
+        - name: server_reference
+          in: header
+          description: indicate the server reference to redirect to
+          schema:
+            maxLength: 65535
+            type: string
+        - name: client_type
+          in: header
+          description: the caller client type
+          required: true
+          schema:
+            type: string
+        - name: client_meta_*
+          in: header
+          description: >-
+            the metadata header about the caller client, must be started with
+            client_meta_
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+  /services:
+    get:
+      summary: List the name of services in BifroMQ cluster
+      operationId: handle_14
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+  /stores:
+    get:
+      summary: List the name of stores in BifroMQ cluster
+      operationId: handle_15
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+  /pub:
+    post:
+      summary: Publish a message to given topic
+      operationId: handle_16
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the tenant id
+          required: true
+          schema:
+            type: string
+        - name: topic
+          in: header
+          description: the message topic
+          required: true
+          schema:
+            type: string
+        - name: qos
+          in: header
+          description: QoS of the message to be published
+          required: true
+          schema:
+            type: integer
+            format: int32
+            enum:
+              - 0
+              - 1
+              - 2
+        - name: expiry_seconds
+          in: header
+          description: the message expiry seconds, must be positive
+          schema:
+            type: integer
+            format: int32
+        - name: client_type
+          in: header
+          description: the caller client type
+          required: true
+          schema:
+            type: string
+        - name: client_meta_*
+          in: header
+          description: >-
+            the metadata header about caller client, must be started with
+            client_meta_
+          schema:
+            type: string
+      requestBody:
+        description: Message payload will be treated as binary
+        content:
+          application/octet-stream: {}
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Invalid QoS or expiry seconds
+          content:
+            '*/*':
+              schema:
+                type: string
+        '403':
+          description: Unaccepted Topic
+          content:
+            '*/*':
+              schema:
+                type: string
+  /service/group:
+    put:
+      summary: Set group tag to a server in a service
+      operationId: handle_19
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: service_name
+          in: header
+          description: the service name
+          required: true
+          schema:
+            type: string
+        - name: server_id
+          in: header
+          description: the service server id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '404':
+          description: Service or server not found
+  /sub:
+    put:
+      summary: Add a topic subscription to a mqtt session
+      operationId: handle_21
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the id of tenant
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: header
+          description: the id of user who established the session
+          required: true
+          schema:
+            type: string
+        - name: client_id
+          in: header
+          description: the client id of the mqtt session
+          required: true
+          schema:
+            type: string
+        - name: topic_filter
+          in: header
+          description: the topic filter to add
+          required: true
+          schema:
+            type: string
+        - name: sub_qos
+          in: header
+          description: the qos of the subscription
+          required: true
+          schema:
+            type: integer
+            format: int32
+            enum:
+              - 0
+              - 1
+              - 2
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Request is invalid
+        '401':
+          description: Unauthorized to make subscription using the given topic filter
+        '404':
+          description: No session found for the given user and client id
+  /unsub:
+    delete:
+      summary: Remove a topic subscription from a mqtt session
+      operationId: handle_22
+      parameters:
+        - name: req_id
+          in: header
+          description: optional caller provided request id
+          schema:
+            type: integer
+            format: int64
+        - name: tenant_id
+          in: header
+          description: the id of tenant
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: header
+          description: the id of user who established the session
+          required: true
+          schema:
+            type: string
+        - name: client_id
+          in: header
+          description: the client id of the mqtt session
+          required: true
+          schema:
+            type: string
+        - name: topic_filter
+          in: header
+          description: the topic filter to remove
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized to remove subscription of the given topic filter
+        '404':
+          description: No session found for the given user and client id
+components:
+  schemas:
+    DecoderResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        failure:
+          type: boolean
+        finished:
+          type: boolean
+    FullHttpResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/HttpResponseStatus'
+        protocolVersion:
+          $ref: '#/components/schemas/HttpVersion'
+        decoderResult:
+          $ref: '#/components/schemas/DecoderResult'
+    HttpResponseStatus:
+      type: object
+    HttpVersion:
+      type: object
+      properties:
+        keepAliveDefault:
+          type: boolean

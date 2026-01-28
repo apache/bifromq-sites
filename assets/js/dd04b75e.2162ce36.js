@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkbifromq=globalThis.webpackChunkbifromq||[]).push([[1672],{33024(o){o.exports=JSON.parse('{"authors":[{"name":"Yonny(Yu) Hao","url":"https://github.com/popduke","imageURL":"https://github.com/popduke.png","key":"HaoYu","page":null,"count":2}]}')}}]);

@@ -7,27 +7,25 @@ import CodeBlock from "@theme/CodeBlock";
 import { releaseVersion } from "../../releaseInfo";
 
 export const releaseName = `apache-bifromq-${releaseVersion}`;
-export const mirrorPath = `incubator/bifromq/${releaseVersion}`;
-export const mirrorBase = `https://www.apache.org/dyn/closer.lua/${mirrorPath}`;
-export const archiveBase = `https://downloads.apache.org/${mirrorPath}`;
+export const downloadBase = "https://downloads.apache.org/incubator/bifromq";
+export const downloadReleaseBase = `${downloadBase}/${releaseVersion}`;
 export const archiveRoot = "https://archive.apache.org/dist/incubator/bifromq/";
 export const keyUrl = "https://downloads.apache.org/incubator/bifromq/KEYS";
-export const srcMirror = `${mirrorBase}/${releaseName}-src.tar.gz`;
-export const srcAsc = `${archiveBase}/${releaseName}-src.tar.gz.asc`;
-export const srcSha = `${archiveBase}/${releaseName}-src.tar.gz.sha512`;
-export const binMirror = `${mirrorBase}/${releaseName}.tar.gz`;
-export const binAsc = `${archiveBase}/${releaseName}.tar.gz.asc`;
-export const binSha = `${archiveBase}/${releaseName}.tar.gz.sha512`;
-export const winZipMirror = `${mirrorBase}/${releaseName}-windows.zip`;
-export const winZipAsc = `${archiveBase}/${releaseName}-windows.zip.asc`;
-export const winZipSha = `${archiveBase}/${releaseName}-windows.zip.sha512`;
+export const srcPkg = `${downloadReleaseBase}/${releaseName}-src.tar.gz`;
+export const srcAsc = `${downloadReleaseBase}/${releaseName}-src.tar.gz.asc`;
+export const srcSha = `${downloadReleaseBase}/${releaseName}-src.tar.gz.sha512`;
+export const binPkg = `${downloadReleaseBase}/${releaseName}.tar.gz`;
+export const binAsc = `${downloadReleaseBase}/${releaseName}.tar.gz.asc`;
+export const binSha = `${downloadReleaseBase}/${releaseName}.tar.gz.sha512`;
+export const winZipPkg = `${downloadReleaseBase}/${releaseName}-windows.zip`;
+export const winZipAsc = `${downloadReleaseBase}/${releaseName}-windows.zip.asc`;
+export const winZipSha = `${downloadReleaseBase}/${releaseName}-windows.zip.sha512`;
 export const releaseNoteUrl = `https://github.com/apache/bifromq/releases/tag/${releaseVersion}`;
 
 # Download Apache BifroMQ (Incubating)
 
+## The latest Release
 Current release: **{releaseVersion}**(<a href={releaseNoteUrl}>Release Note</a>) 
-
-## Release artifacts
 
 <table>
   <thead>
@@ -39,24 +37,24 @@ Current release: **{releaseVersion}**(<a href={releaseNoteUrl}>Release Note</a>)
   </thead>
   <tbody>
     <tr>
-      <td><a href={srcMirror}>Source (.tar.gz)</a></td>
+      <td><a href={srcPkg}>Source Bundle</a></td>
       <td><a href={srcAsc}>.asc</a></td>
       <td><a href={srcSha}>.sha512</a></td>
     </tr>
     <tr>
-      <td><a href={binMirror}>Binary (.tar.gz, convenience)</a></td>
+      <td><a href={binPkg}>Linux Binary</a></td>
       <td><a href={binAsc}>.asc</a></td>
       <td><a href={binSha}>.sha512</a></td>
     </tr>
     <tr>
-      <td><a href={winZipMirror}>Binary (.zip, Windows convenience)</a></td>
+      <td><a href={winZipPkg}>Windows Binary</a></td>
       <td><a href={winZipAsc}>.asc</a></td>
       <td><a href={winZipSha}>.sha512</a></td>
     </tr>
   </tbody>
 </table>
 
-- If a mirror is out of date, use the downloads.apache.org links or the <a href={archiveRoot}>release archive</a>.
+- Use the <a href={archiveRoot}>release archive</a> if needed.
 - Import the <a href={keyUrl}>KEYS file</a> before verification
 
 ## Verify your download
@@ -66,12 +64,12 @@ Current release: **{releaseVersion}**(<a href={releaseNoteUrl}>Release Note</a>)
 <CodeBlock language="bash">{`gpg --import KEYS`}</CodeBlock>
 
 2. **Download and verify PGP signature (source)**
-<CodeBlock language="bash">{`curl -O ${mirrorBase}/${releaseName}-src.tar.gz`}</CodeBlock>
-<CodeBlock language="bash">{`curl -O ${archiveBase}/${releaseName}-src.tar.gz.asc`}</CodeBlock>
+<CodeBlock language="bash">{`curl -O ${downloadReleaseBase}/${releaseName}-src.tar.gz`}</CodeBlock>
+<CodeBlock language="bash">{`curl -O ${downloadReleaseBase}/${releaseName}-src.tar.gz.asc`}</CodeBlock>
 <CodeBlock language="bash">{`gpg --verify ${releaseName}-src.tar.gz.asc ${releaseName}-src.tar.gz`}</CodeBlock>
 
 3. **Check SHA512**
-<CodeBlock language="bash">{`curl -O ${archiveBase}/${releaseName}-src.tar.gz.sha512`}</CodeBlock>
+<CodeBlock language="bash">{`curl -O ${downloadReleaseBase}/${releaseName}-src.tar.gz.sha512`}</CodeBlock>
 <CodeBlock language="bash">{`sha512sum -c ${releaseName}-src.tar.gz.sha512`}</CodeBlock>
 
 If verification fails, discard the artifact and contact `dev@bifromq.apache.org`.
@@ -98,4 +96,4 @@ Java plugins interface modules are published under `org.apache.bifromq`. Match t
     <version>${releaseVersion}</version>
 </dependency>`}</CodeBlock>
 
-[Browse on Maven Central](https://search.maven.org/search?q=g:org.apache.bifromq%20AND%20a:bifromq-plugin-*)
+[Browse on Maven Central](https://central.sonatype.com/search?namespace=org.apache.bifromq)

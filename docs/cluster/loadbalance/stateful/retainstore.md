@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "Retain Store"
 ---
 
-RetainStore serves retained messages (read-dominant). It runs as a stateful service on the base-kv overlay cluster; `store_name` for API headers: `RetainStore`.
+RetainStore serves retained messages (read-dominant). It runs as a stateful service on the base-kv overlay cluster; `store_name` for API headers: `retain.store`.
 
 ## Default balancers
 

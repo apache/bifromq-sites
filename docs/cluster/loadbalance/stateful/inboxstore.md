@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "Inbox Store"
 ---
 
-InboxStore provides persistent offline message queues (write-intensive). It runs as a stateful service on the base-kv overlay cluster; `store_name` for API headers: `InboxStore`.
+InboxStore provides persistent offline message queues (write-intensive). It runs as a stateful service on the base-kv overlay cluster; `store_name` for API headers: `inbox.store`.
 
 ## Default balancers
 

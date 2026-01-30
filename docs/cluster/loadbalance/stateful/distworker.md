@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "Dist Worker"
 ---
 
-DistWorker handles subscription routing and fan-out (read-heavy). It runs as a stateful service on the base-kv overlay cluster; `store_name` for API headers: `DistWorker`.
+DistWorker handles subscription routing and fan-out (read-heavy). It runs as a stateful service on the base-kv overlay cluster; `store_name` for API headers: `dist.worker`.
 
 ## Default balancers
 

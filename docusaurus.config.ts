@@ -267,8 +267,8 @@ const config: Config = {
           title: 'Others',
           items: [
             { label: 'Thanks OpenSource@Baidu', href: 'https://opensource.baidu.com/' },
-            { label: 'MQTT v3.1.1', href: 'http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html' },
-            { label: 'MQTT v5.0', href: 'https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html' },
+            { label: 'MQTT Specification', href: 'https://mqtt.org/mqtt-specification/' },
+            { label: 'MQTT Protocol Guide', href: '/mqtt' },
           ],
         },
       ],

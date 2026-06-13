@@ -17,7 +17,7 @@
             <content:encoded><![CDATA[<p>We are pleased to announce the availability of Apache BifroMQ 4.0.0-incubating, the project's first release in the Apache Incubator.</p>
 <p>This release marks an important milestone: it represents the transition of BifroMQ's pre-Apache development history and production experience into an Apache-governed project, with community-driven development, transparent processes, and formal release procedures.</p>
 <p>This blog post provides a high-level overview of the release. For full details, please refer to the official release notes and latest online documents.</p>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="what-this-release-represents">What this release represents<a href="https://bifromq.apache.org/blog/announcing-apache-bifromq-4-0-0-incubating/#what-this-release-represents" class="hash-link" aria-label="Direct link to What this release represents" title="Direct link to What this release represents" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="what-this-release-represents">What this release represents<a href="https://bifromq.apache.org/blog/announcing-apache-bifromq-4-0-0-incubating/#what-this-release-represents" class="hash-link" aria-label="Direct link to What this release represents" title="Direct link to What this release represents" translate="no">​</a></h2>
 <p>Before entering the Apache Incubator, BifroMQ evolved as an internal system and later as an open-source project driven by a small group of maintainers. Joining the Apache Incubator changes the project in several important ways:</p>
 <ul>
 <li class=""><strong>Community over individuals or organizations:</strong> Development, design decisions, and releases are discussed and decided on public mailing lists under the Apache way.</li>
@@ -25,7 +25,7 @@
 <li class=""><strong>Clear licensing and branding:</strong> The project adopts Apache License 2.0 and aligns with Apache's branding and trademark guidelines.</li>
 </ul>
 <p>Version 4.0.0-incubating is the first release that fully reflects this transition. It continues the technical lineage of earlier versions but should be considered a major upgrade from a user's perspective.</p>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="highlights-in-400-incubating">Highlights in 4.0.0-incubating<a href="https://bifromq.apache.org/blog/announcing-apache-bifromq-4-0-0-incubating/#highlights-in-400-incubating" class="hash-link" aria-label="Direct link to Highlights in 4.0.0-incubating" title="Direct link to Highlights in 4.0.0-incubating" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="highlights-in-400-incubating">Highlights in 4.0.0-incubating<a href="https://bifromq.apache.org/blog/announcing-apache-bifromq-4-0-0-incubating/#highlights-in-400-incubating" class="hash-link" aria-label="Direct link to Highlights in 4.0.0-incubating" title="Direct link to Highlights in 4.0.0-incubating" translate="no">​</a></h2>
 <p>This release focuses on consolidating the architecture, improving operational capabilities, and preparing the project for broader adoption. Key highlights include:</p>
 <ul>
 <li class=""><strong>Independent workload cluster deployment mode:</strong> MQTT frontends, distribution services, session storage, and other components can run as separate workload clusters so operators can scale and allocate resources independently based on workload characteristics.</li>
@@ -33,14 +33,14 @@
 <li class=""><strong>Additional extension points for deep customization:</strong> More SPIs and hook points have been introduced across the stack to support deep customization and secondary development within BifroMQ.</li>
 <li class=""><strong>Operational improvements:</strong> Enhancements to metrics, logging, and administrative APIs support observability, troubleshooting, and automation.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="compatibility-and-upgrade-notes">Compatibility and upgrade notes<a href="https://bifromq.apache.org/blog/announcing-apache-bifromq-4-0-0-incubating/#compatibility-and-upgrade-notes" class="hash-link" aria-label="Direct link to Compatibility and upgrade notes" title="Direct link to Compatibility and upgrade notes" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="compatibility-and-upgrade-notes">Compatibility and upgrade notes<a href="https://bifromq.apache.org/blog/announcing-apache-bifromq-4-0-0-incubating/#compatibility-and-upgrade-notes" class="hash-link" aria-label="Direct link to Compatibility and upgrade notes" title="Direct link to Compatibility and upgrade notes" translate="no">​</a></h2>
 <p>Due to substantial internal refactoring and adjustments required to meet Apache Incubator requirements, 4.0.0-incubating is not backward-compatible with previous non-Apache releases of BifroMQ. If you are running a pre-Incubator version of BifroMQ, treat this as a major upgrade:</p>
 <ul>
 <li class="">Test 4.0.0-incubating in a separate environment first.</li>
 <li class="">Review the release notes for behavior changes that affect your deployment.</li>
 <li class="">Plan any configuration or operational adjustments before switching production traffic.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="acknowledgements">Acknowledgements<a href="https://bifromq.apache.org/blog/announcing-apache-bifromq-4-0-0-incubating/#acknowledgements" class="hash-link" aria-label="Direct link to Acknowledgements" title="Direct link to Acknowledgements" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="acknowledgements">Acknowledgements<a href="https://bifromq.apache.org/blog/announcing-apache-bifromq-4-0-0-incubating/#acknowledgements" class="hash-link" aria-label="Direct link to Acknowledgements" title="Direct link to Acknowledgements" translate="no">​</a></h2>
 <p>We would like to thank everyone who contributed code, reviews, testing, and feedback, as well as the Apache Incubator mentors and community members who helped guide the project through the initial steps of incubation.</p>]]></content:encoded>
             <category>Apache</category>
             <category>BifroMQ</category>
@@ -57,7 +57,7 @@
             <content:encoded><![CDATA[<p>When teams move from a few thousand devices to millions of always-on connections, MQTT usually becomes a key piece of infrastructure. It offers a simple publish/subscribe model, works well on constrained networks, and has wide client support.</p>
 <p>But at cloud scale, the broker itself turns into frontline infrastructure: it is the entry point for business traffic, it must handle massive numbers of long-lived connections, and it has to remain reliable under bursty and unpredictable workloads.</p>
 <p>Apache BifroMQ (Incubating) was built in this environment. In this post, we give a high-level overview of what BifroMQ is, why another MQTT broker is needed, and how its architecture is shaped by real large-scale IoT deployments.</p>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="what-is-apache-bifromq-incubating">What is Apache BifroMQ (Incubating)?<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#what-is-apache-bifromq-incubating" class="hash-link" aria-label="Direct link to What is Apache BifroMQ (Incubating)?" title="Direct link to What is Apache BifroMQ (Incubating)?" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="what-is-apache-bifromq-incubating">What is Apache BifroMQ (Incubating)?<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#what-is-apache-bifromq-incubating" class="hash-link" aria-label="Direct link to What is Apache BifroMQ (Incubating)?" title="Direct link to What is Apache BifroMQ (Incubating)?" translate="no">​</a></h2>
 <p>Apache BifroMQ (Incubating) is a high-performance, distributed, Java-based MQTT broker, designed from the ground up for cloud systems rather than single-node or small-cluster deployments.</p>
 <p>At a glance:</p>
 <ul>
@@ -79,9 +79,9 @@
 </li>
 </ul>
 <p>BifroMQ currently resides in the Apache Incubator. As an incubating project, it follows the Apache way: open governance, community-driven decision-making, and formal release processes.</p>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="why-another-mqtt-broker">Why another MQTT broker?<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#why-another-mqtt-broker" class="hash-link" aria-label="Direct link to Why another MQTT broker?" title="Direct link to Why another MQTT broker?" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="why-another-mqtt-broker">Why another MQTT broker?<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#why-another-mqtt-broker" class="hash-link" aria-label="Direct link to Why another MQTT broker?" title="Direct link to Why another MQTT broker?" translate="no">​</a></h2>
 <p>While existing brokers serve a wide range of scenarios, BifroMQ is built around a particular architectural viewpoint: the MQTT broker itself can and should be engineered as a dedicated, distributed system with clear boundaries and responsibilities.</p>
-<h3 class="anchor anchorTargetStickyNavbar_zVyf" id="mqtt-at-the-frontline">MQTT at the frontline<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#mqtt-at-the-frontline" class="hash-link" aria-label="Direct link to MQTT at the frontline" title="Direct link to MQTT at the frontline" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_ymtK" id="mqtt-at-the-frontline">MQTT at the frontline<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#mqtt-at-the-frontline" class="hash-link" aria-label="Direct link to MQTT at the frontline" title="Direct link to MQTT at the frontline" translate="no">​</a></h3>
 <img src="https://bifromq.apache.org/assets/images/mqtt-at-the-frontline-74c1318615720635edc4f0cfdaf2328a.png" style="width:100%">
 <p>In large deployments, the MQTT broker is not simply a protocol endpoint. It sits at the frontline between the internet or intranet and downstream systems:</p>
 <ul>
@@ -90,7 +90,7 @@
 <li class="">It must tolerate sudden bursts of traffic, such as when a large fleet reconnects after an outage or a firmware rollout.</li>
 </ul>
 <p>In this role, the broker behaves more like a core piece of cloud infrastructure than a traditional message queue.</p>
-<h3 class="anchor anchorTargetStickyNavbar_zVyf" id="limitations-of-common-approaches">Limitations of common approaches<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#limitations-of-common-approaches" class="hash-link" aria-label="Direct link to Limitations of common approaches" title="Direct link to Limitations of common approaches" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_ymtK" id="limitations-of-common-approaches">Limitations of common approaches<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#limitations-of-common-approaches" class="hash-link" aria-label="Direct link to Limitations of common approaches" title="Direct link to Limitations of common approaches" translate="no">​</a></h3>
 <p>In practice, platform teams often try three patterns:</p>
 <ol>
 <li class="">
@@ -114,7 +114,7 @@
 </ol>
 <p>These approaches often fall short when multiple tenants need to share the same infrastructure with clear isolation, fleets grow into tens of millions of devices, or operational teams aim for serverless-like elasticity on the data plane while the control plane (identity, billing, policy) remains decoupled.</p>
 <p>BifroMQ takes a different angle: it is <strong>MQTT-only</strong>, <strong>designed for integration</strong>, and <strong>operations-oriented</strong>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="the-broker-first-approach">The broker-first approach<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#the-broker-first-approach" class="hash-link" aria-label="Direct link to The broker-first approach" title="Direct link to The broker-first approach" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="the-broker-first-approach">The broker-first approach<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#the-broker-first-approach" class="hash-link" aria-label="Direct link to The broker-first approach" title="Direct link to The broker-first approach" translate="no">​</a></h2>
 <p>BifroMQ is built as a broker-first system:</p>
 <ul>
 <li class="">
@@ -135,9 +135,9 @@
 </li>
 </ul>
 <p>The goal is to make BifroMQ a strong building block for IoT platforms and internal device backbones, rather than a monolithic platform itself.</p>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="architecture-highlights">Architecture highlights<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#architecture-highlights" class="hash-link" aria-label="Direct link to Architecture highlights" title="Direct link to Architecture highlights" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="architecture-highlights">Architecture highlights<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#architecture-highlights" class="hash-link" aria-label="Direct link to Architecture highlights" title="Direct link to Architecture highlights" translate="no">​</a></h2>
 <p>BifroMQ's architecture reflects its focus on scale, multi-tenancy, and operations.</p>
-<h3 class="anchor anchorTargetStickyNavbar_zVyf" id="decentralized-two-tier-clustering">Decentralized two-tier clustering<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#decentralized-two-tier-clustering" class="hash-link" aria-label="Direct link to Decentralized two-tier clustering" title="Direct link to Decentralized two-tier clustering" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_ymtK" id="decentralized-two-tier-clustering">Decentralized two-tier clustering<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#decentralized-two-tier-clustering" class="hash-link" aria-label="Direct link to Decentralized two-tier clustering" title="Direct link to Decentralized two-tier clustering" translate="no">​</a></h3>
 <img src="https://bifromq.apache.org/assets/images/two-tier-clustering-73c330259ba1c8b0dfb99c974dcd3095.png" style="width:40%">
 <p>At a high level, BifroMQ distinguishes between two logical layers:</p>
 <ol>
@@ -151,7 +151,7 @@
 </li>
 </ol>
 <p>This separation decouples engineering logic from the runtime environment. Deployment becomes flexible: you can run different services together or apart, depending on workload. There is no single point of failure for control; the system favors decentralized coordination and self-healing.</p>
-<h3 class="anchor anchorTargetStickyNavbar_zVyf" id="workload-independent-architecture">Workload-independent architecture<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#workload-independent-architecture" class="hash-link" aria-label="Direct link to Workload-independent architecture" title="Direct link to Workload-independent architecture" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_ymtK" id="workload-independent-architecture">Workload-independent architecture<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#workload-independent-architecture" class="hash-link" aria-label="Direct link to Workload-independent architecture" title="Direct link to Workload-independent architecture" translate="no">​</a></h3>
 <img src="https://bifromq.apache.org/assets/images/workload-independent-architecture-6607eb201f72960ebc8ec013e82033ed.png" style="width:50%">
 <p>Several internal services correspond to different aspects of MQTT behavior:</p>
 <ul>
@@ -175,7 +175,7 @@
 <p>A key design goal is workload independence: each service can scale and evolve based on the specific resource profile it needs (CPU, memory, storage, network).</p>
 <p>This enables deployment patterns such as on-demand workload scale-out, hybrid workload deployments, and independent workload clusters with dedicated resources and lifecycle.</p>
 <img src="https://bifromq.apache.org/assets/images/workload-migration-944ec9fa35656058500995c0e8cb8067.png" style="width:75%">
-<h3 class="anchor anchorTargetStickyNavbar_zVyf" id="extensibility-plugins-spis-and-apis">Extensibility: plugins, SPIs, and APIs<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#extensibility-plugins-spis-and-apis" class="hash-link" aria-label="Direct link to Extensibility: plugins, SPIs, and APIs" title="Direct link to Extensibility: plugins, SPIs, and APIs" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_ymtK" id="extensibility-plugins-spis-and-apis">Extensibility: plugins, SPIs, and APIs<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#extensibility-plugins-spis-and-apis" class="hash-link" aria-label="Direct link to Extensibility: plugins, SPIs, and APIs" title="Direct link to Extensibility: plugins, SPIs, and APIs" translate="no">​</a></h3>
 <p>In real deployments, the MQTT broker must be integrated into a broader ecosystem:</p>
 <ul>
 <li class="">Device identity and credential management</li>
@@ -190,7 +190,7 @@
 <li class=""><strong>HTTP APIs and control endpoints</strong> allow external systems such as a cloud control panel or internal platform to manage tenants, configurations, and operational actions through well-defined interfaces.</li>
 </ul>
 <p>The intent is to keep the MQTT data plane stable and focused, while still making it straightforward to adapt BifroMQ to different organizational and business requirements.</p>
-<h3 class="anchor anchorTargetStickyNavbar_zVyf" id="roadmap-and-what-is-next">Roadmap and what is next<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#roadmap-and-what-is-next" class="hash-link" aria-label="Direct link to Roadmap and what is next" title="Direct link to Roadmap and what is next" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_ymtK" id="roadmap-and-what-is-next">Roadmap and what is next<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#roadmap-and-what-is-next" class="hash-link" aria-label="Direct link to Roadmap and what is next" title="Direct link to Roadmap and what is next" translate="no">​</a></h3>
 <p>The project roadmap can be viewed in two dimensions:</p>
 <ol>
 <li class="">
@@ -203,7 +203,7 @@
 </li>
 </ol>
 <p>As an Apache Incubator project, BifroMQ's roadmap is expected to evolve with community input. Early adopters, operators, and contributors can have a significant impact on priorities.</p>
-<h2 class="anchor anchorTargetStickyNavbar_zVyf" id="getting-involved">Getting involved<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#getting-involved" class="hash-link" aria-label="Direct link to Getting involved" title="Direct link to Getting involved" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_ymtK" id="getting-involved">Getting involved<a href="https://bifromq.apache.org/blog/introducing-apache-bifromq/#getting-involved" class="hash-link" aria-label="Direct link to Getting involved" title="Direct link to Getting involved" translate="no">​</a></h2>
 <p>If BifroMQ matches challenges you face in your own IoT or device connectivity platform, there are several ways to get involved:</p>
 <ul>
 <li class="">Try out the latest Apache Incubator release in a test environment.</li>

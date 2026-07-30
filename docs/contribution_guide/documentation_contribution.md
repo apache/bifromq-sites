@@ -42,7 +42,7 @@ BifroMQ’s documentation is hosted in the main [GitHub repository](https://gith
 3. **Edit or Add Content**
    - Use Markdown for most files.
    - Follow the existing writing style and structure.
-   - Preview locally if making website changes (e.g., using `npm install` then running `npm start`).
+   - Preview locally if making website changes (e.g., using `pnpm install` then running `pnpm start`).
 
 4. **Open a Pull Request**
    - Push your branch and open a PR targeting the `master` branch.

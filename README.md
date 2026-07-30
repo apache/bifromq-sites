@@ -2,8 +2,8 @@
 
 Apache BifroMQ is currently undergoing incubation at the Apache Software Foundation.
 
-This repository is for [Apache BifroMQ](https://bifromq.apache.org/) documentations and blogs.
-The website is built on [Docusaurus 2](https://docusaurus.io/) which is a modern static website generator.
+This repository contains the documentation and blog for [Apache BifroMQ](https://bifromq.apache.org/).
+The website is built with [Docusaurus 3](https://docusaurus.io/), a modern static site generator.
 
 ## Disclaimer
 
@@ -13,19 +13,18 @@ Apache BifroMQ is an effort undergoing incubation at The Apache Software Foundat
 
 ### Installation
 
-```
-npm install
-npm start
+```bash
+pnpm install
+pnpm start
 ```
 
 A browser window will open up, pointing to the docs. Most changes are reflected instantly without rebooting.
 
-Also, you can type following commands to check changes.
+To verify and preview a production build:
 
-```
-npm install
-npm run build
-npm run serve
+```bash
+pnpm run build
+pnpm run serve
 ```
 
 ### Contribution Guide

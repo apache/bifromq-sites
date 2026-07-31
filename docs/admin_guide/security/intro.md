@@ -1,30 +1,205 @@
 ---
 sidebar_position: 0
-title: "Security Overview"
+title: "Security Model"
 ---
 
-Security, a broad and critical aspect of any system, is a key focus for BifroMQ. Recognizing the importance of securing MQTT broker deployments, BifroMQ offers a suite of features designed to address various security concerns, from cluster isolation to client authentication and risk management of malicious client behavior.
+This document defines the security model of Apache BifroMQ. It describes the expected deployment model, trusted
+roles, security boundaries, and the responsibilities shared between BifroMQ and the surrounding platform.
 
-## Cluster Isolation and Secure Inter-Node Communication
+This document is not a list of security features or a replacement for the ASF vulnerability reporting process. Its
+purpose is to make the assumptions behind BifroMQ's architecture explicit.
 
-### Decentralized Cluster Formation
+## Product and Deployment Model
 
-BifroMQ utilizes a decentralized approach for cluster building, allowing nodes to join a cluster by simply sending a `join` request to any existing cluster member. To prevent unintended cluster mergers due to operational errors, BifroMQ supports specifying a "cluster environment" in the [configuration file](../configuration/config_file_manual.md). This logical separation ensures that clusters intended for different purposes remain distinct, safeguarding against incorrect merges.
+Apache BifroMQ is production-grade, multi-tenant MQTT messaging middleware for building large-scale messaging systems.
+It is designed to be integrated into an operator's platform rather than deployed as a complete identity,
+access-management, and perimeter-security system.
 
-### Secure Inter-Node Communication
+Only MQTT client listeners explicitly selected and secured by the operator are intended to accept traffic from MQTT
+clients.
 
-Node communication in BifroMQ occurs through two primary methods: P2P communication via `base-cluster` technology and RPC communication via `base-rpc` technology. Both methods offer configurable binding addresses and ports for finer control over firewall rules. Importantly, base-rpc supports TLS configuration, enabling end-to-end secure RPC communication between nodes.
+The following surfaces are operator-facing or internal by default:
 
-## Client Authentication and Authorization
+- the HTTP API Server;
+- cluster membership and inter-node communication endpoints;
+- metrics, debugging, and operational endpoints;
+- the plugin directory and installed plugin code;
+- configuration files, JVM options, environment variables, certificates, and cluster discovery settings.
 
-### Auth Provider Plugin
+If any of these surfaces must be accessed outside the trusted deployment network, the operator must place an
+appropriate security layer in front of them.
 
-Client security in BifroMQ encompasses both authentication (verifying client identity) and authorization (granting privileges to various actions). BifroMQ employs the [auth provider plugin](../../plugin/auth_provider.mdx) as a unified approach to client security management.
+:::warning
 
-### Secure Communication Channels
+The quick-start configuration, DevOnly implementations, and bundled DemoPlugin prioritize evaluation and integration
+guidance. They are not a production security baseline.
 
-BifroMQ supports MQTT over TLS and MQTT over WSS, enabling secure communication between clients and the broker. Businesses can choose between one-way and two-way authentication depending on their security requirements. For two-way authentication scenarios, the plugin implementation can access the complete certificate content, aiding in custom large-scale client certificate lifecycle management.
+:::
 
-## Risk Management of Bad-behavior Clients
+## Roles and Trust Assumptions
 
-Identifying and managing bad-behavior clients—those that violate protocol standards or consume excessive system resources—is crucial for maintaining system integrity, especially in large-scale, multi-tenant MQTT deployments. BifroMQ addresses this challenge through real-time event collection and analysis via the EventCollector plugin. By identifying malicious client behaviors and integrating response strategies into the auth provider plugin, BifroMQ enables administrators to deny access to offending clients effectively. While the implementation of such strategies extends beyond BifroMQ's core functionality, the [BifroMQ team](mailto:hello@bifromq.io) offers extensive expertise and professional consulting services for users facing similar challenges.
+### Deployment Operators
+
+Deployment operators install, configure, and run BifroMQ. They control the host, network, configuration files,
+environment variables, JVM options, certificates, plugin directory, cluster discovery settings, and stored data.
+
+Deployment operators are fully trusted. Anyone with equivalent access can control the BifroMQ deployment and is
+therefore inside the trusted boundary.
+
+### Plugin Authors and Plugin Code
+
+BifroMQ plugins run inside the broker process and can access process resources available to their code. Plugin
+class-loader isolation supports dependency and implementation separation; it is not a security sandbox.
+
+Installed plugins and the people who approve them must be trusted. Operators are responsible for reviewing plugin code,
+protecting the plugin supply chain, managing plugin credentials, and restricting plugin network access.
+
+### MQTT Clients
+
+MQTT clients are outside the trusted boundary.
+
+BifroMQ is responsible for safely processing MQTT protocol input and for enforcing the authentication and authorization
+decisions returned by the configured [Auth Provider](../../plugin/auth_provider.mdx).
+
+When no production Auth Provider is configured, BifroMQ does not establish a production-grade client identity or
+authorization boundary. Connections accepted under DevOnly behavior must not be treated as authenticated production
+clients.
+
+### Management API Callers
+
+The BifroMQ API Server is a trusted control-plane interface. Its callers can perform administrative operations such as
+publishing messages, managing sessions and subscriptions, and inspecting or changing cluster state.
+
+The API Server is enabled by default on every BifroMQ service node, using port `8091`, and does not authenticate or
+authorize HTTP callers at the application layer. It must be kept on a trusted network or placed behind a
+customer-managed API gateway that provides authentication, authorization, rate limiting, and auditing.
+
+TLS, including mutual TLS when configured, can protect the connection and authenticate transport peers. It does not
+provide an application role model or prove that a caller is authorized to act for a tenant.
+
+Request fields such as `tenant_id` identify the target of an operation. They are not proof that the caller is authorized
+to act for that tenant.
+
+### Cluster Members
+
+BifroMQ nodes communicate over cluster membership and RPC interfaces. Cluster peers are expected to run inside an
+operator-controlled cluster network.
+
+The cluster environment name provides logical grouping. It is not a credential and must not be treated as node
+authentication.
+
+Operators must restrict cluster ports to trusted nodes, configure stable network boundaries, and enable the available
+transport security when required by their deployment.
+
+## Trust Boundaries
+
+| Surface | Expected trust level | BifroMQ responsibility | Deployment responsibility |
+| --- | --- | --- | --- |
+| MQTT listeners | MQTT clients are untrusted | Parse MQTT traffic safely and enforce configured Auth Provider decisions | Configure production authentication, authorization, TLS, public rate limiting, and denial-of-service protection |
+| HTTP API Server | Callers are trusted control-plane components | Execute documented administrative operations correctly | Keep the API private or protect it with an authenticated and authorized API gateway |
+| Cluster membership and RPC | Peers are trusted cluster nodes | Implement cluster and RPC behavior and provide configurable transport security | Isolate cluster ports, manage certificates, and control cluster discovery |
+| Plugins | Plugin code is fully trusted | Provide stable plugin interfaces and runtime integration | Review plugin code, protect the plugin directory, manage secrets, and restrict egress |
+| Configuration and runtime inputs | Controlled by a trusted operator | Validate and apply documented configuration | Protect files, environment variables, JVM options, DNS, certificates, and deployment automation |
+| Metrics and operational endpoints | Accessible only to trusted operational systems | Expose documented operational data | Restrict network access and protect any exported operational data |
+
+## Responsibilities of BifroMQ
+
+Within the boundaries described above, BifroMQ is responsible for:
+
+- safely processing protocol input received from MQTT clients;
+- applying authentication and authorization results returned by the configured Auth Provider;
+- preserving tenant separation after a client identity has been established;
+- honoring configured TLS and certificate-validation behavior;
+- preventing lower-trust MQTT clients from invoking control-plane operations;
+- handling malformed or adversarial input without unintended code execution, cross-tenant access, persistent data
+  corruption, or disproportionate resource amplification;
+- documenting security-relevant defaults and the intended exposure of each interface.
+
+A problem in these areas may represent a BifroMQ security vulnerability even when the surrounding platform is otherwise
+configured correctly.
+
+## Responsibilities of Deployment Operators
+
+A production deployment should:
+
+- configure a reviewed, production-grade Auth Provider;
+- enable TLS or WSS where client traffic crosses an untrusted network;
+- expose only the required MQTT client listeners;
+- keep the API Server behind a trusted network or authenticated API gateway;
+- restrict cluster membership and RPC ports to trusted BifroMQ nodes;
+- protect configuration files, JVM options, environment variables, certificates, plugin artifacts, data volumes, logs,
+  and deployment credentials;
+- install only reviewed production plugins;
+- remove or disable development and demonstration components that are not required;
+- apply network egress controls to plugins and external integrations;
+- configure tenant resource policies, rate limits, monitoring, and operational alerting appropriate to the workload;
+- use separate deployments when the required isolation is stronger than the trust model of a shared process and shared
+  operator boundary.
+
+## Development and Demonstration Components
+
+BifroMQ includes DevOnly behavior and a bundled DemoPlugin to make the software easy to evaluate and to provide runnable
+examples of the plugin interfaces.
+
+These components demonstrate how an integrator can implement authentication, resource throttling, tenant settings,
+event collection, and monitoring. They are not production implementations and do not define a production security
+boundary.
+
+Production operators must replace demonstration providers with reviewed implementations that satisfy their identity,
+authorization, availability, privacy, and network-security requirements.
+
+The presence of a demonstration component in a distribution does not make it production-ready or part of BifroMQ's
+production security guarantees. Some demo features may start with the distribution; operators must review and disable or
+remove them in production.
+
+## Security Issue Classification
+
+Every report is evaluated on its specific facts. The following examples clarify how the security model is applied.
+
+### Generally Considered Security Vulnerabilities
+
+Examples include:
+
+- an MQTT client bypassing a correctly configured Auth Provider;
+- an authenticated client accessing another tenant's messages or state without authorization;
+- malformed or low-volume network input causing unintended code execution, sensitive-data disclosure, persistent
+  corruption, or disproportionate resource exhaustion;
+- bypassing configured TLS or certificate validation;
+- an untrusted MQTT client reaching a control-plane operation through a BifroMQ protocol or routing path while the
+  operator-facing interface remains isolated by deployment controls;
+- unauthorized modification or loading of plugins without prior access to trusted operator controls.
+
+### Generally Outside the BifroMQ Security Boundary
+
+The following behaviors do not, by themselves, demonstrate a BifroMQ vulnerability:
+
+- a deployment operator using existing access to modify configuration, JVM options, environment variables,
+  certificates, plugins, DNS, or stored data;
+- a trusted plugin reading process data, making network requests, or otherwise exercising the privileges granted to
+  in-process code;
+- exposing the operator-facing API Server directly to an untrusted network without the required gateway or network
+  restriction;
+- unrestricted MQTT access when the operator has not configured a production Auth Provider;
+- security limitations in components clearly identified as DevOnly, demonstration, or testing implementations;
+- vulnerabilities introduced entirely by customer-written plugins, gateways, deployment scripts, or external services;
+- cluster discovery resolving addresses supplied through trusted operator configuration and trusted cluster DNS;
+- capacity exhaustion caused solely by traffic exceeding the deployment's provisioned capacity or by missing perimeter
+  rate limits.
+
+These cases may still justify documentation improvements or defensive hardening. They are not automatically classified
+as security vulnerabilities unless an untrusted actor crosses a boundary that BifroMQ claims to enforce.
+
+## Reporting a Security Issue
+
+Security reports should identify:
+
+- the affected BifroMQ version;
+- the relevant deployment configuration;
+- the attacker's role and existing access;
+- the trusted boundary that is crossed;
+- the resulting confidentiality, integrity, or availability impact;
+- a minimal proof of concept showing the behavior.
+
+Suspected vulnerabilities must be reported privately by following the
+[Apache Software Foundation security reporting process](https://www.apache.org/security/). Do not open a public issue
+before coordinated disclosure.

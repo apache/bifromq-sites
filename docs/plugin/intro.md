@@ -12,6 +12,13 @@ The plugin mechanism is a primary way for BifroMQ to deeply integrate with busin
 - **[Resource Throttler](resource_throttler.mdx)**: Dynamically controls resource usage at the tenant level.
 - **[Setting Provider](setting_provider/intro.mdx)**: Dynamically adjusts tenant-specific MQTT protocol settings.
 
+:::warning
+
+Plugins run as trusted code inside the BifroMQ process. The bundled DemoPlugin is intended for demonstration and testing,
+not as a production security implementation. See the [Security Model](../admin_guide/security/intro.md).
+
+:::
+
 ## Plugin Development
 
 - Project Organization: A pf4j project can contain multiple plugin implementations.

@@ -10,6 +10,14 @@ BifroMQ incorporates built-in API capabilities, allowing for operations such as 
 
 By default, the API service functionality is automatically enabled on every BifroMQ service node using port 8091. For more setting options, refer to the [configuration file](../../admin_guide/configuration/config_file_manual.md). API requests can be sent to any node; high availability comes from running the API Server as an overlay cluster with front-end L7 load balancing (see [API Server load balancing](../../cluster/loadbalance/apiserver.md)).
 
+:::warning
+
+The API Server does not authenticate or authorize HTTP callers at the application layer. Keep it on a trusted network
+or place it behind an API gateway that provides authentication and authorization. TLS alone does not authorize a caller
+to perform operations for a tenant. See the [Security Model](../../admin_guide/security/intro.md).
+
+:::
+
 ## Swagger generation
 
 The Swagger definition is generated automatically during build:

@@ -7,6 +7,13 @@ title: "API Server"
 
 The API Server exposes **HTTP/HTTPS** endpoints for administrative operations such as proxy subscription, message publishing, session management, etc.
 
+:::warning
+
+The API Server is a trusted control-plane interface. Do not expose it directly to an untrusted network. See the
+[Security Model](../../admin_guide/security/intro.md) for the required trust boundary.
+
+:::
+
 ## Layer-7 Load Balancing
 
 **Use cases:**

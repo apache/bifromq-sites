@@ -20,4 +20,11 @@ Use the IP address or domain name corresponding to the launched service. Below a
 
 By default, without an AuthProvider plugin, BifroMQ does not enforce authentication or authorization. However, you can assign a connection to a specific tenant by specifying the username in the format `<TenantId>/<UserName>`. If you omit the tenant prefix, the connection will be assigned to the default `"DevOnly"` tenant.
 
+:::warning
+
+DevOnly behavior is intended for evaluation and integration testing. Configure a production AuthProvider before
+accepting traffic from untrusted clients. See the [Security Model](../../admin_guide/security/intro.md).
+
+:::
+
 For full authentication and authorization support, please refer to the [AuthProvider Plugin](../../plugin/auth_provider.mdx).

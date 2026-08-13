@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bifromq.apache.org/blog/</id>
-    <title>An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating) Blog</title>
+    <title>Apache BifroMQ (Incubating) Blog</title>
     <updated>2026-01-28T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://bifromq.apache.org/blog/"/>
-    <subtitle>An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating) Blog</subtitle>
+    <subtitle>Apache BifroMQ (Incubating) Blog</subtitle>
     <icon>https://bifromq.apache.org/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Announcing Apache BifroMQ 4.0.0-incubating]]></title>

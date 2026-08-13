@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements. See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to you under the Apache License, Version 2.0.
+-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:doap="http://usefulinc.com/ns/doap#"
+         xmlns:asfext="http://projects.apache.org/ns/asfext#"
+         xml:lang="en">
+  <doap:Project rdf:about="https://bifromq.apache.org/">
+    <doap:name>Apache BifroMQ</doap:name>
+    <doap:homepage rdf:resource="https://bifromq.apache.org/" />
+    <doap:license rdf:resource="https://www.apache.org/licenses/LICENSE-2.0" />
+    <doap:shortdesc>Distributed MQTT broker with native multi-tenancy support.</doap:shortdesc>
+    <doap:description>Apache BifroMQ is open-source, distributed MQTT broker software with native multi-tenancy support.</doap:description>
+    <doap:bug-database rdf:resource="https://github.com/apache/bifromq/issues" />
+    <doap:mailing-list rdf:resource="https://bifromq.apache.org/community/" />
+    <doap:download-page rdf:resource="https://bifromq.apache.org/download/" />
+    <doap:programming-language>Java</doap:programming-language>
+    <asfext:pmc rdf:resource="https://incubator.apache.org/" />
+    <doap:repository>
+      <doap:GitRepository>
+        <doap:location rdf:resource="https://gitbox.apache.org/repos/asf/bifromq.git" />
+        <doap:browse rdf:resource="https://github.com/apache/bifromq" />
+      </doap:GitRepository>
+    </doap:repository>
+    <doap:release>
+      <doap:Version>
+        <doap:name>Apache BifroMQ</doap:name>
+        <doap:created>2026-01-28</doap:created>
+        <doap:revision>4.0.0-incubating</doap:revision>
+      </doap:Version>
+    </doap:release>
+  </doap:Project>
+</rdf:RDF>

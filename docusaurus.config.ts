@@ -35,23 +35,6 @@ const config: Config = {
     },
   },
 
-  headTags: [
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'preconnect',
-        href: 'https://fonts.googleapis.com',
-      },
-    },
-    {
-      tagName: 'link',
-      attributes: {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossorigin: 'anonymous',
-      },
-    },
-  ],
   themes: [
     [
       '@docusaurus/theme-mermaid',
@@ -71,9 +54,9 @@ const config: Config = {
           typography: {
             fontSize: '14px',
             lineHeight: '1.6',
-            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+            fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
             code: {
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'SFMono-Regular', Consolas, 'Liberation Mono', monospace",
             },
           },
         },
@@ -276,7 +259,7 @@ const config: Config = {
               html: `
                 <div style="margin-bottom: 1.5rem;">
                   <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-secondary); max-width: 320px; margin-bottom: 2rem;">
-                    High-performance Apache MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
+                    Open-source, distributed MQTT broker software with native multi-tenancy support.
                   </p>
                   <div style="display: flex; gap: 24px; align-items: center;">
                     <a href="https://github.com/apache/bifromq" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-tertiary); transition: color 0.3s; display: flex;" onmouseover="this.style.color='var(--bifrost-blue)'" onmouseout="this.style.color='var(--color-text-tertiary)'">

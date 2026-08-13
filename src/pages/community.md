@@ -1,16 +1,16 @@
 ---
-title: BifroMQ Community
+title: Apache BifroMQ (Incubating) Community
 ---
 
-# BifroMQ Community
+# Apache BifroMQ (Incubating) Community
 
-As an open-source project, BifroMQ warmly welcomes developers and enterprises to actively participate in project development and enhancement. To facilitate this, we have provided an abundance of resources such as documentation, tutorials, Q&A, and code contributions on the [BifroMQ official website](https://bifromq.apache.org/) and the [GitHub community platform](https://github.com/apache/bifromq)
+Apache BifroMQ welcomes participation through its public mailing lists and [GitHub repositories](https://github.com/apache/bifromq).
 
-Additionally, you can also join our [Discord group](https://discord.gg/Pfs3QRadRB).
+Project decisions are made on the public `dev@bifromq.apache.org` mailing list. [GitHub Discussions](https://github.com/apache/bifromq/discussions) and [Discord](https://discord.gg/Pfs3QRadRB) are supplementary channels; proposals that need a project decision should be brought to the dev list.
 
-# Mailing List
+## Mailing Lists
 
-## About the Mailing List
+### About the Mailing Lists
 
 The BifroMQ mailing lists are the primary channels for open, public discussions within the community. Subscribing allows you to:
 
@@ -19,13 +19,12 @@ The BifroMQ mailing lists are the primary channels for open, public discussions 
 - Offer help to users who ask questions via email
 - Follow project updates and progress
 
-For reporting specific bugs or requesting new features, we recommend using [GitHub Issues](https://github.com/apache/bifromq/issues).
-For broader technical discussions or proposals, please use [GitHub Discussions](https://github.com/apache/bifromq/discussions), which is often a more efficient way to collaborate.
+Use [GitHub Issues](https://github.com/apache/bifromq/issues) to report specific bugs or request features. Use the dev mailing list for technical proposals and decisions. Discussions started elsewhere should be summarized on the list when a project decision is needed.
 
-### Mailing List Types
+### Mailing List Types and Archives
 
-- **`commits@bifromq.apache.org`** – Receives automated commit logs and code changes.
-- **`dev@bifromq.apache.org`** – Used for general development discussions, proposals, questions, and community communication.
+- **`dev@bifromq.apache.org`** – Development discussions, proposals, questions, and project decisions. [Browse the public archive](https://lists.apache.org/list.html?dev@bifromq.apache.org).
+- **`commits@bifromq.apache.org`** – Automated commit logs and code changes. [Browse the public archive](https://lists.apache.org/list.html?commits@bifromq.apache.org).
 
 ## How to Subscribe
 

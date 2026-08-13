@@ -20,7 +20,7 @@ Join our Discord or WeChat group if you are interested in our work.
 
 ### Discord
 
-<a href="https://discord.gg/Pfs3QRadRB"><img src="https://img.shields.io/discord/1115542029531885599?logo=discord&logoColor=white" alt="BifroMQ Discord server" /></a>
+[Join the BifroMQ Discord server](https://discord.gg/Pfs3QRadRB).
 
 ### WeChat group
 

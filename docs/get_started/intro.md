@@ -35,7 +35,7 @@ We use GitHub [Issues](https://github.com/apache/bifromq/issues) for tracking re
 
 #### **Mailing List**
 
-We use Apache mailing lists for asynchronous discussion and announcements. Please choose the appropriate list for your needs:
+Apache mailing lists are the project's public channels for asynchronous discussion, announcements, proposals, and decisions. Please choose the appropriate list for your needs:
 
 * **`commits@bifromq.apache.org`** – Receives automated commit logs and code changes.
 * **`dev@bifromq.apache.org`** – Used for general development discussions, proposals, questions, and community communication.
@@ -44,4 +44,4 @@ Follow these [steps](../../../community/#how-to-subscribe) to subscribe or unsub
 
 #### **Discord**
 
-We also use [Discord](https://discord.gg/Pfs3QRadRB) for real-time chat and community discussion. Join our server to ask questions, share ideas, and stay up-to-date with the latest project progress. Please adhere to the Apache Code of Conduct while participating.
+[Discord](https://discord.gg/Pfs3QRadRB) is available as a supplementary real-time chat channel. Project proposals and decisions must be discussed or summarized on the public dev mailing list. Please follow the Apache Code of Conduct in every project channel.

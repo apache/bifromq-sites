@@ -30,7 +30,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="Apache BifroMQ | High-Performance Multi-tenant MQTT Broker"
-      description="The definitive high-performance, multi-tenant MQTT broker for massive scale IoT. Industrial-grade reliability meets architectural precision.">
+      description="Apache BifroMQ (Incubating) is open-source, distributed MQTT broker software with native multi-tenancy support.">
       <div className={styles.main}>
 
         {/* --- HERO SECTION --- */}
@@ -51,7 +51,7 @@ export default function Home(): ReactNode {
               Apache BifroMQ<span>(Incubating)</span>
             </h1>
             <p className={styles.heroDesc}>
-              Java-based high-performance Apache MQTT Broker messaging middleware that adopts Multi-tenancy architecture.
+              Open-source, distributed MQTT broker software with native multi-tenancy support.
             </p>
             <div className={styles.heroCta}>
               <Link to="/docs/get_started/intro" className={styles.heroCtaPrimary}>
@@ -67,7 +67,7 @@ export default function Home(): ReactNode {
         {/* --- TRUST SECTION --- */}
         <section className={styles.trust}>
           <div className={styles.trustInner}>
-            <span className={styles.apacheBrand}>Supported by the Apache Software Foundation</span>
+            <span className={styles.apacheBrand}>An Apache Incubator project</span>
           </div>
         </section>
 
@@ -77,7 +77,7 @@ export default function Home(): ReactNode {
             <span className={styles.sectionLabel}>Overview</span>
             <h2 className={styles.sectionTitle}>What is BifroMQ?</h2>
             <p className={styles.introDesc}>
-              BifroMQ is a high-performance, distributed Apache MQTT broker implementation that seamlessly integrates native multi-tenancy support. It is designed to support building large-scale IoT device connections and messaging systems.
+              The Apache BifroMQ (Incubating) project develops distributed MQTT broker software with native multi-tenancy support for IoT messaging workloads.
             </p>
           </div>
         </section>
@@ -88,27 +88,27 @@ export default function Home(): ReactNode {
         <section className={`${styles.sectionContainer} ${styles.reveal}`}>
           <div className={styles.bifrostGrid}>
             <FeatureCard
-              tag="Full compliance"
-              title="100% MQTT Support"
-              desc="Fully supports MQTT 3.1, 3.1.1 and 5.0 features over TCP, TLS, WS, WSS. Complete protocol implementation with all advanced features."
+              tag="Protocol support"
+              title="MQTT 3.1–5.0"
+              desc="Supports MQTT 3.1, 3.1.1, and 5.0 over TCP, TLS, WS, and WSS."
               icon="MQTT 3.1-5.0"
             />
             <FeatureCard
               tag="Self-contained"
               title="Built-in Storage Engine"
-              desc="Optimized for critical load targeting, no third-party middleware dependencies. Deploy anywhere with confidence."
+              desc="Includes a distributed storage engine designed for MQTT workloads, without a separate storage middleware dependency."
               icon="Zero deps"
             />
             <FeatureCard
               tag="Resource isolation"
               title="Native Multi-Tenancy"
-              desc="Built-in support for multi-tenancy resource sharing and workload isolation. Perfect for SaaS platforms and enterprise environments."
+              desc="Provides built-in mechanisms for multi-tenant resource sharing and workload isolation."
               icon="Multi-tenant"
             />
             <FeatureCard
               tag="Highly extensible"
               title="Extensible Mechanisms"
-              desc="Supports extensions, including Authentication/Authorization, Event, and System/Tenant Monitoring. Rich plugin architecture."
+              desc="Supports extensions for authentication, authorization, events, and system or tenant monitoring."
               icon="Plugin-ready"
             />
           </div>
@@ -134,7 +134,7 @@ export default function Home(): ReactNode {
             <div className={styles.terminalOutput}>
               <div><span className={styles.prompt}>$</span> docker run -d --name bifromq -p 1883:1883 apache/bifromq:{releaseVersion}</div>
               <div style={{ opacity: 0.6, marginTop: '20px' }}># BifroMQ node starting up...</div>
-              <div style={{ opacity: 0.6 }}># Cluster established. Ready for massive connectivity.</div>
+              <div style={{ opacity: 0.6 }}># Cluster established. MQTT listener ready.</div>
               <div><span className={styles.prompt}>$</span> <span className={styles.cursor} /></div>
             </div>
           </div>

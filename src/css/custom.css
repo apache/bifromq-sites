@@ -4,9 +4,6 @@
    Focus: Structural Integrity, Clear Hierarchy, Sophisticated Negative Space
    ====================================================== */
 
-/* Font Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 :root {
   /* Bifrost Palette - Distinct Solid Colors */
   --bifrost-red: #FF3B30;
@@ -32,9 +29,9 @@
   --color-signal: var(--bifrost-orange);
 
   /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-display: 'Inter', sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --font-display: var(--font-sans);
 
   /* Spacing - Extreme Breathing Room */
   --space-3xs: 0.25rem;

@@ -35,7 +35,7 @@ We use GitHub [Issues](https://github.com/bifromqio/bifromq/issues) for tracking
 
 #### **Discord**
 
-<a href="https://discord.gg/Pfs3QRadRB"><img src="https://img.shields.io/discord/1115542029531885599?logo=discord&logoColor=white" alt="BifroMQ Discord server" /></a>
+[Join the BifroMQ Discord server](https://discord.gg/Pfs3QRadRB).
 
 #### **WeChat Group**
 

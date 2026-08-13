@@ -43,6 +43,8 @@ jobs:
         run: pnpm run typecheck
       - name: Build site
         run: pnpm run build
+      - name: Check documentation and verification policy
+        run: pnpm run check:site-policy
       - name: Copy .asf.yaml
         run: cp .asf.yaml build/.asf.yaml
       - name: Publish to asf-site

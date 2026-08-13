@@ -193,6 +193,7 @@ for (const htmlFile of findHtmlFiles(buildDir)) {
     (tag) => getAttribute(tag, 'rel') === 'canonical',
   );
   const canonicalUrl = getAttribute(canonical ?? '', 'href');
+  const expectedCanonicalUrl = `${canonicalOrigin}${path}`;
   const h1Count = (html.match(/<h1(?:\s|>)/gi) ?? []).length;
   const openGraphImage = metaTags.find(
     (tag) => getAttribute(tag, 'property') === 'og:image',
@@ -210,8 +211,10 @@ for (const htmlFile of findHtmlFiles(buildDir)) {
   if (!getAttribute(description ?? '', 'content').trim()) {
     fail(`Indexable page is missing a description: ${path}`);
   }
-  if (!isLocalSiteUrl(canonicalUrl)) {
-    fail(`Indexable page has a missing or non-canonical URL: ${path}`);
+  if (!isLocalSiteUrl(canonicalUrl) || canonicalUrl !== expectedCanonicalUrl) {
+    fail(
+      `Indexable page canonical URL does not match its path: ${path} -> ${canonicalUrl}`,
+    );
   }
   if (h1Count !== 1) {
     fail(`Indexable page must have exactly one H1 (${h1Count} found): ${path}`);

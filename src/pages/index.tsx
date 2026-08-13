@@ -75,9 +75,14 @@ export default function Home(): ReactNode {
       description="Apache BifroMQ (Incubating) is open-source, distributed MQTT broker software with native multi-tenancy support.">
       <Head
         children={
-          <script type="application/ld+json">
-            {JSON.stringify(homepageStructuredData)}
-          </script>
+          <>
+            <title>
+              Apache BifroMQ (Incubating) – An Open-Source Apache MQTT Broker
+            </title>
+            <script type="application/ld+json">
+              {JSON.stringify(homepageStructuredData)}
+            </script>
+          </>
         }
       />
       <div className={styles.main}>

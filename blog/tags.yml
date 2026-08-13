@@ -1,0 +1,39 @@
+Apache:
+  label: Apache
+  permalink: /apache
+  description: Posts about Apache BifroMQ's development in the Apache Incubator.
+
+BifroMQ:
+  label: BifroMQ
+  permalink: /bifro-mq
+  description: Project news and technical articles about Apache BifroMQ.
+
+MQTT:
+  label: MQTT
+  permalink: /mqtt
+  description: Articles about MQTT protocol support, architecture, and operations.
+
+Multi-Tenant:
+  label: Multi-Tenant
+  permalink: /multi-tenant
+  description: Articles about multi-tenant MQTT workload and resource isolation.
+
+Serverless:
+  label: Serverless
+  permalink: /serverless
+  description: Articles about independently scalable MQTT service workloads.
+
+Decentralized Cluster:
+  label: Decentralized Cluster
+  permalink: /decentralized-cluster
+  description: Articles about Apache BifroMQ's distributed cluster architecture.
+
+Incubator:
+  label: Incubator
+  permalink: /incubator
+  description: News about Apache BifroMQ's progress in the Apache Incubator.
+
+Release:
+  label: Release
+  permalink: /release
+  description: Apache BifroMQ release announcements and related information.

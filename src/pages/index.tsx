@@ -1,8 +1,50 @@
 import React, { type ReactNode, useEffect } from 'react';
+import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { releaseVersion } from '../../releaseInfo';
 import styles from './index.module.css';
+
+const homepageStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://bifromq.apache.org/#website',
+      url: 'https://bifromq.apache.org/',
+      name: 'Apache BifroMQ (Incubating)',
+      description:
+        'Open-source, distributed MQTT broker software with native multi-tenancy support.',
+      inLanguage: 'en',
+      publisher: {
+        '@type': 'Organization',
+        name: 'The Apache Software Foundation',
+        url: 'https://www.apache.org/',
+      },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://bifromq.apache.org/#software',
+      name: 'Apache BifroMQ',
+      url: 'https://bifromq.apache.org/',
+      applicationCategory: 'ServerApplication',
+      operatingSystem: 'Cross-platform',
+      softwareVersion: releaseVersion,
+      description:
+        'Open-source, distributed MQTT broker software with native multi-tenancy support.',
+      license: 'https://www.apache.org/licenses/LICENSE-2.0',
+      codeRepository: 'https://github.com/apache/bifromq',
+      publisher: {
+        '@type': 'Organization',
+        name: 'The Apache Software Foundation',
+        url: 'https://www.apache.org/',
+      },
+      isPartOf: {
+        '@id': 'https://bifromq.apache.org/#website',
+      },
+    },
+  ],
+};
 
 /**
  * BifroMQ Landing Page - Bifrost Redesign
@@ -29,8 +71,15 @@ export default function Home(): ReactNode {
 
   return (
     <Layout
-      title="Apache BifroMQ | High-Performance Multi-tenant MQTT Broker"
+      title="Apache MQTT Broker"
       description="Apache BifroMQ (Incubating) is open-source, distributed MQTT broker software with native multi-tenancy support.">
+      <Head
+        children={
+          <script type="application/ld+json">
+            {JSON.stringify(homepageStructuredData)}
+          </script>
+        }
+      />
       <div className={styles.main}>
 
         {/* --- HERO SECTION --- */}

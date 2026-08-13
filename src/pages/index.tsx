@@ -1,8 +1,50 @@
 import React, { type ReactNode, useEffect } from 'react';
+import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { releaseVersion } from '../../releaseInfo';
 import styles from './index.module.css';
+
+const homepageStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://bifromq.apache.org/#website',
+      url: 'https://bifromq.apache.org/',
+      name: 'Apache BifroMQ (Incubating)',
+      description:
+        'Open-source Apache MQTT broker software for distributed, multi-tenant IoT messaging workloads.',
+      inLanguage: 'en',
+      publisher: {
+        '@type': 'Organization',
+        name: 'The Apache Software Foundation',
+        url: 'https://www.apache.org/',
+      },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://bifromq.apache.org/#software',
+      name: 'Apache BifroMQ',
+      url: 'https://bifromq.apache.org/',
+      applicationCategory: 'ServerApplication',
+      operatingSystem: 'Cross-platform',
+      softwareVersion: releaseVersion,
+      description:
+        'Open-source Apache MQTT broker software for distributed, multi-tenant IoT messaging workloads.',
+      license: 'https://www.apache.org/licenses/LICENSE-2.0',
+      codeRepository: 'https://github.com/apache/bifromq',
+      publisher: {
+        '@type': 'Organization',
+        name: 'The Apache Software Foundation',
+        url: 'https://www.apache.org/',
+      },
+      isPartOf: {
+        '@id': 'https://bifromq.apache.org/#website',
+      },
+    },
+  ],
+};
 
 /**
  * BifroMQ Landing Page - Bifrost Redesign
@@ -29,8 +71,32 @@ export default function Home(): ReactNode {
 
   return (
     <Layout
-      title="Apache BifroMQ | High-Performance Multi-tenant MQTT Broker"
-      description="Apache BifroMQ (Incubating) is open-source, distributed MQTT broker software with native multi-tenancy support.">
+      title="Apache MQTT Broker"
+      description="Apache BifroMQ (Incubating) is open-source Apache MQTT broker software for distributed, multi-tenant IoT messaging workloads.">
+      <Head
+        children={
+          <>
+            <title>
+              Apache BifroMQ (Incubating) – An Open-Source Apache MQTT Broker
+            </title>
+            <meta
+              property="og:title"
+              content="Apache BifroMQ (Incubating) – An Open-Source Apache MQTT Broker"
+            />
+            <meta
+              name="twitter:title"
+              content="Apache BifroMQ (Incubating) – An Open-Source Apache MQTT Broker"
+            />
+            <meta
+              name="keywords"
+              content="Apache MQTT broker, Apache MQTT, Apache BifroMQ, open-source MQTT broker, multi-tenant MQTT broker, distributed MQTT broker"
+            />
+            <script type="application/ld+json">
+              {JSON.stringify(homepageStructuredData)}
+            </script>
+          </>
+        }
+      />
       <div className={styles.main}>
 
         {/* --- HERO SECTION --- */}

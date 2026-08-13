@@ -11,9 +11,9 @@ const mainRepoName = 'bifromq';
 const siteRepoName = 'bifromq-sites';
 
 const config: Config = {
-  title: 'An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating)',
+  title: 'Apache BifroMQ (Incubating)',
   tagline:
-    'Java-based high-performance Apache MQTT Broker messaging middleware that adopts Multi-tenancy architecture.',
+    'Open-source, distributed MQTT broker software with native multi-tenancy support.',
   favicon: 'img/favicon.ico',
   url: `https://${projectName.toLowerCase()}.apache.org/`,
   baseUrl: '/',
@@ -122,6 +122,9 @@ const config: Config = {
           },
         },
         blog: {
+          blogTitle: 'Apache BifroMQ Blog',
+          blogDescription:
+            'Project news, releases, and technical articles from Apache BifroMQ (Incubating).',
           showReadingTime: true,
           blogSidebarCount: 10,
           editUrl: () =>
@@ -146,6 +149,7 @@ const config: Config = {
   ],
 
   themeConfig: {
+    image: 'img/social-card.png',
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,

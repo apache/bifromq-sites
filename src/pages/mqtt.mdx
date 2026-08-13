@@ -1,13 +1,14 @@
 ---
-title: MQTT Protocol Guide | Apache BifroMQ
-description: Learn what MQTT is, how publish/subscribe messaging works, and how Apache BifroMQ implements MQTT for large-scale, multi-tenant IoT messaging.
+title: MQTT Protocol Guide
+description: Learn how MQTT works and how Apache BifroMQ (Incubating) provides open-source Apache MQTT broker software for distributed, multi-tenant IoT messaging.
 keywords:
-  - MQTT
-  - MQTT protocol
-  - MQTT broker
+  - Apache MQTT
   - Apache MQTT broker
-  - IoT messaging
   - Apache BifroMQ
+  - MQTT broker
+  - MQTT protocol
+  - MQTT 5.0
+  - multi-tenant MQTT broker
 ---
 
 import Head from '@docusaurus/Head';
@@ -20,19 +21,19 @@ import { releaseVersion } from '../../releaseInfo';
     {JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'TechArticle',
-      headline: 'MQTT Protocol Guide for Apache BifroMQ',
+      headline: 'MQTT Protocol Guide for Apache BifroMQ (Incubating)',
       description:
-        'Learn what MQTT is, how publish/subscribe messaging works, and how Apache BifroMQ implements MQTT for large-scale, multi-tenant IoT messaging.',
+        'Learn how MQTT works and how Apache BifroMQ (Incubating) provides open-source Apache MQTT broker software for distributed, multi-tenant IoT messaging.',
       url: 'https://bifromq.apache.org/mqtt/',
       author: {
         '@type': 'Organization',
-        name: 'Apache BifroMQ',
-        url: 'https://bifromq.apache.org/',
+        name: 'The Apache Software Foundation',
+        url: 'https://www.apache.org/',
       },
       publisher: {
         '@type': 'Organization',
-        name: 'Apache BifroMQ',
-        url: 'https://bifromq.apache.org/',
+        name: 'The Apache Software Foundation',
+        url: 'https://www.apache.org/',
       },
       mainEntity: [
         {
@@ -58,9 +59,9 @@ import { releaseVersion } from '../../releaseInfo';
   </script>
 </Head>
 
-# MQTT Protocol Guide for Apache BifroMQ
+# MQTT Protocol Guide for Apache BifroMQ (Incubating)
 
-MQTT is a lightweight publish/subscribe messaging protocol widely used for IoT, telemetry, and real-time messaging. This guide explains how MQTT works, why a broker sits at the center of every deployment, and how [Apache BifroMQ](/docs/get_started/intro/) delivers a production‑grade Apache MQTT broker implementation for large‑scale, multi‑tenant device connectivity.
+MQTT is a lightweight publish/subscribe messaging protocol widely used for IoT, telemetry, and real-time messaging. This guide explains how MQTT works, why a broker sits at the center of every deployment, and how [Apache BifroMQ (Incubating)](/docs/get_started/intro/) provides open-source Apache MQTT broker software for multi-tenant device connectivity.
 
 For the official protocol documents, see the [MQTT Specification](https://mqtt.org/mqtt-specification/) page on MQTT.org.
 

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: "OpenAPI Reference"
+hide_title: true
 ---
 
 import ApiDocMdx from '@theme/ApiDocMdx';

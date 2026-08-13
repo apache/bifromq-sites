@@ -18,6 +18,12 @@ const config: Config = {
   url: `https://${projectName.toLowerCase()}.apache.org/`,
   baseUrl: '/',
 
+  // English is the only documentation locale currently maintained by the project.
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
   onBrokenLinks: 'throw',
   trailingSlash: true,
 
@@ -88,6 +94,47 @@ const config: Config = {
             current: {
               label: `${releaseVersion}`,
               badge: true,
+            },
+            '3.3.x': {
+              label: '3.3.x (historical)',
+              banner: 'unmaintained',
+              badge: true,
+            },
+            '3.2.x': {
+              label: '3.2.x (archived)',
+              banner: 'unmaintained',
+              badge: true,
+              noIndex: true,
+            },
+            '3.1.x': {
+              label: '3.1.x (archived)',
+              banner: 'unmaintained',
+              badge: true,
+              noIndex: true,
+            },
+            '3.0.x': {
+              label: '3.0.x (archived)',
+              banner: 'unmaintained',
+              badge: true,
+              noIndex: true,
+            },
+            '2.1.x': {
+              label: '2.1.x (archived)',
+              banner: 'unmaintained',
+              badge: true,
+              noIndex: true,
+            },
+            '2.0.0': {
+              label: '2.0.0 (archived)',
+              banner: 'unmaintained',
+              badge: true,
+              noIndex: true,
+            },
+            '1.0.x': {
+              label: '1.0.x (archived)',
+              banner: 'unmaintained',
+              badge: true,
+              noIndex: true,
             },
           },
         },

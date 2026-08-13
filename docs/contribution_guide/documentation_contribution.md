@@ -16,7 +16,7 @@ Here are some ways you can help improve the documentation:
 - Update outdated content
 - Add new sections (e.g., feature usage, configuration examples, deployment tips)
 - Improve the structure or navigation
-- Translate content (when relevant)
+- Improve English-language documentation and terminology
 - Update or improve the project website
 
 No contribution is too small — even fixing a broken link makes a difference!
@@ -55,6 +55,14 @@ BifroMQ’s documentation is hosted in the main [GitHub repository](https://gith
 - Favor practical examples and command-line snippets.
 - Be consistent in tone (neutral and helpful).
 - Link to relevant code or external references when useful.
+
+### Documentation Language and Versions
+
+The project currently maintains official documentation in English only. A localization proposal needs identified maintainers and reviewers, together with a sustainable update process, before localized pages are published as official documentation.
+
+The current release documentation is the primary, indexable documentation set. Version 3.3.x remains indexable as the latest historical 3.x reference and is clearly marked as unmaintained. Versions 3.2.x and earlier remain available for existing users, but are marked as archived and excluded from search indexing and the sitemap to avoid presenting outdated instructions as current guidance.
+
+Archived pages keep their version-specific URLs and must not be canonicalized to current documentation unless the content is verified to be equivalent.
 
 ### Need Help?
 

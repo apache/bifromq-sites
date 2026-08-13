@@ -7,6 +7,7 @@
     "docusaurus": "docusaurus",
     "start": "NO_UPDATE_NOTIFIER=1 docusaurus start",
     "build": "NO_UPDATE_NOTIFIER=1 docusaurus build",
+    "check:site": "pnpm run build && pnpm run check:site-policy",
     "check:site-policy": "node scripts/check-site-policy.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

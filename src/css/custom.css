@@ -10,7 +10,6 @@
   --bifrost-orange: #FF9500;
   --bifrost-yellow: #FFCC00;
   --bifrost-green: #34C759;
-  --bifrost-teal: #5AC8FA;
   --bifrost-blue: #007AFF;
   --bifrost-indigo: #5856D6;
   --bifrost-violet: #AF52DE;
@@ -183,20 +182,18 @@ html[data-theme='dark'] .navbar {
   right: 0;
   height: 4px;
   background: linear-gradient(to right,
-      var(--bifrost-red) 12.5%,
-      var(--bifrost-orange) 12.5%,
-      var(--bifrost-orange) 25%,
-      var(--bifrost-yellow) 25%,
-      var(--bifrost-yellow) 37.5%,
-      var(--bifrost-green) 37.5%,
-      var(--bifrost-green) 50%,
-      var(--bifrost-teal) 50%,
-      var(--bifrost-teal) 62.5%,
-      var(--color-accent) 62.5%,
-      var(--color-accent) 75%,
-      var(--bifrost-indigo) 75%,
-      var(--bifrost-indigo) 87.5%,
-      var(--bifrost-violet) 87.5%);
+      var(--bifrost-red) 14.286%,
+      var(--bifrost-orange) 14.286%,
+      var(--bifrost-orange) 28.571%,
+      var(--bifrost-yellow) 28.571%,
+      var(--bifrost-yellow) 42.857%,
+      var(--bifrost-green) 42.857%,
+      var(--bifrost-green) 57.143%,
+      var(--bifrost-blue) 57.143%,
+      var(--bifrost-blue) 71.429%,
+      var(--bifrost-indigo) 71.429%,
+      var(--bifrost-indigo) 85.714%,
+      var(--bifrost-violet) 85.714%);
   z-index: 10;
 }
 
@@ -395,20 +392,18 @@ html[data-theme='dark'] .markdown h4 {
   border-radius: 20px;
   opacity: 0.6;
   background: linear-gradient(90deg,
-      var(--bifrost-red) 12.5%,
-      var(--bifrost-orange) 12.5%,
-      var(--bifrost-orange) 25%,
-      var(--bifrost-yellow) 25%,
-      var(--bifrost-yellow) 37.5%,
-      var(--bifrost-green) 37.5%,
-      var(--bifrost-green) 50%,
-      var(--bifrost-teal) 50%,
-      var(--bifrost-teal) 62.5%,
-      var(--color-accent) 62.5%,
-      var(--color-accent) 75%,
-      var(--bifrost-indigo) 75%,
-      var(--bifrost-indigo) 87.5%,
-      var(--bifrost-violet) 87.5%);
+      var(--bifrost-red) 14.286%,
+      var(--bifrost-orange) 14.286%,
+      var(--bifrost-orange) 28.571%,
+      var(--bifrost-yellow) 28.571%,
+      var(--bifrost-yellow) 42.857%,
+      var(--bifrost-green) 42.857%,
+      var(--bifrost-green) 57.143%,
+      var(--bifrost-blue) 57.143%,
+      var(--bifrost-blue) 71.429%,
+      var(--bifrost-indigo) 71.429%,
+      var(--bifrost-indigo) 85.714%,
+      var(--bifrost-violet) 85.714%);
 }
 
 .markdown pre code {
@@ -466,9 +461,9 @@ button,
   right: 0;
   height: 2px;
   background: linear-gradient(to right,
+      var(--bifrost-violet),
       var(--bifrost-indigo),
-      var(--color-accent),
-      var(--bifrost-teal),
+      var(--bifrost-blue),
       var(--bifrost-green),
       var(--bifrost-yellow),
       var(--bifrost-orange),

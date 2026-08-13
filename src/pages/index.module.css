@@ -650,6 +650,17 @@ html[data-theme='dark'] .bifrostCard:hover .cardIcon {
     grid-template-columns: 1fr;
   }
 
+  .heroCta {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .heroCtaPrimary,
+  .heroCtaSecondary {
+    padding: 20px 24px;
+  }
+
   .heroTitle {
     font-size: 3.5rem;
   }

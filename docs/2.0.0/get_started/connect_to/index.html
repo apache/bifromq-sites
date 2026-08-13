@@ -4,19 +4,9 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Connect to BifroMQ | An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating)</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://bifromq.apache.org/docs/2.0.0/get_started/connect_to/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="2.0.0"><meta data-rh="true" name="docusaurus_tag" content="docs-default-2.0.0"><meta data-rh="true" name="docsearch:version" content="2.0.0"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-2.0.0"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" property="og:title" content="Connect to BifroMQ | An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating)"><meta data-rh="true" name="description" content="Simple Connection Verification using an MQTT Client"><meta data-rh="true" property="og:description" content="Simple Connection Verification using an MQTT Client"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://bifromq.apache.org/docs/2.0.0/get_started/connect_to/"><link data-rh="true" rel="alternate" href="https://bifromq.apache.org/docs/2.0.0/get_started/connect_to/" hreflang="en"><link data-rh="true" rel="alternate" href="https://bifromq.apache.org/docs/2.0.0/get_started/connect_to/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Get Started","item":"https://bifromq.apache.org/docs/2.0.0/category/get-started"},{"@type":"ListItem","position":2,"name":"Connect to BifroMQ","item":"https://bifromq.apache.org/docs/2.0.0/get_started/connect_to"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating) RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating) Atom Feed">
-
-
-
-
-
-
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.9a02b934.css">
-<script src="/assets/js/runtime~main.483c5022.js" defer="defer"></script>
-<script src="/assets/js/main.a611ef2f.js" defer="defer"></script>
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating) Atom Feed"><link rel="stylesheet" href="/assets/css/styles.b2777fe8.css">
+<script src="/assets/js/runtime~main.8af1a7a8.js" defer="defer"></script>
+<script src="/assets/js/main.48a694f5.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -30,7 +20,7 @@
 <li class="">Visit <a href="https://mqttx.app/" target="_blank" rel="noopener noreferrer" class="">https://mqttx.app/</a> to download MQTTX and install it.</li>
 <li class="">Open MQTTX and click on “New Connection” or the “+” sign on the left sidebar to create a new connection configuration.</li>
 </ol>
-<p><img decoding="async" loading="lazy" src="https://bce.bdstatic.com/doc/IOTSTACK/iotcore/image_4636166.png" alt="image.png" class="img_xAhj"></p>
+<p><a href="https://bce.bdstatic.com/doc/IOTSTACK/iotcore/image_4636166.png" target="_blank" rel="noopener noreferrer" class="">View the historical connection setup screenshot</a>.</p>
 <ol start="3">
 <li class="">
 <p>Fill in the required fields:</p>
@@ -50,17 +40,17 @@
 <p>Subscribe to a topic: Click on the “New Subscription” button in the top left corner and enter the topic in the pop-up dialog box. Note that you must enter a topic you have subscription privileges for. In this example, we will use a test topic: $iot/device1/user/fortest. Select the default QoS 0 and click &quot;Confirm&quot; to subscribe.</p>
 </li>
 </ol>
-<p><img decoding="async" loading="lazy" src="https://bce.bdstatic.com/doc/IOTSTACK/iotcore/image_62a12ac.png" alt="image.png" class="img_xAhj"></p>
+<p><a href="https://bce.bdstatic.com/doc/IOTSTACK/iotcore/image_62a12ac.png" target="_blank" rel="noopener noreferrer" class="">View the historical subscription screenshot</a>.</p>
 <ol start="6">
 <li class="">Publish a message: In the message send/receive interface, enter the topic in the bottom right corner. We will use the same test topic as before. Send a message to yourself by selecting the default QoS 0, entering the message content, and clicking the send button.</li>
 </ol>
-<p><img decoding="async" loading="lazy" src="https://bce.bdstatic.com/doc/IOTSTACK/iotcore/image_e3d5f14.png" alt="image.png" class="img_xAhj"></p>
+<p><a href="https://bce.bdstatic.com/doc/IOTSTACK/iotcore/image_e3d5f14.png" target="_blank" rel="noopener noreferrer" class="">View the historical publish screenshot</a>.</p>
 <ol start="7">
 <li class="">After sending the message successfully, you can see the sent message on the right. If the MQTT service is working properly, since we are subscribed to that topic, we will receive the message and it will also be displayed on the left side of the conversation interface.</li>
 </ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_wm4z"><a href="https://github.com/apache/bifromq-sites/tree/master/versioned_docs/version-2.0.0/02_get_started/2_connect_to.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_HkLC" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_PxJt"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/2.0.0/get_started/quick_install/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Install BifroMQ</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/2.0.0/category/install--deploy/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Install &amp; Deploy</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_CcEE thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#simple-connection-verification-using-an-mqtt-client" class="table-of-contents__link toc-highlight">Simple Connection Verification using an MQTT Client</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Apache BifroMQ</div><ul class="footer__items clean-list"><li class="footer__item">
                 <div style="margin-bottom: 1.5rem;">
                   <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-secondary); max-width: 320px; margin-bottom: 2rem;">
-                    High-performance Apache MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
+                    Open-source, distributed MQTT broker software with native multi-tenancy support.
                   </p>
                   <div style="display: flex; gap: 24px; align-items: center;">
                     <a href="https://github.com/apache/bifromq" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-tertiary); transition: color 0.3s; display: flex;" onmouseover='this.style.color="var(--bifrost-blue)"' onmouseout='this.style.color="var(--color-text-tertiary)"'>

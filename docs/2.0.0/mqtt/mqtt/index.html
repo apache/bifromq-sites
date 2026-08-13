@@ -4,19 +4,9 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">MQTT Specification | An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating)</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://bifromq.apache.org/docs/2.0.0/mqtt/mqtt/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="2.0.0"><meta data-rh="true" name="docusaurus_tag" content="docs-default-2.0.0"><meta data-rh="true" name="docsearch:version" content="2.0.0"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-2.0.0"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" property="og:title" content="MQTT Specification | An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating)"><meta data-rh="true" name="description" content="View the full text of the MQTT 3.1.1 or MQTT 3.1.1 (Recommend) Specification here, which is full supported in BifroMQ."><meta data-rh="true" property="og:description" content="View the full text of the MQTT 3.1.1 or MQTT 3.1.1 (Recommend) Specification here, which is full supported in BifroMQ."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://bifromq.apache.org/docs/2.0.0/mqtt/mqtt/"><link data-rh="true" rel="alternate" href="https://bifromq.apache.org/docs/2.0.0/mqtt/mqtt/" hreflang="en"><link data-rh="true" rel="alternate" href="https://bifromq.apache.org/docs/2.0.0/mqtt/mqtt/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MQTT","item":"https://bifromq.apache.org/docs/2.0.0/category/mqtt"},{"@type":"ListItem","position":2,"name":"MQTT Specification","item":"https://bifromq.apache.org/docs/2.0.0/mqtt/mqtt"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating) RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating) Atom Feed">
-
-
-
-
-
-
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.9a02b934.css">
-<script src="/assets/js/runtime~main.483c5022.js" defer="defer"></script>
-<script src="/assets/js/main.a611ef2f.js" defer="defer"></script>
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="An Open Source Apache MQTT Broker | Apache BifroMQ (Incubating) Atom Feed"><link rel="stylesheet" href="/assets/css/styles.b2777fe8.css">
+<script src="/assets/js/runtime~main.8af1a7a8.js" defer="defer"></script>
+<script src="/assets/js/main.48a694f5.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -27,7 +17,7 @@
 <p>You can also refer to the Shared Subscriptions section in <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901250" target="_blank" rel="noopener noreferrer" class="">MQTT 5.0 Shared Subscriptions</a> here, which is also supported in BifroMQ.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_wm4z"><a href="https://github.com/apache/bifromq-sites/tree/master/versioned_docs/version-2.0.0/21_mqtt/1_mqtt.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_HkLC" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_PxJt"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/2.0.0/category/mqtt/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">MQTT</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/2.0.0/category/test-report/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Test Report</div></a></nav></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Apache BifroMQ</div><ul class="footer__items clean-list"><li class="footer__item">
                 <div style="margin-bottom: 1.5rem;">
                   <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-secondary); max-width: 320px; margin-bottom: 2rem;">
-                    High-performance Apache MQTT broker with enterprise-grade reliability. Applicable to IoT, IM and other scenarios.
+                    Open-source, distributed MQTT broker software with native multi-tenancy support.
                   </p>
                   <div style="display: flex; gap: 24px; align-items: center;">
                     <a href="https://github.com/apache/bifromq" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-tertiary); transition: color 0.3s; display: flex;" onmouseover='this.style.color="var(--bifrost-blue)"' onmouseout='this.style.color="var(--color-text-tertiary)"'>

@@ -23,8 +23,8 @@ const clientModule: ClientModule = {
         window.location.origin,
       ).href;
 
-      // Docusaurus updates the document title on the next tick.
-      setTimeout(() => {
+      // React Helmet defers the document title update to the next animation frame.
+      requestAnimationFrame(() => {
         window._paq?.push(['setReferrerUrl', previousUrl]);
         window._paq?.push(['setCustomUrl', window.location.href]);
         window._paq?.push(['setDocumentTitle', document.title]);

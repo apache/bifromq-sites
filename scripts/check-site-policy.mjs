@@ -21,6 +21,19 @@ import {extname, join, relative} from 'node:path';
 const buildDir = new URL('../build/', import.meta.url).pathname;
 const canonicalOrigin = 'https://bifromq.apache.org';
 const archivedVersions = ['3.2.x', '3.1.x', '3.0.x', '2.1.x', '2.0.0', '1.0.x'];
+const approvedExternalResources = new Set([
+  'https://analytics.apache.org/matomo.js',
+]);
+const matomoRequirementPatterns = [
+  /window\._paq/,
+  /["']setDoNotTrack["']\s*,\s*(?:true|!0)/,
+  /["']disableCookies["']/,
+  /["']trackPageView["']/,
+  /["']enableLinkTracking["']/,
+  /["']setTrackerUrl["']\s*,\s*["']https:\/\/analytics\.apache\.org\/matomo\.php["']/,
+  /["']setSiteId["']\s*,\s*["']90["']/,
+  /<script\b[^>]*\bsrc=["']https:\/\/analytics\.apache\.org\/matomo\.js["']/,
+];
 
 function fail(message) {
   throw new Error(message);
@@ -159,11 +172,33 @@ for (const requiredValue of [
 
 for (const file of findFiles(buildDir, ['.html', '.css'])) {
   const content = readFileSync(file, 'utf8');
-  const externalResources = findExternalResources(file, content);
-  if (externalResources.length > 0) {
+  const unapprovedExternalResources = findExternalResources(
+    file,
+    content,
+  ).filter((resource) => !approvedExternalResources.has(resource));
+  if (unapprovedExternalResources.length > 0) {
     fail(
-      `External resource request in ${relative(buildDir, file)}: ${externalResources[0]}`,
+      `External resource request in ${relative(buildDir, file)}: ${unapprovedExternalResources[0]}`,
     );
+  }
+}
+
+for (const htmlFile of findHtmlFiles(buildDir)) {
+  const html = readFileSync(htmlFile, 'utf8');
+  if (!html.startsWith('<!doctype html>')) {
+    continue;
+  }
+
+  for (const requiredPattern of matomoRequirementPatterns) {
+    if (!requiredPattern.test(html)) {
+      fail(
+        `Generated page is missing the approved ASF Matomo configuration: ${htmlFile}`,
+      );
+    }
+  }
+
+  if (html.includes('[https://analytics.apache.org/]')) {
+    fail(`Generated page contains a Markdown-wrapped Matomo URL: ${htmlFile}`);
   }
 }
 

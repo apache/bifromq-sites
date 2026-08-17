@@ -138,6 +138,13 @@ const config: Config = {
   ],
 
   plugins: [
+    [
+      './plugins/matomo/index.ts',
+      {
+        trackerUrl: 'https://analytics.apache.org/',
+        siteId: '90',
+      },
+    ],
     'docusaurus-plugin-image-zoom',
     [
       'docusaurus-plugin-redoc',

@@ -188,11 +188,37 @@ A production‑grade broker may need to handle:
 * Cluster deployment and high availability
 * Integration with downstream systems
 
-MQTT defines the protocol behaviour; the broker implementation determines how well the system performs under real‑world loads. This is where Apache BifroMQ excels.
+MQTT defines protocol behaviour; the broker implementation determines the deployment model, operational controls, and failure characteristics that users must evaluate.
+
+## How to Evaluate an MQTT Broker
+
+Start with workload and operating requirements rather than a product ranking. Verify each requirement against the exact software release and a representative test.
+
+| Decision area | Questions to answer | Apache BifroMQ evidence and trade-off |
+| --- | --- | --- |
+| Protocol and transport | Which MQTT versions and network transports do clients require? | Apache BifroMQ supports MQTT 3.1, 3.1.1, and 5.0 over TCP, TLS, WS, and WSS. Confirm protocol details against the [current documentation](/docs/get_started/intro/). |
+| Deployment model | Is the workload a small edge installation, a single service, or a horizontally scaled platform? | BifroMQ provides standalone and [cluster deployment](/docs/cluster/intro/) options. A distributed deployment adds nodes, networking, capacity planning, and failure testing that a small single-node workload may not need. |
+| Tenancy and isolation | Must multiple customers or workloads share infrastructure with separate limits? | Native multi-tenancy, [tenant metrics](/docs/admin_guide/observability/metrics/tenantmetrics/), and resource-throttling extension points are useful when isolation is required, but operators must define and validate their own policies. |
+| State and recovery | Which sessions, subscriptions, retained messages, and failure scenarios must survive? | BifroMQ includes distributed storage for broker state. Validate the required recovery behaviour with the chosen [cluster topology](/docs/cluster/clustering/) and workload. |
+| Extensions | Which authentication, authorization, balancing, settings, and event integrations are required? | The [plugin mechanism](/docs/plugin/intro/) exposes these integration points. The deployment team remains responsible for implementing, testing, and operating production plugins. |
+| Observability | Which service-level and tenant-level signals are required? | BifroMQ uses Micrometer and documents [metrics and observability](/docs/admin_guide/observability/metrics/intro/). Deep internal metrics can change between releases, so avoid treating them as a stable public API. |
+| Capacity and cost | What connection rate, steady connection count, message shape, QoS, latency, and recovery target must be met? | Record a reproducible test alongside the project's [benchmark documentation](/docs/benchmark/overview/). Published results from another topology are not a substitute for testing the target environment. |
+
+### When Apache BifroMQ May Not Be the Right Fit
+
+Consider a different architecture when:
+
+* a constrained edge device needs an embedded or in-process broker rather than a Java service;
+* a small single-node workload does not benefit from distributed storage, clustering, or multi-tenant controls;
+* the team needs a fully managed service and does not intend to operate broker nodes, storage, upgrades, and monitoring;
+* the application requires a built-in rules or stream-processing engine—BifroMQ focuses on MQTT broker capabilities and expects those functions to be integrated externally; or
+* a required feature or failure guarantee has not been verified in the target release and topology.
+
+These are workload decisions, not product rankings. Record the tested release, topology, assumptions, and correction path when publishing a comparison.
 
 ## Running MQTT at Scale with Apache BifroMQ
 
-[Apache BifroMQ](/docs/get_started/intro/) is a Java‑based, high‑performance, distributed MQTT broker with native multi‑tenancy support. It is designed for platforms that need to manage large numbers of IoT device connections reliably.
+[Apache BifroMQ](/docs/get_started/intro/) is Java-based, distributed MQTT broker software with native multi-tenancy support. It is designed for platforms that need horizontal scaling and workload isolation.
 
 BifroMQ is especially relevant when you need an Apache MQTT broker implementation for production workloads that involve many devices, multiple tenants, and strict workload isolation.
 
@@ -251,7 +277,7 @@ Useful next steps:
 
 ## MQTT Use Cases for BifroMQ
 
-Apache BifroMQ is a strong fit for MQTT workloads where scale, isolation, and broker‑side architecture matter.
+Apache BifroMQ is designed for MQTT workloads where scale, isolation, and broker-side architecture matter.
 
 ### Large‑Scale IoT Connectivity
 
@@ -274,6 +300,10 @@ When multiple tenants share the same messaging infrastructure, resource control 
 MQTT retained messages and Last Will messages can represent online/offline status, latest state, and availability information for connected devices.
 
 ## MQTT FAQ
+
+### Does Apache provide an MQTT broker?
+
+The Apache Software Foundation hosts Apache BifroMQ (Incubating), an open-source MQTT broker project. MQTT itself is an OASIS standard, not an Apache protocol.
 
 ### Is MQTT an Apache protocol?
 
@@ -301,7 +331,11 @@ No. BifroMQ focuses on implementing standard MQTT broker capabilities. Rule engi
 
 ### When should I choose a distributed MQTT broker?
 
-A distributed MQTT broker becomes important when you need to support a large number of concurrent clients, isolate workloads across tenants, scale horizontally, or build a production‑grade IoT messaging platform.
+A distributed MQTT broker is worth evaluating when you need to support many concurrent clients, isolate tenant workloads, scale horizontally, or recover from node failures. Validate those needs against the added operational complexity and a representative failure test.
+
+## Maintenance and Corrections
+
+The Apache BifroMQ website maintainers review this page for each major release and whenever supported protocols, storage, clustering, or plugin behaviour changes. Report inaccurate or stale claims through the project's [issue tracker](https://github.com/apache/bifromq-sites/issues) or propose a correction through the [contribution guide](/docs/contribution_guide/intro/). Material comparison-policy changes should be discussed on the [public development list](/community/).
 
 ## Related Resources
 
@@ -309,6 +343,13 @@ A distributed MQTT broker becomes important when you need to support a large num
 * [Quick Install & Verify](/docs/get_started/quick_install/)
 * [Docker installation](/docs/installation/docker/)
 * [BifroMQ FAQ](/docs/get_started/faq/)
+* [Cluster architecture](/docs/cluster/intro/)
+* [Configuration](/docs/admin_guide/configuration/intro/)
+* [Metrics and observability](/docs/admin_guide/observability/metrics/intro/)
+* [Benchmark documentation](/docs/benchmark/overview/)
+* [Plugin mechanism](/docs/plugin/intro/)
 * [Download Apache BifroMQ](/download/)
+* [Community and governance](/community/)
+* [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 * [MQTT Specification](https://mqtt.org/mqtt-specification/)
 * [MQTT Software](https://mqtt.org/software/)

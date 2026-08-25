@@ -1,0 +1,30 @@
+---
+sidebar_position: 4
+title: "Install from Source"
+---
+
+import React from 'react';
+import CodeBlock from '@theme/CodeBlock';
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
+
+## Prerequisites
+
+- JDK 17+
+- Maven 3.5.0+
+
+## Build
+
+Clone the repository to local workspace
+
+<CodeBlock language="bash">{`cd <YOUR_WORKSPACE>
+git clone --branch ${useDocsVersion()?.label?.trim()} https://github.com/apache/bifromq bifromq`}</CodeBlock>
+
+<CodeBlock language="bash">{`cd bifromq
+./mvnw -v
+./mvnw -U clean verify -DskipTests -Pbuild-release`}</CodeBlock>
+
+The build output consists of several archive files with sha512 checksum located under /target/output
+
+- {`apache-bifromq-${useDocsVersion()?.label?.trim()}-src.tar.gz`}
+- {`apache-bifromq-${useDocsVersion()?.label?.trim()}.tar.gz`}
+- {`apache-bifromq-${useDocsVersion()?.label?.trim()}-windows.zip`}

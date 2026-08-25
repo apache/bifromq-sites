@@ -18,26 +18,6 @@ access-management, and perimeter-security system.
 Only MQTT client listeners explicitly selected and secured by the operator are intended to accept traffic from MQTT
 clients.
 
-### MQTT Client Addresses and Load Balancers
-
-BifroMQ supports both direct MQTT client connections and deployments behind a Layer-4 load balancer.
-
-When a deployment uses Proxy Protocol or forwarded client-address headers, the load balancer and the network path
-between the load balancer and BifroMQ form the trust boundary for that address information. The operator must ensure
-that the BifroMQ listener is reachable only from the trusted load balancer or an equally trusted network path.
-
-Proxy Protocol and forwarded client-address headers are connection metadata supplied by the deployment network. They
-are not identity credentials, and BifroMQ does not independently authenticate the sender of that metadata. A deployment
-that permits untrusted clients to connect directly to such a listener, or permits an untrusted intermediary to forward
-client-supplied address metadata unchanged, is outside this deployment model.
-
-An Auth Provider may use forwarded client-address information for security decisions only when the operator has
-established the required load-balancer and network isolation. Otherwise, remote address information must be treated as
-untrusted client-controlled metadata.
-
-The [configuration file manual](../configuration/config_file_manual.md#mqttserviceconfig-mqttserviceconfig) describes
-how to enable or disable Proxy Protocol and forwarded client-address header processing per listener.
-
 The following surfaces are operator-facing or internal by default:
 
 - the HTTP API Server;
@@ -115,7 +95,7 @@ transport security when required by their deployment.
 
 | Surface | Expected trust level | BifroMQ responsibility | Deployment responsibility |
 | --- | --- | --- | --- |
-| MQTT listeners | MQTT clients are untrusted | Parse MQTT traffic safely and enforce configured Auth Provider decisions | Configure production authentication, authorization, TLS, public rate limiting, and denial-of-service protection. When forwarded client addresses are used, restrict backend listener access to trusted load balancers and ensure they replace client-supplied address metadata. |
+| MQTT listeners | MQTT clients are untrusted | Parse MQTT traffic safely and enforce configured Auth Provider decisions | Configure production authentication, authorization, TLS, public rate limiting, and denial-of-service protection |
 | HTTP API Server | Callers are trusted control-plane components | Execute documented administrative operations correctly | Keep the API private or protect it with an authenticated and authorized API gateway |
 | Cluster membership and RPC | Peers are trusted cluster nodes | Implement cluster and RPC behavior and provide configurable transport security | Isolate cluster ports, manage certificates, and control cluster discovery |
 | Plugins | Plugin code is fully trusted | Provide stable plugin interfaces and runtime integration | Review plugin code, protect the plugin directory, manage secrets, and restrict egress |
@@ -145,8 +125,6 @@ A production deployment should:
 - configure a reviewed, production-grade Auth Provider;
 - enable TLS or WSS where client traffic crosses an untrusted network;
 - expose only the required MQTT client listeners;
-- restrict backend MQTT listeners to trusted load balancers when the deployment relies on Proxy Protocol or forwarded
-  client-address headers;
 - keep the API Server behind a trusted network or authenticated API gateway;
 - restrict cluster membership and RPC ports to trusted BifroMQ nodes;
 - protect configuration files, JVM options, environment variables, certificates, plugin artifacts, data volumes, logs,
@@ -204,8 +182,6 @@ The following behaviors do not, by themselves, demonstrate a BifroMQ vulnerabili
 - unrestricted MQTT access when the operator has not configured a production Auth Provider;
 - security limitations in components clearly identified as DevOnly, demonstration, or testing implementations;
 - vulnerabilities introduced entirely by customer-written plugins, gateways, deployment scripts, or external services;
-- source-address spoofing caused solely by exposing a load-balancer backend listener to untrusted clients, or by an
-  intermediary forwarding client-supplied address metadata unchanged;
 - cluster discovery resolving addresses supplied through trusted operator configuration and trusted cluster DNS;
 - capacity exhaustion caused solely by traffic exceeding the deployment's provisioned capacity or by missing perimeter
   rate limits.

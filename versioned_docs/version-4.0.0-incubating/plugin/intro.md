@@ -1,0 +1,79 @@
+---
+id: intro
+sidebar_position: 0
+title: "Plugin Overview"
+---
+
+The plugin mechanism is a primary way for BifroMQ to deeply integrate with business systems. Currently, BifroMQ exposes five types of plugin extension interfaces to cater to different usage scenarios:
+
+- **[Auth Provider](auth_provider.mdx)**: Integrates authentication and topic Pub/Sub authorization logic.
+- **[Client Balancer](client_balancer.mdx)**: Inject your customized client balancing strategy in cooporative way.
+- **[Event Collector](event_collector.mdx)**: Collects runtime events to implement various event-driven business logic.
+- **[Resource Throttler](resource_throttler.mdx)**: Dynamically controls resource usage at the tenant level.
+- **[Setting Provider](setting_provider/intro.mdx)**: Dynamically adjusts tenant-specific MQTT protocol settings.
+
+:::warning
+
+Plugins run as trusted code inside the BifroMQ process. The bundled DemoPlugin is intended for demonstration and testing,
+not as a production security implementation. See the [Security Model](../admin_guide/security/intro.md).
+
+:::
+
+## Plugin Development
+
+- Project Organization: A pf4j project can contain multiple plugin implementations.
+- Singleton Plugins: Extensions of AuthProvider, ClientBalancer, Resource Throttler, and Setting Provider types are singletons at runtime. The specific type to be loaded needs to be specified through a configuration file.
+- Multiple Instance Plugins: EventCollector allows for multiple different types of instances to exist, with interface methods of these EventCollector instances being called back simultaneously.
+- Quick Start：We provide a plugin project scaffolding tool, allowing you to start plugin development quickly. See [Start a BifroMQ Plugin Project Quickly](../plugin_practice/#start-a-bifromq-plugin-project-quickly)
+
+## Plugin Deployment
+
+- Plugin Directory: BifroMQ loads plugin implementations (JAR files or directories) from the plugins subdirectory within its installation directory.
+- Classloader Isolation: Each plugin uses an independent ClassLoader to isolate its code from BifroMQ and other plugins.
+- BifroMQ provides class loading for the following commonly used packages:
+  - `org.apache.bifromq.type.*`
+  - `org.apache.bifromq.plugin.*`
+  - `io.micrometer.core.*`
+  - `com.google.protobuf.*`
+
+**Note**: Some 3rd party dependencies used in a plugin may use the `Thread.currentThread().getContextClassLoader()` to load classes, which can result in a `ClassNotFoundException`. To prevent this, you can include the logic for loading dependency classes within the following try-finally structure:
+
+```java
+public pluginMethod() {
+    ClassLoader contextLoader = Thread.currentThread().getContextClassLoader();
+    // using PluginClassLoader for context class loader
+    Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
+    try {
+        // loading 3rd party dependencies
+    } finally {
+        Thread.currentThread().setContextClassLoader(contextLoader);
+    }
+}
+```
+
+## Version Compatibility
+
+To ensure optimal compatibility and avoid potential issues, it is advised to deploy your custom plugin with the main version of the BifroMQ main program aligned.
+
+Example:
+
+- If BifroMQ's version is 4.x.y, then the version of the plugin interface definition modules used should also be 4.x.y.
+
+## Performance Considerations
+
+BifroMQ calls plugin interface methods on worker threads. Ensure plugin interface implementations are lightweight and non-blocking to avoid negatively impacting performance.
+
+## Configuring Parameters in Demo Plugin
+
+BifroMQ supports configuring the demo plugin's Prometheus exporter via environment variables or JVM system properties:
+
+- **Metrics path**: `PLUGIN_PROMETHEUS_CONTEXT` (env) or `-DPLUGIN_PROMETHEUS_CONTEXT=<path>` (JVM). Default `/metrics`. A leading `/` is added automatically if omitted.
+- **Exporter port**: `PLUGIN_PROMETHEUS_PORT` (env) or `-DPLUGIN_PROMETHEUS_PORT=<port>` (JVM). Default `9090`. Non-numeric values fall back to `9090`.
+
+Example:
+
+```bash
+export PLUGIN_PROMETHEUS_PORT=9200
+export PLUGIN_PROMETHEUS_CONTEXT=/demo-metrics
+# or pass as JVM args: -DPLUGIN_PROMETHEUS_PORT=9200 -DPLUGIN_PROMETHEUS_CONTEXT=/demo-metrics
+```

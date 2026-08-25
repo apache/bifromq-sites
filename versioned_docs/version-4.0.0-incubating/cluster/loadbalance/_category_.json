@@ -1,0 +1,8 @@
+{
+  "label": "Load Balancing",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "cluster/loadbalance/intro"
+  }
+}

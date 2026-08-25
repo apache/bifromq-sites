@@ -40,7 +40,7 @@ Apache mailing lists are the project's public channels for asynchronous discussi
 * **`commits@bifromq.apache.org`** – Receives automated commit logs and code changes.
 * **`dev@bifromq.apache.org`** – Used for general development discussions, proposals, questions, and community communication.
 
-Follow these [steps](/community/#how-to-subscribe) to subscribe or unsubscribe.
+Follow these [steps](../../../community/#how-to-subscribe) to subscribe or unsubscribe.
 
 #### **Discord**
 

@@ -72,10 +72,16 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: ({ versionDocsDirPath, docPath }) =>
             `https://github.com/apache/${siteRepoName}/tree/master/${versionDocsDirPath}/${docPath}`,
-          lastVersion: 'current',
+          lastVersion: '4.0.0-incubating',
           versions: {
             current: {
-              label: `${releaseVersion}`,
+              label: 'Development',
+              path: 'development',
+              banner: 'unreleased',
+              badge: true,
+            },
+            '4.0.0-incubating': {
+              label: `${releaseVersion} (latest)`,
               badge: true,
             },
             '3.3.x': {

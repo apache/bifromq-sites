@@ -20,6 +20,7 @@ import {extname, join, relative} from 'node:path';
 
 const buildDir = new URL('../build/', import.meta.url).pathname;
 const canonicalOrigin = 'https://bifromq.apache.org';
+const developmentVersion = 'development';
 const archivedVersions = ['3.2.x', '3.1.x', '3.0.x', '2.1.x', '2.0.0', '1.0.x'];
 const approvedExternalResources = new Set([
   'https://analytics.apache.org/matomo.js',
@@ -126,6 +127,23 @@ const sitemapUrls = new Set(
 );
 if (!sitemap.includes('https://bifromq.apache.org/docs/3.3.x/')) {
   fail('The latest historical 3.x documentation must remain in the sitemap.');
+}
+
+const developmentUrl = `${canonicalOrigin}/docs/${developmentVersion}/`;
+if (sitemap.includes(developmentUrl)) {
+  fail('Unreleased development documentation must not be in the sitemap.');
+}
+
+const developmentDir = join(buildDir, 'docs', developmentVersion);
+const developmentHtmlFiles = findHtmlFiles(developmentDir);
+if (developmentHtmlFiles.length === 0) {
+  fail('Unreleased development documentation was not built.');
+}
+for (const htmlFile of developmentHtmlFiles) {
+  const html = readFileSync(htmlFile, 'utf8');
+  if (!html.includes('name="robots" content="noindex, nofollow"')) {
+    fail(`Development page is missing the Docusaurus noindex directive: ${htmlFile}`);
+  }
 }
 
 for (const version of archivedVersions) {

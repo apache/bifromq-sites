@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkbifromq=globalThis.webpackChunkbifromq||[]).push([[67201],{67201(e,a,r){r.d(a,{createWardleyServices:()=>b.J});var b=r(97539);r(93228)}}]);

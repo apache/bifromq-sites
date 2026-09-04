@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkbifromq=globalThis.webpackChunkbifromq||[]).push([[48261],{70642(a,e,r){r.d(e,{createRadarServices:()=>b.f});var b=r(30915);r(29697)}}]);

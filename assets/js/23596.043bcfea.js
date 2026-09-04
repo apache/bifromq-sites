@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkbifromq=globalThis.webpackChunkbifromq||[]).push([[23596],{23596(e,i,a){a.d(i,{createEventModelingServices:()=>b.g});var b=a(24711);a(29697)}}]);

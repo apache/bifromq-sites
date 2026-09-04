@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkbifromq=globalThis.webpackChunkbifromq||[]).push([[63019],{63019(e,i,a){a.d(i,{createCynefinServices:()=>b.t});var b=a(44788);a(29697)}}]);

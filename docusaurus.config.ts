@@ -79,6 +79,7 @@ const config: Config = {
               path: 'development',
               banner: 'unreleased',
               badge: true,
+              noIndex: true,
             },
             '4.0.0-incubating': {
               label: `${releaseVersion} (latest)`,

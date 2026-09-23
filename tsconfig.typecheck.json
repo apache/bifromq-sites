@@ -6,7 +6,9 @@
     "scripts",
     "docusaurus.config.ts",
     "sidebars.ts",
-    "releaseInfo.ts"
+    "releaseInfo.ts",
+    "tenonSource.ts",
+    "tenonSidebars.ts"
   ],
   "exclude": ["build", "node_modules"]
 }

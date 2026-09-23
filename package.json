@@ -7,8 +7,10 @@
     "docusaurus": "docusaurus",
     "start": "NO_UPDATE_NOTIFIER=1 docusaurus start",
     "build": "NO_UPDATE_NOTIFIER=1 docusaurus build",
-    "check:site": "pnpm run build && pnpm run check:site-policy",
+    "check:site": "pnpm run build && pnpm run check:site-policy && pnpm run check:tenon",
+    "check:tenon": "ts-node --compiler-options '{\"module\":\"CommonJS\",\"moduleResolution\":\"node\"}' scripts/check-tenon-policy.ts",
     "check:site-policy": "node scripts/check-site-policy.mjs",
+    "sync:tenon": "ts-node --compiler-options '{\"module\":\"CommonJS\",\"moduleResolution\":\"node\"}' scripts/sync-tenon-docs.ts",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -35,6 +37,7 @@
     "react-player": "^2.16.1"
   },
   "devDependencies": {
+    "@types/node": "24.10.0",
     "@docusaurus/module-type-aliases": "3.10.2",
     "@docusaurus/tsconfig": "3.10.2",
     "@docusaurus/types": "3.10.2",

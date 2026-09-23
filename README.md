@@ -27,6 +27,21 @@ pnpm run build
 pnpm run serve
 ```
 
+### Tenon documentation
+
+Tenon documentation is a separate development-only documentation instance under `/tenon/docs/development/`. User guides, API explanations, and high-level contribution guidance are authored in this repository. Review them against Tenon's schemas and runtime behavior when those change; they are not overwritten by the importer. Detailed SDK, IPC, and contribution requirements stay in the Tenon code repository and are linked from the contribution pages.
+
+Schemas, SDK lifecycle excerpts, and the security policy are synchronized from the pinned source commit in [`tenonSource.ts`](tenonSource.ts). The site build uses checked-in copies and does not need a Tenon checkout. The importer maps source-guide links to website pages, uses the term "Tenon Document", and omits repeated incubation introductions.
+
+When updating the pinned source checkout, regenerate and verify the copies:
+
+```sh
+pnpm sync:tenon /absolute/path/to/bifromq-tenon
+pnpm sync:tenon /absolute/path/to/bifromq-tenon --check
+```
+
+The [Awesome Tenon Plugins](src/pages/tenon/plugins.md) index is a Markdown list. Plugin authors can add an entry using the template on that page. All Tenon guidance assumes that readers build and install Tenon and its plugins from source.
+
 ### Contribution Guide
 
 This repository welcomes contributions and suggestions through [pull request](https://github.com/apache/bifromq-sites/pulls).

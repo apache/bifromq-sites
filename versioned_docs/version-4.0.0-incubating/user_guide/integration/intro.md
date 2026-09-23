@@ -6,6 +6,8 @@ title: "Data Integration Overview"
 
 BifroMQ focuses on being deeply integrated, providing foundational MQTT capabilities for various messaging systems. This guide primarily introduces the recommended methods for data integration with BifroMQ.
 
+For a standalone Source → Lua → Sink runtime, see [Apache BifroMQ Tenon](/tenon/). Tenon connects through MQTT and runs plugins in separate processes. Follow its source-build tutorials to get started.
+
 ## Understanding Data Integration with BifroMQ
 
 Data integration with BifroMQ involves a bidirectional flow of messages between BifroMQ and external systems, including databases, rule-based message forwarding systems, other messaging middleware, or another MQTT Broker. This integration encompasses several key aspects:
@@ -51,7 +53,7 @@ flowchart LR
 
 ### Non-Coupled Pattern
 
-Contrary to the common practice, BifroMQ recommends a non-coupled approach for data integration: Integration logic directly utilizes the MQTT protocol as a client to subscribe to messages from BifroMQ. This architectural pattern allows the integration module to be reused across different MQTT Brokers, hence the BifroMQ project itself does not include out-of-the-box data integration functionalities.
+Contrary to the common practice, BifroMQ recommends a non-coupled approach for data integration: Integration logic directly utilizes the MQTT protocol as a client to subscribe to messages from BifroMQ. This architectural pattern allows the integration module to be reused across different MQTT Brokers, and Tenon provides an Apache-maintained runtime for this pattern.
 
 ```mermaid
 flowchart LR

@@ -146,6 +146,19 @@ const config: Config = {
 
   plugins: [
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tenon',
+        path: 'tenon',
+        routeBasePath: 'tenon/docs',
+        sidebarPath: './tenonSidebars.ts',
+        editUrl: 'https://github.com/apache/bifromq-sites/edit/master/',
+        versions: {
+          current: { label: 'Development', path: 'development', banner: 'none', badge: false, noIndex: true },
+        },
+      },
+    ],
+    [
       './plugins/matomo/index.ts',
       {
         trackerUrl: 'https://analytics.apache.org/',
@@ -164,6 +177,11 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/social-card.png',
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
+    },
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
@@ -194,6 +212,12 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'right',
           label: 'Documentation',
+        },
+        {
+          to: '/tenon/docs/development/get-started/overview/',
+          label: 'Tenon',
+          position: 'right',
+          activeBaseRegex: '^/tenon(?:/|$)',
         },
         {
           to: '/blog',

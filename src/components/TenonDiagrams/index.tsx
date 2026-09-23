@@ -32,7 +32,7 @@ export function TenonOverviewDiagram(): ReactNode {
       <text x="250" y="269" textAnchor="start" fontSize="17" fill={muted}>applied by</text>
       <rect x="12" y="302" width="456" height="386" rx="6" fill={wash} stroke={border} />
       <text x="36" y="338" textAnchor="start" fontSize="24" fontWeight="600">Tenon Runner</text>
-      <text x="36" y="366" textAnchor="start" fontSize="17" fill={muted}>Manages the running Pipeline</text>
+      <text x="36" y="366" textAnchor="start" fontSize="17" fill={muted}>Manages the running Pipelines</text>
       <rect x="34" y="384" width="412" height="280" rx="6" fill={surface} stroke={border} strokeDasharray="5 5" />
       <text x="53" y="413" textAnchor="start" fontSize="18" fontWeight="600">Pipeline · one Flow shown</text>
       <rect x="90" y="430" width="300" height="52" rx="4" fill={wash} stroke={border} />

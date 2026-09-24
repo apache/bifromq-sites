@@ -32,7 +32,7 @@ Compare `documentEtag` with `appliedDocumentEtag`, then read `runtimeIssues`:
 | Missing plugin or wrong version | Install the exact Program version named in the Tenon Document |
 | Platform mismatch | Build the plugin for the Runner's OS and CPU architecture |
 | Invalid plugin configuration | Check the installed plugin's configuration schema |
-| Missing or unbound interface | Check Source and Sink connections in every Flow |
+| Missing interface | Check that each connected Source or Sink is supported by its plugin; an unused supported interface may remain unconnected |
 | Invalid Lua runtime binding | Check the Flow's Sink contracts and Builder lookup |
 
 An older configuration may still be running. Use the current ETag for a replacement PUT.

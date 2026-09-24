@@ -14,7 +14,7 @@ This example forwards messages from `tenon/input` to `tenon/output` on the same 
 
 <MqttPipelineDiagram />
 
-One plugin instance, `broker`, supplies both the Source and Sink. Both interfaces are connected in the Flow. Keep input and output topics separate to avoid a forwarding loop.
+This example uses one plugin instance, `broker`, for both the Source and Sink. Keep input and output topics separate to avoid a forwarding loop. A combined instance may also be bound in only one direction; the Flow bindings decide which side runs.
 
 ## 1. Prepare the Runner and broker
 
@@ -136,6 +136,6 @@ Use two MQTT instances with different endpoints and client ID prefixes:
 | A to B | Instance A | Instance B | `site/a/out` → `site/b/in` |
 | B to A | Instance B | Instance A | `site/b/out` → `site/a/in` |
 
-Both interfaces of each instance are then connected. Subscribe each Source only to its local outbound topic, and set the destination topic in Lua. Avoid wildcard subscriptions that would consume forwarded output again. Verify each direction with an external subscriber.
+For one-way A to B forwarding, use only the first Flow: A runs as Source and B runs as Sink. Add the second Flow when you need both directions. Each instance still owns one process and shares its connections between the interfaces that are used. Subscribe each active Source only to its local outbound topic, and set the destination topic in Lua. Avoid wildcard subscriptions that would consume forwarded output again. Verify each configured direction with an external subscriber.
 
 QoS and reconnects can produce duplicate messages. See [Delivery & Recovery](/tenon/docs/development/user-guide/delivery/) when choosing replay and deduplication behavior.

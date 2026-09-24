@@ -82,7 +82,7 @@ See [First Pipeline](/tenon/docs/development/get-started/first-pipeline/) for th
 
 - A Source instance belongs to one Flow. A Sink instance can receive from several Flows.
 - Each Flow needs at least one Sink, and every instance must be used.
-- A plugin that provides both Source and Sink interfaces must have both connected. The same instance can be both sides of one Flow.
+- A plugin that provides both Source and Sink interfaces can be used only as Source, only as Sink, or as both. Flow connections determine which interfaces run; an unconnected interface has no queues or SDK workers. The same instance can be both sides of one Flow.
 - Instance and Flow names are their object keys; do not add another `id` inside their values.
 - Tenon Document, instance, and Flow names must be 1–128 UTF-8 bytes and contain no C0/C1 control characters.
 

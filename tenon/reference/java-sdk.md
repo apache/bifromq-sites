@@ -48,3 +48,7 @@ A Source factory receives the configuration, effective channel count and a `Payl
 An invalid channel throws `IllegalArgumentException`. A closed session completes unfinished sends exceptionally with `SourceSessionClosedException`. The SDK does not resend automatically. Keep synchronous completion callbacks short; use an explicit executor for asynchronous or blocking work.
 
 Sink `write` receives a nonempty, ordered, immutable batch and returns `CompletionStage<Void>`. Calls do not overlap, but returned stages can finish out of order. Return promptly and complete the stage successfully only when every record reaches your downstream delivery guarantee. A failed stage terminates the plugin; a restart can replay unacknowledged batches, including partial external effects. Plan for duplicates.
+
+## Direction bindings
+
+A combined Program may run as Source only, Sink only, or both. Its factory receives `Optional<Ingress<S>> source` and the actual `Set<FlowChannel> egressChannels`. `Ingress<S>` contains the Source channel count and its `PayloadSender<S>`; an empty optional means Source is not bound. An empty channel set means Sink is not bound. The SDK opens queues and runs workers only for bound directions. `FlowChannel` contains only `flowId` and `channelId`; Bell paths remain inside the SDK. Existing combined plugins must adapt their factory and rebuild against this SDK.

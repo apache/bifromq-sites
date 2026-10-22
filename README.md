@@ -13,6 +13,8 @@ Apache BifroMQ is an effort undergoing incubation at The Apache Software Foundat
 
 ### Installation
 
+Use Node.js 24 LTS (24.22.1 or later in the 24.x release line) and the pnpm version pinned in `package.json`. CI uses Node.js 24.22.1, which includes the October 2026 security fixes.
+
 ```bash
 pnpm install
 pnpm start

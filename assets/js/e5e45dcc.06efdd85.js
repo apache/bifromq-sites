@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkbifromq=globalThis.webpackChunkbifromq||[]).push([[73039],{85596(s){s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"tenon"}')}}]);

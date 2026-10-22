@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-tenon docs-version-current docs-doc-page docs-doc-id-reference/lua" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Lua API | Apache BifroMQ (Incubating)</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://bifromq.apache.org/img/social-card.png"><meta data-rh="true" name="twitter:image" content="https://bifromq.apache.org/img/social-card.png"><meta data-rh="true" property="og:url" content="https://bifromq.apache.org/tenon/docs/development/reference/lua/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-tenon-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-tenon-current"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" property="og:title" content="Lua API | Apache BifroMQ (Incubating)"><meta data-rh="true" name="description" content="Tenon Lua events, payload access, Builders, routing, timers, and limits."><meta data-rh="true" property="og:description" content="Tenon Lua events, payload access, Builders, routing, timers, and limits."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://bifromq.apache.org/tenon/docs/development/reference/lua/"><link data-rh="true" rel="alternate" href="https://bifromq.apache.org/tenon/docs/development/reference/lua/" hreflang="en"><link data-rh="true" rel="alternate" href="https://bifromq.apache.org/tenon/docs/development/reference/lua/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Lua API","item":"https://bifromq.apache.org/tenon/docs/development/reference/lua"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Apache BifroMQ (Incubating) RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Apache BifroMQ (Incubating) Atom Feed">
+
+
+
+
+
+<script>window._paq=window._paq||[],window._paq.push(["setDoNotTrack",!0]),window._paq.push(["disableCookies"]),window._paq.push(["trackPageView"]),window._paq.push(["enableLinkTracking"]),window._paq.push(["setTrackerUrl","https://analytics.apache.org/matomo.php"]),window._paq.push(["setSiteId","90"])</script>
+<script async src="https://analytics.apache.org/matomo.js"></script><link rel="stylesheet" href="/assets/css/styles.bbd8192a.css">
+<script src="/assets/js/runtime~main.e7d92696.js" defer="defer"></script>
+<script src="/assets/js/main.12ddec66.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><link rel="preload" as="image" href="/img/logo_dark.svg"><link rel="preload" as="image" href="/img/apache-incubator.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_QsOL" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Apache BifroMQ" class="bifromq-navbar-logo-class themedComponent_QfVS themedComponent--light_nB5D" style="height:32px;width:auto"><img src="/img/logo_dark.svg" alt="Apache BifroMQ" class="bifromq-navbar-logo-class themedComponent_QfVS themedComponent--dark_mguZ" style="height:32px;width:auto"></div><b class="navbar__title text--truncate">BifroMQ</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link" href="/docs/get_started/intro/">Documentation</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/tenon/docs/development/get-started/overview/">Tenon</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/community/">Community</a><a class="navbar__item navbar__link" href="/download/">Downloads</a><a class="navbar__item navbar__link" href="/docs/get_started/faq/">FAQ</a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Foundation</a><ul class="dropdown__menu"><li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer" class="dropdown__link">Apache Software Foundation</a></li><li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer" class="dropdown__link">License</a></li><li><a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Events</a></li><li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer" class="dropdown__link">Security</a></li><li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Sponsorship</a></li><li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Thanks</a></li><li><a href="https://www.apache.org/foundation/policies/conduct.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Code of Conduct</a></li><li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">Privacy Policy</a></li></ul></div><a href="https://github.com/apache/bifromq" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><div class="toggle_rupd colorModeToggle_MJvs"><button class="clean-btn toggleButton_HI3e toggleButtonDisabled_V5aE" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_KeSa lightToggleIcon_Yv5i"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_KeSa darkToggleIcon_pxan"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_KeSa systemToggleIcon_cDn5"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_bhoH"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_xUFX"><div class="docsWrapper_kJD8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_OX13" type="button"></button><div class="docRoot_WcoJ"><aside class="theme-doc-sidebar-container docSidebarContainer_psP9"><div class="sidebarViewport_rV4E"><div class="sidebar_s_7o"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_qsqv"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_TmwX menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/tenon/docs/development/get-started/overview/"><span class="categoryLinkLabel_ADAr">Get Started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/get-started/overview/"><span class="linkLabel_JyK7">What is Tenon?</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/get-started/build/"><span class="linkLabel_JyK7">Build &amp; Install from Source</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/get-started/first-pipeline/"><span class="linkLabel_JyK7">First Pipeline</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/get-started/connect-bifromq/"><span class="linkLabel_JyK7">Connect BifroMQ</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_TmwX menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tenon/docs/development/user-guide/documents/"><span class="categoryLinkLabel_ADAr">User Guide</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_TmwX menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tenon/docs/development/plugins/install/"><span class="categoryLinkLabel_ADAr">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_TmwX menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tenon/docs/development/develop/overview/"><span class="categoryLinkLabel_ADAr">Develop a Plugin</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_TmwX menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tenon/docs/development/contribute/overview/"><span class="categoryLinkLabel_ADAr">Contribute SDKs &amp; Scaffolds</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_TmwX menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/tenon/docs/development/reference/compatibility/"><span class="categoryLinkLabel_ADAr">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/compatibility/"><span class="linkLabel_JyK7">Build Compatibility</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/runner/"><span class="linkLabel_JyK7">Runner Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/runner-schema/"><span class="linkLabel_JyK7">Runner Configuration Schema</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/document-schema/"><span class="linkLabel_JyK7">Tenon Document Schema</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/http-api/"><span class="linkLabel_JyK7">HTTP API</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/tenon/docs/development/reference/lua/"><span class="linkLabel_JyK7">Lua API</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/plugin-packages/"><span class="linkLabel_JyK7">Plugin Package Format</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/manifest-schema/"><span class="linkLabel_JyK7">Plugin Manifest Schema</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/rust-sdk/"><span class="linkLabel_JyK7">Rust SDK Lifecycle</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/java-sdk/"><span class="linkLabel_JyK7">Java SDK Lifecycle</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/tenon/docs/development/reference/runner-extensions/"><span class="linkLabel_JyK7">Runner Extensions</span></a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/tenon/docs/development/reference/security/"><span class="linkLabel_JyK7">Security</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/tenon/plugins/"><span class="linkLabel_JyK7">Awesome Tenon Plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a href="https://github.com/apache/bifromq-tenon" target="_blank" rel="noopener noreferrer" class="menu__link menuExternalLink_yRg3"><span class="linkLabel_JyK7">Tenon on GitHub</span><svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li></ul></nav><div class="docs-sidebar-toolbar"><button type="button" class="docs-sidebar-toggle" title="Collapse sidebar" aria-label="Collapse sidebar" aria-expanded="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M9 4v16"></path><path d="m16 9-3 3 3 3"></path></svg></button></div></div></div></aside><main class="docMainContainer_JEHm"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_WK1v"><div class="docItemContainer_TO9l"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer__CCc" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_jf00"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Lua API</span></li></ul></nav><div class="tocCollapsible_eHTR theme-doc-toc-mobile tocMobile_Jm9F"><button type="button" class="clean-btn tocCollapsibleButton_ai_f">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Lua API</h1></header>
+<p>A Flow embeds UTF-8 Lua 5.5 source in <code>process.script</code> and defines <code>function main(event)</code>. ASCII identifiers and normal Lua 5.5 declarations are supported; strings and comments may contain Unicode. <code>specVersion</code> selects the language/API contract.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="script-lifecycle">Script lifecycle<a href="#script-lifecycle" class="hash-link" aria-label="Direct link to Script lifecycle" title="Direct link to Script lifecycle" translate="no">​</a></h2>
+<ol>
+<li class="">Tenon Document validation compiles the script without running it.</li>
+<li class="">With Source and Sink contracts resolved, each channel runs top-level initialization once.</li>
+<li class="">That channel calls <code>main</code> for one Source or timer event at a time.</li>
+</ol>
+<p>Channels have independent state and can execute concurrently. After initialization, <code>main</code> and built-in globals are read-only; your own globals and closure state remain mutable.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="events-and-payloads">Events and payloads<a href="#events-and-payloads" class="hash-link" aria-label="Direct link to Events and payloads" title="Direct link to Events and payloads" translate="no">​</a></h2>
+<p>A Source event has <code>type = &quot;source&quot;</code>, a timestamp and <code>payload</code>. A timer event has <code>type = &quot;timer&quot;</code>, a timestamp and no payload. Events and nested payload values are deeply read-only; modifying them is a sandbox violation.</p>
+<p><code>event.timestamp</code> is a monotonic integer millisecond count since Pipeline startup, sampled when the channel dispatches the event. It is not Unix time. Use the wall-clock functions below for a real-world date or timestamp.</p>
+<p>The exact Program version&#x27;s proto3 <code>SourceRecordPayload</code> defines the input fields. Field access uses Protobuf JSON names (<code>device_id</code> normally becomes <code>deviceId</code>).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Protobuf value</th><th>Lua representation</th></tr></thead><tbody><tr><td>bool</td><td>boolean</td></tr><tr><td>Signed integers, uint32, fixed32</td><td>integer</td></tr><tr><td>uint64, fixed64</td><td>Canonical unsigned decimal string</td></tr><tr><td>float, double</td><td>number</td></tr><tr><td>string</td><td>Valid UTF-8 string</td></tr><tr><td>bytes</td><td>Arbitrary binary string</td></tr><tr><td>enum</td><td>Descriptor symbol name</td></tr><tr><td>message</td><td>Read-only nested view; absent message is nil</td></tr><tr><td>repeated</td><td>Read-only sequence indexed from 1</td></tr><tr><td>map</td><td>Read-only table with keys represented by their declared type</td></tr></tbody></table>
+<p>Ordinary scalar fields expose their proto3 default. Optional fields and unselected oneof alternatives have nil presence. Only fields in the current Contract are exposed; invalid payloads are rejected before <code>main</code>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="builders-and-output">Builders and output<a href="#builders-and-output" class="hash-link" aria-label="Direct link to Builders and output" title="Direct link to Builders and output" translate="no">​</a></h2>
+<p>The registry contains only Sink contracts bound to the current Flow. A contract id is <code>programName@exactVersion</code>; multiple instances of the same Program identity share that contract.</p>
+<div class="language-lua codeBlockContainer_eUTa theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_duay"><pre tabindex="0" class="prism-code language-lua codeBlock_osQd thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_WtPN"><div class="token-line" style="color:#393A34"><span class="token plain">local builder = registry:getBuilder(&quot;com.example.hello-tenon@0.1.0&quot;)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">function main(event)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  if event.type == &quot;source&quot; then</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    builder:setMessage(event.payload.message)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    emit(builder:build())</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  end</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">end</span><br></div></code></pre></div></div>
+<p>Builder methods derive from the original proto field name, not its JSON name: remove underscores and uppercase the first character and each character following an underscore. For field <code>device_id</code>, the suffix is <code>DeviceId</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field kind</th><th>Builder operations</th></tr></thead><tbody><tr><td>Scalar, string, bytes, enum</td><td><code>setXxx(value)</code>, <code>clearXxx()</code></td></tr><tr><td>Message</td><td><code>getXxxBuilder()</code></td></tr><tr><td>Repeated scalar/string/bytes/enum</td><td><code>addXxx(value)</code></td></tr><tr><td>Repeated message</td><td><code>addXxxBuilder()</code></td></tr><tr><td>Map with scalar values</td><td><code>putXxx(key, value)</code></td></tr><tr><td>Map with message values</td><td><code>putXxx(key)</code> returns the replacement value&#x27;s Builder</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_aAmt" id="builder-state">Builder state<a href="#builder-state" class="hash-link" aria-label="Direct link to Builder state" title="Direct link to Builder state" translate="no">​</a></h3>
+<ul>
+<li class="">Only the root Builder provides <code>build()</code>. Nested Builders edit their fields in that root.</li>
+<li class="">Replacing a map value updates its existing Builders.</li>
+<li class="">Setting one oneof alternative clears the others and can invalidate a nested Builder.</li>
+<li class="">Optional scalar fields preserve presence; <code>clearXxx()</code> removes it.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_aAmt" id="builder-arguments">Builder arguments<a href="#builder-arguments" class="hash-link" aria-label="Direct link to Builder arguments" title="Direct link to Builder arguments" translate="no">​</a></h3>
+<p>Use <code>:</code> for every method call. The receiver must match the exact registry binding and message type, and the argument count must match the method.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Value</th><th>Required representation</th></tr></thead><tbody><tr><td>Enum</td><td>Descriptor symbol name</td></tr><tr><td>String</td><td>Valid UTF-8</td></tr><tr><td>Bytes</td><td>Binary string</td></tr><tr><td>Float</td><td>Finite number</td></tr><tr><td>Unsigned 64-bit integer</td><td>Decimal string in range, without signs, whitespace, or leading zeros except <code>&quot;0&quot;</code></td></tr><tr><td>Map key</td><td>The same rules as its declared type</td></tr></tbody></table>
+<p>The plugin validates business rules, such as allowed characters in a destination topic.</p>
+<p><code>build()</code> produces an immutable snapshot. Later Builder changes do not alter it. <code>emit(snapshot)</code> sends the value returned by <code>build()</code> to every matching Sink instance declared by the Flow.</p>
+<h3 class="anchor anchorTargetStickyNavbar_aAmt" id="emit-behavior">Emit behavior<a href="#emit-behavior" class="hash-link" aria-label="Direct link to Emit behavior" title="Direct link to Emit behavior" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Call or condition</th><th>Result</th></tr></thead><tbody><tr><td><code>emit(snapshot)</code></td><td>Produces output for matching Sinks</td></tr><tr><td><code>emit()</code></td><td>Completes pending input without a Sink record</td></tr><tr><td><code>emit(nil)</code></td><td>Error</td></tr><tr><td>Output at top level</td><td>Not allowed; emit only during <code>main</code> or its helpers</td></tr><tr><td>Output exceeds the record-size limit</td><td>Rejected before acceptance with <code>egress.record_too_large</code></td></tr><tr><td>Sink has no capacity yet</td><td>This channel waits; other channels continue</td></tr></tbody></table>
+<p>A <code>main</code> call may emit zero or more times. Accepted outputs retain their order.</p>
+<p>With at-least-once delivery, the first successful emit completes the pending Source group once all matching Sinks report success. A zero-argument emit completes the group without Sink output. Subsequent emits are separate outputs and cannot bypass, extend or roll back the first group&#x27;s completion. See <a class="" href="/tenon/docs/development/user-guide/documents/#completion-and-delivery">delivery semantics</a> and the <a href="https://github.com/apache/bifromq-tenon/blob/21452dc53be3491567dbe9958294e34bf0fc79f5/sdk/SDK-impl-contract.md" target="_blank" rel="noopener noreferrer" class="">SDK contract</a> for terminal outcomes.</p>
+<p>Registry lookup, Builder receiver/argument/type/range errors and timer argument errors are ordinary Lua errors catchable with <code>pcall</code>. Resource-limit failures and sandbox violations are not recoverable inside the invalidated VM.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="timers-and-state">Timers and state<a href="#timers-and-state" class="hash-link" aria-label="Direct link to Timers and state" title="Direct link to Timers and state" translate="no">​</a></h2>
+<p>Each VM has one one-shot timer slot:</p>
+<div class="language-lua codeBlockContainer_eUTa theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_duay"><pre tabindex="0" class="prism-code language-lua codeBlock_osQd thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_WtPN"><div class="token-line" style="color:#393A34"><span class="token plain">setTimeout(durationMs)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">clearTimerTask()</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">hasTimeout()</span><br></div></code></pre></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Timer operation</th><th>Effect</th></tr></thead><tbody><tr><td><code>setTimeout(durationMs)</code></td><td>Starts a delay from this call; replaces the pending timer</td></tr><tr><td><code>clearTimerTask()</code></td><td>Removes the pending timer; succeeds even when none exists</td></tr><tr><td><code>hasTimeout()</code></td><td>Immediately reports whether a timer is pending</td></tr></tbody></table>
+<p>Use a nonnegative Lua integer delay. The timer slot is removed before its event enters <code>main</code>; it stays empty unless you schedule another timer.</p>
+<p>These functions are allowed at top level and in <code>main</code>. A zero delay schedules eligibility on the next event-loop iteration. Execution may be later because the channel is busy. Periodic behavior explicitly schedules the next one-shot timer from the current timer event. Invalid delays raise <code>setTimeout delay must be a non-negative integer</code>.</p>
+<p>Lua state, Builders, snapshots and timers count toward the VM&#x27;s memory allowance. Top-level initialization and each <code>main</code> invocation are bounded by the Runner&#x27;s Lua CPU limit. State lives only in the current VM. A script/resource/sandbox failure invalidates the VM and its timers; rebuilding executes top-level code again. Relevant Tenon Document updates and process restarts also recreate state. Script replacement can briefly hold both old and new VMs, each with its own configured allowance.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="wall-clock-time-and-dates">Wall-clock time and dates<a href="#wall-clock-time-and-dates" class="hash-link" aria-label="Direct link to Wall-clock time and dates" title="Direct link to Wall-clock time and dates" translate="no">​</a></h2>
+<p><code>currentTimeMillis()</code> reads system time as an integer number of milliseconds since 1970-01-01 00:00:00 UTC.</p>
+<ul>
+<li class="">Call it during initialization or <code>main</code>; every call reads the clock again.</li>
+<li class="">Sub-millisecond fractions are discarded, and extra arguments are ignored.</li>
+<li class="">Values before the Unix epoch or outside the signed 64-bit range raise the catchable error <code>currentTimeMillis system time is out of range</code>.</li>
+</ul>
+<p>The read-only <code>os</code> namespace exposes only these official Lua 5.5 functions:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Function</th><th>Behavior</th></tr></thead><tbody><tr><td><code>os.time([date])</code></td><td>With no argument or nil, returns current Unix <strong>seconds</strong> as an integer on supported Tenon platforms. A date table is interpreted in local time and normalized in place. <code>year</code>, <code>month</code> and <code>day</code> are required; <code>hour</code> defaults to 12, <code>min</code> and <code>sec</code> to 0, and optional <code>isdst</code> selects daylight saving time.</td></tr><tr><td><code>os.date([format [, time]])</code></td><td>Formats Unix <strong>seconds</strong>, defaulting to the current time and format <code>%c</code>. A leading <code>!</code> selects UTC; otherwise it uses local time. <code>*t</code> returns a table with <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>min</code>, <code>sec</code>, <code>wday</code> (Sunday = 1), <code>yday</code> and <code>isdst</code> when available. <code>!*t</code> selects UTC fields. Other formats use the host&#x27;s supported <code>strftime</code> conversions and locale.</td></tr><tr><td><code>os.difftime(t2, t1)</code></td><td>Returns <code>t2 - t1</code> in seconds as a Lua number. Both arguments are Unix seconds, not milliseconds.</td></tr></tbody></table>
+<p>Invalid arguments or unrepresentable dates raise ordinary catchable Lua errors. <code>os.time(date)</code> needs a mutable date table. Pass Unix seconds to <code>os.date</code>; convert milliseconds to seconds first:</p>
+<div class="language-lua codeBlockContainer_eUTa theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_duay"><pre tabindex="0" class="prism-code language-lua codeBlock_osQd thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_WtPN"><div class="token-line" style="color:#393A34"><span class="token plain">local timestampMs = currentTimeMillis()</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">local utc = os.date(&quot;!%Y-%m-%dT%H:%M:%SZ&quot;, timestampMs // 1000)</span><br></div></code></pre></div></div>
+<p>When choosing a clock:</p>
+<ul>
+<li class="">Use wall time for dates, not unique IDs, elapsed time, or the original Source timestamp. Clock adjustments can repeat or move values backward.</li>
+<li class="">Capture one reading if several output fields need the same timestamp. Replay and VM restarts may read a different time.</li>
+<li class="">Timer delays use a monotonic clock; wall-clock functions do not change their scheduling or guarantee exact firing times.</li>
+</ul>
+<p><code>os</code> and <code>currentTimeMillis</code> are reserved, read-only built-ins.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="available-standard-environment">Available standard environment<a href="#available-standard-environment" class="hash-link" aria-label="Direct link to Available standard environment" title="Direct link to Available standard environment" translate="no">​</a></h2>
+<p>The basic globals are <code>_G</code>, <code>_VERSION</code>, <code>assert</code>, <code>error</code>, <code>ipairs</code>, <code>next</code>, <code>pairs</code>, <code>pcall</code>, <code>print</code>, <code>select</code>, <code>tonumber</code>, <code>tostring</code>, <code>type</code> and <code>xpcall</code>. <code>_VERSION</code> is <code>Lua 5.5</code>.</p>
+<p>The following standard-library members are available:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Library</th><th>Members</th></tr></thead><tbody><tr><td>string</td><td><code>byte char find format gmatch gsub len lower match pack packsize rep reverse sub unpack upper</code></td></tr><tr><td>table</td><td><code>concat insert move pack remove sort unpack</code></td></tr><tr><td>math</td><td><code>abs acos asin atan ceil cos deg exp floor fmod frexp huge ldexp log max min modf pi rad random randomseed sin sqrt tan tointeger type ult maxinteger mininteger</code></td></tr><tr><td>utf8</td><td><code>char charpattern codepoint codes len offset</code></td></tr><tr><td>os</td><td><code>date difftime time</code></td></tr></tbody></table>
+<p>All listed members follow official Lua 5.5 semantics. Use <code>math.randomseed(...)</code> when a script needs a repeatable random sequence. <code>string.format</code> produces ad-hoc text and can expose implementation-specific float text or object identity such as <code>%p</code>. Pack formats use the host ABI unless the format specifies endianness, width and alignment. Math results can have host-library low-bit differences. UTF-8 helpers operate on code points. <code>print</code> writes to <a class="" href="/tenon/docs/development/user-guide/observability/">live diagnostics</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="json">JSON<a href="#json" class="hash-link" aria-label="Direct link to JSON" title="Direct link to JSON" translate="no">​</a></h2>
+<p><code>json.decode(text)</code> parses strict UTF-8 JSON. Duplicate object keys are rejected at every depth. Integer tokens must fit signed 64-bit; decimal/exponent tokens become finite binary64 floats. Large identifiers outside this range must use strings. <code>json.encode(value)</code> serializes representable Lua values to UTF-8 JSON. It preserves integer/float distinctions, including <code>1</code>, <code>1.0</code> and negative zero.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Lua value</th><th>JSON behavior</th></tr></thead><tbody><tr><td><code>json.null</code></td><td>JSON null; decoding null returns this same immutable value</td></tr><tr><td><code>nil</code></td><td>Absence; cannot be encoded as a value</td></tr><tr><td>Ordinary empty table</td><td><code>{}</code></td></tr><tr><td><code>json.array()</code></td><td>Empty array</td></tr><tr><td>Decoded array with all items removed</td><td>Still an array</td></tr><tr><td>Table with consecutive positive integer keys from 1</td><td>Array</td></tr><tr><td>Sparse or mixed-key table</td><td>Encoding fails</td></tr><tr><td>Cyclic structure</td><td>Encoding fails; shared acyclic values are allowed</td></tr></tbody></table>
+<p>Object keys are emitted in UTF-8 byte order. Arrays preserve element order.</p>
+<p>Errors are ordinary catchable Lua errors. Fixed messages are <code>json.decode input must be a string</code>, <code>json.decode input must be valid UTF-8</code>, <code>json.decode input must be valid JSON</code>, <code>json.decode object field names must be unique</code>, <code>json.decode integer must fit signed 64-bit</code>, <code>json.decode number must be finite</code>, and <code>json.encode value is not representable as JSON</code>. Encoding rejects nil, nonfinite floats, invalid UTF-8, unsupported values, table shapes and cycles.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="binary-data">Binary data<a href="#binary-data" class="hash-link" aria-label="Direct link to Binary data" title="Direct link to Binary data" translate="no">​</a></h2>
+<p>The read-only <code>bytes</code> namespace operates on Lua strings containing arbitrary bytes. Offsets are positive integer positions starting at 1, lengths are nonnegative integers, and floating-point <code>1.0</code> is not an integer offset. An out-of-range read raises an error; a successful read returns exactly the requested region. Required arguments must be present; extra arguments follow ordinary Lua function behavior and are ignored.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>API</th><th>Result and constraints</th></tr></thead><tbody><tr><td><code>bytes.len(data)</code></td><td>Byte count</td></tr><tr><td><code>bytes.slice(data, offset, length)</code></td><td>Complete selected region; an empty region permits offsets 1 through <code>#data + 1</code></td></tr><tr><td><code>bytes.byte(data, offset)</code></td><td>Integer byte in 0–255</td></tr><tr><td><code>bytes.read_u8(data, offset)</code>, <code>bytes.read_i8(data, offset)</code></td><td>One unsigned or two&#x27;s-complement signed byte</td></tr><tr><td><code>bytes.read_u16_be/le(data, offset)</code>, <code>bytes.read_i16_be/le(data, offset)</code></td><td>Two-byte unsigned/signed integer, with explicit big/little endian suffix</td></tr><tr><td><code>bytes.read_u32_be/le(data, offset)</code>, <code>bytes.read_i32_be/le(data, offset)</code></td><td>Four-byte unsigned/signed integer</td></tr><tr><td><code>bytes.read_u64_be/le(data, offset)</code></td><td>Eight-byte unsigned value as a canonical decimal string, directly usable by uint64/fixed64 Builders</td></tr><tr><td><code>bytes.read_i64_be/le(data, offset)</code></td><td>Eight-byte two&#x27;s-complement Lua integer</td></tr><tr><td><code>bytes.read_f32_be/le(data, offset)</code></td><td>IEEE binary32 expanded exactly to binary64; preserves subnormals and negative zero, rejects NaN/infinity</td></tr><tr><td><code>bytes.read_f64_be/le(data, offset)</code></td><td>IEEE binary64, with the same finite-value requirement</td></tr><tr><td><code>bytes.bcd_to_string(data)</code></td><td>Each high then low nibble becomes one decimal digit; nibble &gt; 9 fails, including sign/padding nibbles</td></tr><tr><td><code>bytes.to_hex(data)</code>, <code>bytes.from_hex(text)</code></td><td>Lowercase output; input permits either ASCII case, even length, no prefix, whitespace or separators</td></tr><tr><td><code>bytes.to_base64(data)</code>, <code>bytes.from_base64(text)</code></td><td>Canonical padded RFC 4648 standard alphabet with zero unused bits</td></tr><tr><td><code>bytes.crc16(data, polynomial, initial, xorOut, bitOrder)</code></td><td>All five arguments required; numeric parameters are integers 0–65535 and bitOrder is exactly <code>&quot;msb&quot;</code> or <code>&quot;lsb&quot;</code></td></tr></tbody></table>
+<p>In the table, <code>be/le</code> denotes two separately named functions, for example <code>bytes.read_u16_be</code> and <code>bytes.read_u16_le</code>. Hex, Base64 and BCD accept empty input and return empty output. All data/text arguments must be strings, but encoded-input validation operates on ASCII byte syntax without first requiring UTF-8.</p>
+<p>For CRC16, supply the polynomial in normal form for <code>&quot;msb&quot;</code> or reflected form for <code>&quot;lsb&quot;</code>. The result applies <code>xorOut</code> after processing all bytes. For CRC-16/MODBUS, use <code>bytes.crc16(data, 0xA001, 0xFFFF, 0, &quot;lsb&quot;)</code>; for CRC-16/IBM-3740, use <code>bytes.crc16(data, 0x1021, 0xFFFF, 0, &quot;msb&quot;)</code>.</p>
+<p>Binary errors are catchable and have fixed messages: <code>bytes input must be a string</code>, <code>bytes offset must be a positive integer</code>, <code>bytes length must be a non-negative integer</code>, <code>bytes range is out of bounds</code>, <code>bytes floating-point input must be finite</code>, <code>bytes BCD input must contain only decimal nibbles</code>, <code>bytes hex input must be even-length ASCII hexadecimal</code>, <code>bytes base64 input must be canonical padded RFC 4648</code>, <code>bytes CRC16 parameters must be integers from 0 to 65535</code>, and <code>bytes CRC16 bit order must be &quot;msb&quot; or &quot;lsb&quot;</code>.</p>
+<p>Use Lua&#x27;s <code>&amp;</code>, <code>|</code>, <code>~</code>, <code>&lt;&lt;</code> and <code>&gt;&gt;</code> on integer read results for bit fields. <code>string.pack</code>, <code>string.unpack</code> and <code>string.packsize</code> provide general Lua binary handling; for a byte format shared across hosts, specify endianness, width and alignment explicitly. The <code>bytes</code> API provides Tenon&#x27;s fixed-width, explicit-endian binary contract.</p>
+<h2 class="anchor anchorTargetStickyNavbar_aAmt" id="failed-inputs-and-execution">Failed inputs and execution<a href="#failed-inputs-and-execution" class="hash-link" aria-label="Direct link to Failed inputs and execution" title="Direct link to Failed inputs and execution" translate="no">​</a></h2>
+<p>For <code>at-least-once</code> delivery:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Failure</th><th>Pending Source records</th><th>Lua state</th></tr></thead><tbody><tr><td>Source decode fails with no earlier pending inputs</td><td>Current input receives <code>ERROR</code></td><td>Existing state and timer survive</td></tr><tr><td>Source decode fails with earlier pending inputs</td><td>Current input receives <code>ERROR</code>; earlier inputs receive <code>RETRY</code></td><td>VM is rebuilt</td></tr><tr><td><code>main</code> fails before its first successful emit</td><td>Current Source input receives <code>ERROR</code>; earlier inputs receive <code>RETRY</code></td><td>VM is rebuilt</td></tr><tr><td>Timer execution fails</td><td>Inputs still pending in the VM receive <code>RETRY</code></td><td>VM is rebuilt</td></tr></tbody></table>
+<p>Inputs already assigned to an accepted output boundary keep its outcome. Boundaries execute in order; completed ones do not roll back. The Source plugin decides how to replay externally.</p>
+<p>CPU/memory exhaustion, writes to read-only inputs or built-ins, replacing frozen <code>main</code> and other sandbox violations cannot be caught by nested <code>pcall</code>/<code>xpcall</code>. They terminate the current execution. An unexpected Source process failure resets its Flow&#x27;s Lua state, timers and pending inputs. A planned configuration update can preserve compatible Lua state; see <a class="" href="/tenon/docs/development/user-guide/documents/#updates-and-failure">Tenon Document updates</a>. Outputs already sent downstream are not withdrawn.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_wm4z"><a href="https://github.com/apache/bifromq-sites/edit/master/tenon/reference/lua.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_HkLC" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_PxJt"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/tenon/docs/development/reference/http-api/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">HTTP API</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/tenon/docs/development/reference/plugin-packages/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Plugin Package Format</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_CcEE thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#script-lifecycle" class="table-of-contents__link toc-highlight">Script lifecycle</a></li><li><a href="#events-and-payloads" class="table-of-contents__link toc-highlight">Events and payloads</a></li><li><a href="#builders-and-output" class="table-of-contents__link toc-highlight">Builders and output</a><ul><li><a href="#builder-state" class="table-of-contents__link toc-highlight">Builder state</a></li><li><a href="#builder-arguments" class="table-of-contents__link toc-highlight">Builder arguments</a></li><li><a href="#emit-behavior" class="table-of-contents__link toc-highlight">Emit behavior</a></li></ul></li><li><a href="#timers-and-state" class="table-of-contents__link toc-highlight">Timers and state</a></li><li><a href="#wall-clock-time-and-dates" class="table-of-contents__link toc-highlight">Wall-clock time and dates</a></li><li><a href="#available-standard-environment" class="table-of-contents__link toc-highlight">Available standard environment</a></li><li><a href="#json" class="table-of-contents__link toc-highlight">JSON</a></li><li><a href="#binary-data" class="table-of-contents__link toc-highlight">Binary data</a></li><li><a href="#failed-inputs-and-execution" class="table-of-contents__link toc-highlight">Failed inputs and execution</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Apache BifroMQ</div><ul class="footer__items clean-list"><li class="footer__item">
+                <div style="margin-bottom: 1.5rem;">
+                  <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-secondary); max-width: 320px; margin-bottom: 2rem;">
+                    Open-source, distributed MQTT broker software with native multi-tenancy support.
+                  </p>
+                  <div style="display: flex; gap: 24px; align-items: center;">
+                    <a href="https://github.com/apache/bifromq" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-tertiary); transition: color 0.3s; display: flex;" onmouseover='this.style.color="var(--bifrost-blue)"' onmouseout='this.style.color="var(--color-text-tertiary)"'>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    </a>
+                    <a href="https://discord.gg/Pfs3QRadRB" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-tertiary); transition: color 0.3s; display: flex;" onmouseover='this.style.color="var(--bifrost-blue)"' onmouseout='this.style.color="var(--color-text-tertiary)"'>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.419c0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.419c0 1.334-.946 2.419-2.157 2.419z"/></svg>
+                    </a>
+                    <a href="mailto:dev@bifromq.apache.org" style="color: var(--color-text-tertiary); transition: color 0.3s; display: flex;" onmouseover='this.style.color="var(--bifrost-blue)"' onmouseout='this.style.color="var(--color-text-tertiary)"'>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/apache/bifromq" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/apache/bifromq/releases" target="_blank" rel="noopener noreferrer" class="footer__link-item">Releases<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/apache/bifromq/issues" target="_blank" rel="noopener noreferrer" class="footer__link-item">Issues<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Apache</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://incubator.apache.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Apache Incubator<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.apache.org/foundation/policies/conduct.html" target="_blank" rel="noopener noreferrer" class="footer__link-item">Code of Conduct<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer" class="footer__link-item">Apache 2.0 License<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Others</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://opensource.baidu.com/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Thanks OpenSource@Baidu<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://mqtt.org/mqtt-specification/" target="_blank" rel="noopener noreferrer" class="footer__link-item">MQTT Specification<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_tlLM"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/mqtt/">MQTT Protocol Guide</a></li></ul></div></div><div class="footer__bottom text--center"><div class="margin-bottom--sm"><a href="https://incubator.apache.org/" rel="noopener noreferrer" class="footerLogoLink_ZSOG"><img src="/img/apache-incubator.svg" alt="Apache Incubator" class="footer__logo footer__incubator-logo themedComponent_QfVS themedComponent--light_nB5D" width="180"><img src="/img/apache-incubator.svg" alt="Apache Incubator" class="footer__logo footer__incubator-logo themedComponent_QfVS themedComponent--dark_mguZ" width="180"></a></div><div class="footer__copyright">
+        <div style="font-size: 0.8rem; line-height: 1.8; color: var(--color-text-tertiary); text-align: center; border-top: 1px solid var(--color-border); padding-top: 3rem;">
+          <p style="margin-bottom: 1.5rem; max-width: 1100px; margin-left: auto; margin-right: auto;">
+            Apache BifroMQ is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
+          </p>
+          <p style="margin-bottom: 1.5rem;">
+            Copyright © 2026 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
+          </p>
+          <p style="max-width: 1200px; margin-left: auto; margin-right: auto;">
+            Apache, the names of Apache projects, and the feather logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries.
+          </p>
+        </div>
+      </div></div></div></footer></div>
+</body>
+</html>
